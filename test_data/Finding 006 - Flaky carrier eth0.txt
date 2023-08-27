@@ -1,0 +1,1426 @@
+reto@michael:~$ icocom -b 115200 /dev/ttyUSB
+bash: icocom: command not found
+reto@michael:~$ picocom -b 115200 /dev/ttyUSB0 
+picocom v3.1
+
+port is        : /dev/ttyUSB0
+flowcontrol    : none
+baudrate is    : 115200
+parity is      : none
+databits are   : 8
+stopbits are   : 1
+escape is      : C-a
+local echo is  : no
+noinit is      : no
+noreset is     : no
+hangup is      : no
+nolock is      : no
+send_cmd is    : sz -vv
+receive_cmd is : rz -vv -E
+imap is        : 
+omap is        : 
+emap is        : crcrlf,delbs,
+logfile is     : none
+initstring     : none
+exit_after is  : not set
+exit is        : no
+
+Type [C-a] [C-h] to see available commands
+Terminal ready
+��
+Terminating...
+Skipping tty reset...
+Thanks for using picocom
+reto@michael:~$ picocom -b 115200 /dev/ttyUSB0 
+picocom v3.1
+
+port is        : /dev/ttyUSB0
+flowcontrol    : none
+baudrate is    : 115200
+parity is      : none
+databits are   : 8
+stopbits are   : 1
+escape is      : C-a
+local echo is  : no
+noinit is      : no
+noreset is     : no
+hangup is      : no
+nolock is      : no
+send_cmd is    : sz -vv
+receive_cmd is : rz -vv -E
+imap is        : 
+omap is        : 
+emap is        : crcrlf,delbs,
+logfile is     : none
+initstring     : none
+exit_after is  : not set
+exit is        : no
+
+Type [C-a] [C-h] to see available commands
+Terminal ready
+
++------------------------------------------------------------------------+
+| Dear customer                                                          |
+|                                                                        |
+| You can log in to your GARDENA smart Gateway with user 'root' without  |
+| a password. Please understand that by doing so, you will void your     |
+| warranty. If anything breaks, you can try to do a factory reset (hold  |
+| the reset button while powering on the gateway); however, if that does |
+| not resolve the problem, customer support will not be able to help.    |
+| Please refrain from contacting customer support as this will cause us  |
+| to lock down future devices in the long run. For questions regarding   |
+| open source, please contact smart.open.source@husqvarnagroup.com.      |
+|                                                                        |
+| To unlock SSH access locally, execute the following:                   |
+| # fw_setenv dev_debug_allow_local_ssh 1 && systemctl restart firewall  |
++------------------------------------------------------------------------+
+
+GARDENA smart Gateway 7.9.3 GARDENA-2aeb23 ttyS0
+
+GARDENA-2aeb23 login: root
+
+You can find the open source parts of the software for this product on
+GitHub [1] (this does not include the proprietary packages, which are
+needed to operate the gateway in the GARDENA smart system).
+
+Please be aware that any modification to your gateway, in particular a
+modification of U-Boot, may permanently brick your device and is not
+covered by warranty.
+
+Happy hacking!
+
+P.S. Interested in tinkering with GARDENA products full-time? Get in
+touch with us at jobs@hqv.ch to find out about currently open
+developer positions!
+
+[1] https://github.com/husqvarnagroup/smart-garden-gateway-public
+
+root@GARDENA-2aeb23:~# journalctl -b
+-- Logs begin at Fri 2023-08-25 08:44:54 CEST, end at Fri 2023-08-25 10:52:38 CEST. --
+Aug 25 08:44:54 GARDENA kernel: Linux version 5.10.99-r4.0.1.13-yocto-tiny (oe-user@oe-host) (mipsel-gardena-linux-gcc (GCC) 9.3.0, GNU ld (GNU Binutils) 2.34.0.20200220) #1 Fri Aug 25 06:47:20 UTC 2023
+Aug 25 08:44:54 GARDENA kernel: Board has DDR2
+Aug 25 08:44:54 GARDENA kernel: Analog PMU set to hw control
+Aug 25 08:44:54 GARDENA kernel: Digital PMU set to hw control
+Aug 25 08:44:54 GARDENA kernel: SoC Type: MediaTek MT7688 ver:1 eco:2
+Aug 25 08:44:54 GARDENA kernel: printk: bootconsole [early0] enabled
+Aug 25 08:44:54 GARDENA kernel: CPU0 revision is: 00019655 (MIPS 24KEc)
+Aug 25 08:44:54 GARDENA kernel: MIPS: machine is GARDENA smart Gateway (MT7688)
+Aug 25 08:44:54 GARDENA kernel: Initrd not found or empty - disabling initrd
+Aug 25 08:44:54 GARDENA kernel: Primary instruction cache 64kB, VIPT, 4-way, linesize 32 bytes.
+Aug 25 08:44:54 GARDENA kernel: Primary data cache 32kB, 4-way, PIPT, no aliases, linesize 32 bytes
+Aug 25 08:44:54 GARDENA kernel: Zone ranges:
+Aug 25 08:44:54 GARDENA kernel:   Normal   [mem 0x0000000000000000-0x0000000007ffffff]
+Aug 25 08:44:54 GARDENA kernel: Movable zone start for each node
+Aug 25 08:44:54 GARDENA kernel: Early memory node ranges
+Aug 25 08:44:54 GARDENA kernel:   node   0: [mem 0x0000000000000000-0x0000000007ffffff]
+Aug 25 08:44:54 GARDENA kernel: Initmem setup node 0 [mem 0x0000000000000000-0x0000000007ffffff]
+Aug 25 08:44:54 GARDENA kernel: On node 0 totalpages: 32768
+Aug 25 08:44:54 GARDENA kernel:   Normal zone: 288 pages used for memmap
+Aug 25 08:44:54 GARDENA kernel:   Normal zone: 0 pages reserved
+Aug 25 08:44:54 GARDENA kernel:   Normal zone: 32768 pages, LIFO batch:7
+Aug 25 08:44:54 GARDENA kernel: pcpu-alloc: s0 r0 d32768 u32768 alloc=1*32768
+Aug 25 08:44:54 GARDENA kernel: pcpu-alloc: [0] 0 
+Aug 25 08:44:54 GARDENA kernel: Built 1 zonelists, mobility grouping on.  Total pages: 32480
+Aug 25 08:44:54 GARDENA kernel: Kernel command line: console=ttyS0,115200 root=/dev/ubiblock0_0 rootrw=ubi0:overlay rootrwfstype=ubifs rootrwoptions=rw,noatime ubi.block=0,rootfs0 ubi.mtd=nand init=/init mtdparts=spi0.0:640k(uboot),64k(uboot_env0),64k(uboot_env1),64k(factory),-(unused);spi0.1:-(nand)
+Aug 25 08:44:54 GARDENA kernel: Dentry cache hash table entries: 16384 (order: 4, 65536 bytes, linear)
+Aug 25 08:44:54 GARDENA kernel: Inode-cache hash table entries: 8192 (order: 3, 32768 bytes, linear)
+Aug 25 08:44:54 GARDENA kernel: Writing ErrCtl register=0002e5d8
+Aug 25 08:44:54 GARDENA kernel: Readback ErrCtl register=0002e5d8
+Aug 25 08:44:54 GARDENA kernel: mem auto-init: stack:off, heap alloc:off, heap free:off
+Aug 25 08:44:54 GARDENA kernel: Memory: 122048K/131072K available (5430K kernel code, 681K rwdata, 1108K rodata, 196K init, 251K bss, 9024K reserved, 0K cma-reserved)
+Aug 25 08:44:54 GARDENA kernel: NR_IRQS: 256
+Aug 25 08:44:54 GARDENA kernel: intc: using register map from devicetree
+Aug 25 08:44:54 GARDENA kernel: random: get_random_bytes called from 0x8070fa18 with crng_init=0
+Aug 25 08:44:54 GARDENA kernel: CPU Clock: 580MHz
+Aug 25 08:44:54 GARDENA kernel: timer_probe: no matching timers found
+Aug 25 08:44:54 GARDENA kernel: clocksource: MIPS: mask: 0xffffffff max_cycles: 0xffffffff, max_idle_ns: 6590553264 ns
+Aug 25 08:44:54 GARDENA kernel: sched_clock: 32 bits at 290MHz, resolution 3ns, wraps every 7405115902ns
+Aug 25 08:44:54 GARDENA kernel: Console: colour dummy device 80x25
+Aug 25 08:44:54 GARDENA kernel: Calibrating delay loop... 385.02 BogoMIPS (lpj=770048)
+Aug 25 08:44:54 GARDENA kernel: pid_max: default: 4096 minimum: 301
+Aug 25 08:44:54 GARDENA kernel: Mount-cache hash table entries: 1024 (order: 0, 4096 bytes, linear)
+Aug 25 08:44:54 GARDENA kernel: Mountpoint-cache hash table entries: 1024 (order: 0, 4096 bytes, linear)
+Aug 25 08:44:54 GARDENA kernel: devtmpfs: initialized
+Aug 25 08:44:54 GARDENA kernel: clocksource: jiffies: mask: 0xffffffff max_cycles: 0xffffffff, max_idle_ns: 7645041785100000 ns
+Aug 25 08:44:54 GARDENA kernel: futex hash table entries: 16 (order: -5, 192 bytes, linear)
+Aug 25 08:44:54 GARDENA kernel: pinctrl core: initialized pinctrl subsystem
+Aug 25 08:44:54 GARDENA kernel: NET: Registered protocol family 16
+Aug 25 08:44:54 GARDENA kernel: clocksource: Switched to clocksource MIPS
+Aug 25 08:44:54 GARDENA kernel: NET: Registered protocol family 2
+Aug 25 08:44:54 GARDENA kernel: IP idents hash table entries: 2048 (order: 2, 16384 bytes, linear)
+Aug 25 08:44:54 GARDENA kernel: tcp_listen_portaddr_hash hash table entries: 512 (order: 0, 4096 bytes, linear)
+Aug 25 08:44:54 GARDENA kernel: TCP established hash table entries: 1024 (order: 0, 4096 bytes, linear)
+Aug 25 08:44:54 GARDENA kernel: TCP bind hash table entries: 1024 (order: 0, 4096 bytes, linear)
+Aug 25 08:44:54 GARDENA kernel: TCP: Hash tables configured (established 1024 bind 1024)
+Aug 25 08:44:54 GARDENA kernel: UDP hash table entries: 256 (order: 0, 4096 bytes, linear)
+Aug 25 08:44:54 GARDENA kernel: UDP-Lite hash table entries: 256 (order: 0, 4096 bytes, linear)
+Aug 25 08:44:54 GARDENA kernel: NET: Registered protocol family 1
+Aug 25 08:44:54 GARDENA kernel: RPC: Registered named UNIX socket transport module.
+Aug 25 08:44:54 GARDENA kernel: RPC: Registered udp transport module.
+Aug 25 08:44:54 GARDENA kernel: RPC: Registered tcp transport module.
+Aug 25 08:44:54 GARDENA kernel: RPC: Registered tcp NFSv4.1 backchannel transport module.
+Aug 25 08:44:54 GARDENA kernel: PCI: CLS 0 bytes, default 32
+Aug 25 08:44:54 GARDENA kernel: workingset: timestamp_bits=14 max_order=15 bucket_order=1
+Aug 25 08:44:54 GARDENA kernel: squashfs: version 4.0 (2009/01/31) Phillip Lougher
+Aug 25 08:44:54 GARDENA kernel: NFS: Registering the id_resolver key type
+Aug 25 08:44:54 GARDENA kernel: Key type id_resolver registered
+Aug 25 08:44:54 GARDENA kernel: Key type id_legacy registered
+Aug 25 08:44:54 GARDENA kernel: NET: Registered protocol family 38
+Aug 25 08:44:54 GARDENA kernel: pinctrl-single 10000060.pinmux: 64 pins, size 8
+Aug 25 08:44:54 GARDENA kernel: mt7621_gpio 10000600.gpio: registering 32 gpios
+Aug 25 08:44:54 GARDENA kernel: mt7621_gpio 10000600.gpio: registering 32 gpios
+Aug 25 08:44:54 GARDENA kernel: mt7621_gpio 10000600.gpio: registering 32 gpios
+Aug 25 08:44:54 GARDENA kernel: Serial: 8250/16550 driver, 3 ports, IRQ sharing disabled
+Aug 25 08:44:54 GARDENA kernel: printk: console [ttyS0] disabled
+Aug 25 08:44:54 GARDENA kernel: 10000c00.uartlite: ttyS0 at MMIO 0x10000c00 (irq = 28, base_baud = 2500000) is a 16550A
+Aug 25 08:44:54 GARDENA kernel: printk: console [ttyS0] enabled
+Aug 25 08:44:54 GARDENA kernel: printk: bootconsole [early0] disabled
+Aug 25 08:44:54 GARDENA kernel: 10000d00.uart1: ttyS1 at MMIO 0x10000d00 (irq = 29, base_baud = 2500000) is a 16550A
+Aug 25 08:44:54 GARDENA kernel: 10000e00.uart2: ttyS2 at MMIO 0x10000e00 (irq = 30, base_baud = 2500000) is a 16550A
+Aug 25 08:44:54 GARDENA kernel: brd: module loaded
+Aug 25 08:44:54 GARDENA kernel: loop: module loaded
+Aug 25 08:44:54 GARDENA kernel: zram: Added device: zram0
+Aug 25 08:44:54 GARDENA kernel: bootcount 1000006c.bootcount: U-Boot bootcounter driver registered using single-word
+Aug 25 08:44:54 GARDENA kernel: spi-mt7621 10000b00.spi: sys_freq: 193333333
+Aug 25 08:44:54 GARDENA kernel: spi-nor spi0.0: XM25QH64A (8192 Kbytes)
+Aug 25 08:44:54 GARDENA kernel: 5 cmdlinepart partitions found on MTD device spi0.0
+Aug 25 08:44:54 GARDENA kernel: Creating 5 MTD partitions on "spi0.0":
+Aug 25 08:44:54 GARDENA kernel: 0x000000000000-0x0000000a0000 : "uboot"
+Aug 25 08:44:54 GARDENA kernel: 0x0000000a0000-0x0000000b0000 : "uboot_env0"
+Aug 25 08:44:54 GARDENA kernel: 0x0000000b0000-0x0000000c0000 : "uboot_env1"
+Aug 25 08:44:54 GARDENA kernel: 0x0000000c0000-0x0000000d0000 : "factory"
+Aug 25 08:44:54 GARDENA kernel: 0x0000000d0000-0x000000800000 : "unused"
+Aug 25 08:44:54 GARDENA kernel: spi-nand spi0.1: GigaDevice SPI NAND was found.
+Aug 25 08:44:54 GARDENA kernel: spi-nand spi0.1: 128 MiB, block size: 128 KiB, page size: 2048, OOB size: 128
+Aug 25 08:44:54 GARDENA kernel: 1 cmdlinepart partitions found on MTD device spi0.1
+Aug 25 08:44:54 GARDENA kernel: Creating 1 MTD partitions on "spi0.1":
+Aug 25 08:44:54 GARDENA kernel: 0x000000000000-0x000008000000 : "nand"
+Aug 25 08:44:54 GARDENA kernel: tun: Universal TUN/TAP device driver, 1.6
+Aug 25 08:44:54 GARDENA kernel: rt3050-esw 10110000.esw: link changed 0x00
+Aug 25 08:44:54 GARDENA kernel: mtk_soc_eth 10100000.ethernet eth0: mediatek frame engine at 0xb0100000, irq 5
+Aug 25 08:44:54 GARDENA kernel: PPP generic driver version 2.4.2
+Aug 25 08:44:54 GARDENA kernel: i2c /dev entries driver
+Aug 25 08:44:54 GARDENA kernel: i2c-mt7621 10000900.i2c: clock 100 kHz
+Aug 25 08:44:54 GARDENA kernel: NET: Registered protocol family 10
+Aug 25 08:44:54 GARDENA kernel: Segment Routing with IPv6
+Aug 25 08:44:54 GARDENA kernel: NET: Registered protocol family 17
+Aug 25 08:44:54 GARDENA kernel: Key type dns_resolver registered
+Aug 25 08:44:54 GARDENA kernel: registered taskstats version 1
+Aug 25 08:44:54 GARDENA kernel: ubi0: attaching mtd5
+Aug 25 08:44:54 GARDENA kernel: random: fast init done
+Aug 25 08:44:54 GARDENA kernel: ubi0: scanning is finished
+Aug 25 08:44:54 GARDENA kernel: ubi0: attached mtd5 (name "nand", size 128 MiB)
+Aug 25 08:44:54 GARDENA kernel: ubi0: PEB size: 131072 bytes (128 KiB), LEB size: 126976 bytes
+Aug 25 08:44:54 GARDENA kernel: ubi0: min./max. I/O unit sizes: 2048/2048, sub-page size 2048
+Aug 25 08:44:54 GARDENA kernel: ubi0: VID header offset: 2048 (aligned 2048), data offset: 4096
+Aug 25 08:44:54 GARDENA kernel: ubi0: good PEBs: 1023, bad PEBs: 1, corrupted PEBs: 0
+Aug 25 08:44:54 GARDENA kernel: ubi0: user volume: 5, internal volumes: 1, max. volumes count: 128
+Aug 25 08:44:54 GARDENA kernel: ubi0: max/mean erase counter: 2/1, WL threshold: 4096, image sequence number: 0
+Aug 25 08:44:54 GARDENA kernel: ubi0: available PEBs: 20, total reserved PEBs: 1003, PEBs reserved for bad PEB handling: 21
+Aug 25 08:44:54 GARDENA kernel: ubi0: background thread "ubi_bgt0d" started, PID 53
+Aug 25 08:44:54 GARDENA kernel: rt3050-esw 10110000.esw: link changed 0x01
+Aug 25 08:44:54 GARDENA kernel: rt3050-esw 10110000.esw: link changed 0x00
+Aug 25 08:44:54 GARDENA kernel: rt3050-esw 10110000.esw: link changed 0x01
+Aug 25 08:44:54 GARDENA kernel: rt3050-esw 10110000.esw: link changed 0x00
+Aug 25 08:44:54 GARDENA kernel: block ubiblock0_0: created from ubi0:0(rootfs0)
+Aug 25 08:44:54 GARDENA kernel: input: gpio-keys as /devices/platform/gpio-keys/input/input0
+Aug 25 08:44:54 GARDENA kernel: evbug: Connected device: input0 (gpio-keys at gpio-keys/input0)
+Aug 25 08:44:54 GARDENA kernel: VFS: Mounted root (squashfs filesystem) readonly on device 253:0.
+Aug 25 08:44:54 GARDENA kernel: devtmpfs: mounted
+Aug 25 08:44:54 GARDENA kernel: Freeing unused kernel memory: 196K
+Aug 25 08:44:54 GARDENA kernel: This architecture does not have kernel memory protection.
+Aug 25 08:44:54 GARDENA kernel: Run /init as init process
+Aug 25 08:44:54 GARDENA kernel:   with arguments:
+Aug 25 08:44:54 GARDENA kernel:     /init
+Aug 25 08:44:54 GARDENA kernel:   with environment:
+Aug 25 08:44:54 GARDENA kernel:     HOME=/
+Aug 25 08:44:54 GARDENA kernel:     TERM=linux
+Aug 25 08:44:54 GARDENA kernel:     rootrw=ubi0:overlay
+Aug 25 08:44:54 GARDENA kernel:     rootrwfstype=ubifs
+Aug 25 08:44:54 GARDENA kernel:     rootrwoptions=rw,noatime
+Aug 25 08:44:54 GARDENA kernel: process '/bin/busybox.nosuid' started with executable stack
+Aug 25 08:44:54 GARDENA kernel: rt3050-esw 10110000.esw: link changed 0x01
+Aug 25 08:44:54 GARDENA kernel: ubiblock0_0: Can't mount, would change RO state
+Aug 25 08:44:54 GARDENA kernel: UBIFS (ubi0:4): default file-system created
+Aug 25 08:44:54 GARDENA kernel: UBIFS (ubi0:4): Mounting in unauthenticated mode
+Aug 25 08:44:54 GARDENA kernel: UBIFS (ubi0:4): background thread "ubifs_bgt0_4" started, PID 86
+Aug 25 08:44:54 GARDENA kernel: UBIFS (ubi0:4): UBIFS: mounted UBI device 0, volume 4, name "overlay"
+Aug 25 08:44:54 GARDENA kernel: UBIFS (ubi0:4): LEB size: 126976 bytes (124 KiB), min./max. I/O unit sizes: 2048 bytes/2048 bytes
+Aug 25 08:44:54 GARDENA kernel: UBIFS (ubi0:4): FS size: 30220288 bytes (28 MiB, 238 LEBs), journal size 1523712 bytes (1 MiB, 12 LEBs)
+Aug 25 08:44:54 GARDENA kernel: UBIFS (ubi0:4): reserved for root: 1427378 bytes (1393 KiB)
+Aug 25 08:44:54 GARDENA kernel: UBIFS (ubi0:4): media format: w5/r0 (latest is w5/r0), UUID 56B47158-727E-4F28-BB33-02BA3EBA1E90, small LPT model
+Aug 25 08:44:54 GARDENA systemd[1]: System time before build time, advancing clock.
+Aug 25 08:44:54 GARDENA systemd[1]: systemd 244.5+ running in system mode. (-PAM -AUDIT -SELINUX +IMA -APPARMOR -SMACK +SYSVINIT +UTMP -LIBCRYPTSETUP -GCRYPT -GNUTLS -ACL +XZ -LZ4 -SECCOMP +BLKID -ELFUTILS +KMOD -IDN2 -IDN -PCRE2 default-hierarchy=hybrid)
+Aug 25 08:44:54 GARDENA systemd[1]: Detected architecture mips.
+Aug 25 08:44:54 GARDENA systemd[1]: Set hostname to <GARDENA>.
+Aug 25 08:44:54 GARDENA kernel: random: systemd: uninitialized urandom read (16 bytes read)
+Aug 25 08:44:54 GARDENA systemd[1]: Initializing machine ID from random generator.
+Aug 25 08:44:54 GARDENA systemd[1]: Hardware watchdog 'Mediatek Watchdog', version 0
+Aug 25 08:44:54 GARDENA systemd[1]: Set hardware watchdog to 1min.
+Aug 25 08:44:54 GARDENA systemd[1]: /lib/systemd/system/mdns.service:10: PIDFile= references a path below legacy directory /var/run/, updating /var/run/mdnsd.pid → /run/mdnsd.pid; please update the unit file accordingly.
+Aug 25 08:44:54 GARDENA kernel: random: systemd: uninitialized urandom read (16 bytes read)
+Aug 25 08:44:54 GARDENA systemd[1]: Created slice system-getty.slice.
+Aug 25 08:44:54 GARDENA kernel: random: systemd: uninitialized urandom read (16 bytes read)
+Aug 25 08:44:54 GARDENA systemd[1]: Created slice system-serial\x2dgetty.slice.
+Aug 25 08:44:54 GARDENA kernel: random: systemd: uninitialized urandom read (16 bytes read)
+Aug 25 08:44:54 GARDENA systemd[1]: Created slice User and Session Slice.
+Aug 25 08:44:54 GARDENA systemd[1]: Started Dispatch Password Requests to Console Directory Watch.
+Aug 25 08:44:54 GARDENA systemd[1]: Started Forward Password Requests to Wall Directory Watch.
+Aug 25 08:44:54 GARDENA systemd[1]: Reached target Paths.
+Aug 25 08:44:54 GARDENA systemd[1]: Reached target Remote File Systems.
+Aug 25 08:44:54 GARDENA systemd[1]: Reached target Slices.
+Aug 25 08:44:54 GARDENA systemd[1]: Reached target Swap.
+Aug 25 08:44:54 GARDENA systemd[1]: Listening on initctl Compatibility Named Pipe.
+Aug 25 08:44:54 GARDENA systemd[1]: Condition check resulted in Journal Audit Socket being skipped.
+Aug 25 08:44:54 GARDENA systemd[1]: Listening on Journal Socket (/dev/log).
+Aug 25 08:44:54 GARDENA systemd[1]: Listening on Journal Socket.
+Aug 25 08:44:54 GARDENA systemd[1]: Listening on Network Service Netlink Socket.
+Aug 25 08:44:54 GARDENA systemd[1]: Listening on udev Control Socket.
+Aug 25 08:44:54 GARDENA systemd[1]: Listening on udev Kernel Socket.
+Aug 25 08:44:54 GARDENA systemd[1]: Condition check resulted in Huge Pages File System being skipped.
+Aug 25 08:44:54 GARDENA systemd[1]: Condition check resulted in POSIX Message Queue File System being skipped.
+Aug 25 08:44:54 GARDENA systemd[1]: Mounting Kernel Debug File System...
+Aug 25 08:44:54 GARDENA systemd[1]: Mounting Temporary Directory (/tmp)...
+Aug 25 08:44:54 GARDENA systemd[1]: Condition check resulted in Create list of static device nodes for the current kernel being skipped.
+Aug 25 08:44:54 GARDENA systemd[1]: Started Control power LED during boot process.
+Aug 25 08:44:54 GARDENA systemd[1]: Condition check resulted in File System Check on Root Device being skipped.
+Aug 25 08:44:54 GARDENA systemd[1]: Condition check resulted in Load Kernel Modules being skipped.
+Aug 25 08:44:54 GARDENA systemd[1]: Condition check resulted in FUSE Control File System being skipped.
+Aug 25 08:44:54 GARDENA systemd[1]: Mounting Kernel Configuration File System...
+Aug 25 08:44:54 GARDENA systemd[1]: Starting Remount Root and Kernel File Systems...
+Aug 25 08:44:54 GARDENA systemd[1]: Starting Apply Kernel Variables...
+Aug 25 08:44:54 GARDENA systemd[1]: Starting udev Coldplug all Devices...
+Aug 25 08:44:54 GARDENA systemd[1]: Starting Mount /run/log/journal as zram...
+Aug 25 08:44:54 GARDENA systemd[1]: Mounted Kernel Debug File System.
+Aug 25 08:44:54 GARDENA systemd[1]: Mounted Temporary Directory (/tmp).
+Aug 25 08:44:54 GARDENA systemd[1]: Mounted Kernel Configuration File System.
+Aug 25 08:44:54 GARDENA systemd[1]: Started Remount Root and Kernel File Systems.
+Aug 25 08:44:54 GARDENA systemd[1]: Starting Rebuild Hardware Database...
+Aug 25 08:44:54 GARDENA systemd[1]: Starting Create System Users...
+Aug 25 08:44:54 GARDENA systemd[1]: Started Apply Kernel Variables.
+Aug 25 08:44:54 GARDENA kernel: zram0: detected capacity change from 0 to 134217728
+Aug 25 08:44:54 GARDENA systemd[1]: Started Rebuild Hardware Database.
+Aug 25 08:44:54 GARDENA systemd[1]: Started Create System Users.
+Aug 25 08:44:54 GARDENA systemd[1]: Starting Create Static Device Nodes in /dev...
+Aug 25 08:44:54 GARDENA systemd[1]: Started udev Coldplug all Devices.
+Aug 25 08:44:54 GARDENA systemd[1]: Started Create Static Device Nodes in /dev.
+Aug 25 08:44:54 GARDENA systemd[1]: Reached target Local File Systems (Pre).
+Aug 25 08:44:54 GARDENA systemd[1]: Mounting /var/volatile...
+Aug 25 08:44:54 GARDENA systemd[1]: Starting udev Kernel Device Manager...
+Aug 25 08:44:54 GARDENA systemd[1]: Mounted /var/volatile.
+Aug 25 08:44:54 GARDENA systemd[1]: Condition check resulted in Bind mount volatile /var/cache being skipped.
+Aug 25 08:44:54 GARDENA systemd[1]: Condition check resulted in Bind mount volatile /var/lib being skipped.
+Aug 25 08:44:55 GARDENA systemd[1]: Starting Load/Save Random Seed...
+Aug 25 08:44:55 GARDENA systemd[1]: Condition check resulted in Bind mount volatile /var/spool being skipped.
+Aug 25 08:44:55 GARDENA systemd[1]: Condition check resulted in Bind mount volatile /srv being skipped.
+Aug 25 08:44:55 GARDENA systemd[1]: Started udev Kernel Device Manager.
+Aug 25 08:44:55 GARDENA kernel: ext2 filesystem being mounted at /run/log/journal supports timestamps until 2038 (0x7fffffff)
+Aug 25 08:44:55 GARDENA systemd[1]: Started Mount /run/log/journal as zram.
+Aug 25 08:44:55 GARDENA systemd[1]: Reached target Local File Systems.
+Aug 25 08:44:55 GARDENA systemd[1]: Starting Ethernet LED configuration...
+Aug 25 08:44:55 GARDENA systemd[1]: Starting Rebuild Dynamic Linker Cache...
+Aug 25 08:44:55 GARDENA systemd[1]: Starting Journal Service...
+Aug 25 08:44:55 GARDENA systemd[1]: Condition check resulted in Commit a transient machine-id on disk being skipped.
+Aug 25 08:44:55 GARDENA systemd[1]: Starting Data migration...
+Aug 25 08:44:55 GARDENA systemd[1]: Started Ethernet LED configuration.
+Aug 25 08:44:55 GARDENA kernel: random: crng init done
+Aug 25 08:44:55 GARDENA kernel: random: 6 urandom warning(s) missed due to ratelimiting
+Aug 25 08:44:55 GARDENA systemd[1]: Started Load/Save Random Seed.
+Aug 25 08:44:55 GARDENA systemd[1]: Started Data migration.
+Aug 25 08:44:55 GARDENA systemd[1]: Listening on Load/Save RF Kill Switch Status /dev/rfkill Watch.
+Aug 25 08:44:55 GARDENA systemd-journald[154]: Journal started
+Aug 25 08:44:55 GARDENA systemd-journald[154]: Runtime Journal (/run/log/journal/18557acb5e0b4c1eb811a1332193f28a) is 8.0M, max 64.0M, 55.9M free.
+Aug 25 08:44:55 GARDENA systemd[1]: Started Journal Service.
+Aug 25 08:44:55 GARDENA systemd-sysusers[125]: Creating group wheel with gid 994.
+Aug 25 08:44:55 GARDENA systemd-sysusers[125]: Creating group render with gid 993.
+Aug 25 08:44:55 GARDENA systemd-sysusers[125]: Creating group nobody with gid 992.
+Aug 25 08:44:55 GARDENA systemd-random-seed[132]: Kernel entropy pool is not initialized yet, waiting until it is.
+Aug 25 08:44:55 GARDENA systemd-udevd[133]: Using default interface naming scheme 'v243'.
+Aug 25 08:44:55 GARDENA systemd-udevd[133]: ethtool: autonegotiation is unset or enabled, the speed and duplex are not writable.
+Aug 25 08:44:54 GARDENA systemd-udevd[133]: ethtool: autonegotiation is unset or enabled, the speed and duplex are not writable.
+Aug 25 08:44:55 GARDENA systemd[1]: Starting Flush Journal to Persistent Storage...
+Aug 25 08:44:55 GARDENA zram-init[126]: mke2fs 1.45.7 (28-Jan-2021)
+Aug 25 08:44:55 GARDENA sysupgrade[155]: First startup - nothing to do
+Aug 25 08:44:55 GARDENA systemd-journald[154]: Runtime Journal (/run/log/journal/18557acb5e0b4c1eb811a1332193f28a) is 8.0M, max 64.0M, 55.9M free.
+Aug 25 08:44:55 GARDENA systemd[1]: Started Flush Journal to Persistent Storage.
+Aug 25 08:44:55 GARDENA systemd[1]: Starting Create Volatile Files and Directories...
+Aug 25 08:44:56 GARDENA systemd[1]: Started Create Volatile Files and Directories.
+Aug 25 08:44:56 GARDENA systemd[1]: Starting Run pending postinsts...
+Aug 25 08:44:56 GARDENA systemd[1]: Starting Rebuild Journal Catalog...
+Aug 25 08:44:56 GARDENA systemd[1]: Starting Network Time Synchronization...
+Aug 25 08:44:56 GARDENA systemd[1]: Starting Update UTMP about System Boot/Shutdown...
+Aug 25 08:44:56 GARDENA run-postinsts[161]: Configuring packages on first boot....
+Aug 25 08:44:56 GARDENA run-postinsts[161]:  (This may take several minutes. Please do not power off the machine.)
+Aug 25 08:44:57 GARDENA systemd[1]: Started Update UTMP about System Boot/Shutdown.
+Aug 25 08:44:58 GARDENA systemd[1]: Started Rebuild Journal Catalog.
+Aug 25 08:44:58 GARDENA systemd-vconsole-setup[166]: KD_FONT_OP_GET failed while trying to get the font metadata: Function not implemented
+Aug 25 08:44:58 GARDENA systemd-vconsole-setup[166]: Fonts will not be copied to remaining consoles
+Aug 25 08:44:58 GARDENA kernel: rt3050-esw 10110000.esw: link changed 0x00
+Aug 25 08:44:59 GARDENA systemd[1]: Started Network Time Synchronization.
+Aug 25 08:44:59 GARDENA systemd[1]: Reached target System Time Set.
+Aug 25 08:44:59 GARDENA systemd[1]: Reached target System Time Synchronized.
+Aug 25 08:45:00 GARDENA kernel: mt76_wmac 10300000.wmac: ASIC revision: 76280001
+Aug 25 08:45:00 GARDENA kernel: rt3050-esw 10110000.esw: link changed 0x01
+Aug 25 08:45:01 GARDENA kernel: rt3050-esw 10110000.esw: link changed 0x00
+Aug 25 08:45:02 GARDENA kernel: mt76_wmac 10300000.wmac: Firmware Version: 20151201
+Aug 25 08:45:02 GARDENA kernel: mt76_wmac 10300000.wmac: Build Time: 20151201183641
+Aug 25 08:45:02 GARDENA kernel: mt76_wmac 10300000.wmac: firmware init done
+Aug 25 08:45:02 GARDENA kernel: ieee80211 phy0: Selected rate control algorithm 'minstrel_ht'
+Aug 25 08:45:02 GARDENA systemd[1]: Starting Load/Save RF Kill Switch Status...
+Aug 25 08:45:02 GARDENA systemd-udevd[139]: Using default interface naming scheme 'v243'.
+Aug 25 08:45:02 GARDENA systemd-udevd[139]: ethtool: autonegotiation is unset or enabled, the speed and duplex are not writable.
+Aug 25 08:45:02 GARDENA systemd[1]: Started Load/Save RF Kill Switch Status.
+Aug 25 08:45:03 GARDENA kernel: rt3050-esw 10110000.esw: link changed 0x01
+Aug 25 08:45:04 GARDENA run-postinsts[173]:  Removing any system startup links for run-postinsts ...
+Aug 25 08:45:04 GARDENA kernel: rt3050-esw 10110000.esw: link changed 0x00
+Aug 25 08:45:04 GARDENA systemd[1]: Started Rebuild Dynamic Linker Cache.
+Aug 25 08:45:04 GARDENA systemd[1]: Starting Update is Completed...
+Aug 25 08:45:04 GARDENA systemctl[174]: Removed /etc/systemd/system/sysinit.target.wants/run-postinsts.service.
+Aug 25 08:45:04 GARDENA systemd[1]: Started Run pending postinsts.
+Aug 25 08:45:04 GARDENA systemd[1]: Started Update is Completed.
+Aug 25 08:45:04 GARDENA systemd[1]: Reached target System Initialization.
+Aug 25 08:45:04 GARDENA systemd[1]: Started Daily Cleanup of Temporary Directories.
+Aug 25 08:45:04 GARDENA systemd[1]: Listening on D-Bus System Message Bus Socket.
+Aug 25 08:45:04 GARDENA systemd[1]: Listening on dropbear.socket.
+Aug 25 08:45:04 GARDENA systemd[1]: Listening on gateway-config-backend.socket.
+Aug 25 08:45:04 GARDENA systemd[1]: Reached target Sockets.
+Aug 25 08:45:04 GARDENA systemd[1]: Reached target Basic System.
+Aug 25 08:45:04 GARDENA systemd[1]: Started D-Bus System Message Bus.
+Aug 25 08:45:04 GARDENA systemd[1]: Starting U-Boot Environment Extractor...
+Aug 25 08:45:04 GARDENA systemd[1]: Starting SSL Key Generation for the GARDENA smart Gateway config interface...
+Aug 25 08:45:04 GARDENA systemd[1]: Started Getty on tty1.
+Aug 25 08:45:05 GARDENA systemd[1]: Starting IPv6 Packet Filtering Framework...
+Aug 25 08:45:05 GARDENA systemd[1]: Starting IPv4 Packet Filtering Framework...
+Aug 25 08:45:05 GARDENA systemd[1]: Starting Reset Radio Module on boot...
+Aug 25 08:45:05 GARDENA systemd[1]: Starting Flash RM test firmware...
+Aug 25 08:45:05 GARDENA systemd[1]: Started SWUpdate progress service.
+Aug 25 08:45:05 GARDENA systemd[1]: Starting Login Service...
+Aug 25 08:45:05 GARDENA systemd[1]: Starting Configure unique hostname...
+Aug 25 08:45:05 GARDENA systemd[1]: Starting Update Hardware Revision file...
+Aug 25 08:45:05 GARDENA systemd[1]: Starting Update Software Versions file for SWUpdate...
+Aug 25 08:45:06 GARDENA sh[192]: Error: "ipr_setup_done" not defined
+Aug 25 08:45:06 GARDENA kernel: rt3050-esw 10110000.esw: link changed 0x01
+Aug 25 08:45:06 GARDENA update-hw-revision[191]: Failed to extract the board revision from the U-Boot environment!
+Aug 25 08:45:06 GARDENA update-hw-revision[214]: cmp: /etc/hw-revision: No such file or directory
+Aug 25 08:45:07 GARDENA kernel: rt3050-esw 10110000.esw: link changed 0x00
+Aug 25 08:45:07 GARDENA-2aeb23 environment[180]: U-Boot variable 'x509_crt' is missing!
+Aug 25 08:45:07 GARDENA-2aeb23 systemd[1]: Started IPv6 Packet Filtering Framework.
+Aug 25 08:45:07 GARDENA-2aeb23 systemd[1]: Started IPv4 Packet Filtering Framework.
+Aug 25 08:45:07 GARDENA-2aeb23 environment[180]: U-Boot variable 'x509_key' is missing!
+Aug 25 08:45:07 GARDENA-2aeb23 systemd[1]: Started Configure unique hostname.
+Aug 25 08:45:07 GARDENA-2aeb23 systemd[1]: systemd-rfkill.service: Succeeded.
+Aug 25 08:45:07 GARDENA-2aeb23 systemd[1]: Started Update Hardware Revision file.
+Aug 25 08:45:08 GARDENA-2aeb23 systemd[1]: Reached target Network (Pre).
+Aug 25 08:45:08 GARDENA-2aeb23 systemd[1]: Starting dhcpcd on all interfaces...
+Aug 25 08:45:08 GARDENA-2aeb23 systemd[1]: Starting install simple iptable rules...
+Aug 25 08:45:08 GARDENA-2aeb23 systemd[1]: Starting Network Service...
+Aug 25 08:45:08 GARDENA-2aeb23 systemd[1]: Started U-Boot Environment Extractor.
+Aug 25 08:45:08 GARDENA-2aeb23 systemd[1]: Condition check resulted in Check RM firmware version and flash RM if needed being skipped.
+Aug 25 08:45:09 GARDENA-2aeb23 update-sw-versions[236]: cmp: /etc/sw-versions: No such file or directory
+Aug 25 08:45:09 GARDENA-2aeb23 systemd[1]: Started Update Software Versions file for SWUpdate.
+Aug 25 08:45:10 GARDENA-2aeb23 systemd[1]: reset-rm.service: Succeeded.
+Aug 25 08:45:10 GARDENA-2aeb23 systemd[1]: Started Reset Radio Module on boot.
+Aug 25 08:45:10 GARDENA-2aeb23 systemd[1]: Condition check resulted in PPP link to radio module being skipped.
+Aug 25 08:45:10 GARDENA-2aeb23 systemd[1]: Starting RF LED setup...
+Aug 25 08:45:10 GARDENA-2aeb23 kernel: rt3050-esw 10110000.esw: link changed 0x01
+Aug 25 08:45:10 GARDENA-2aeb23 dhcpcd[229]: dev: loaded udev
+Aug 25 08:45:10 GARDENA-2aeb23 dhcpcd[229]: forked to background, child pid 253
+Aug 25 08:45:10 GARDENA-2aeb23 systemd[1]: Started dhcpcd on all interfaces.
+Aug 25 08:45:10 GARDENA-2aeb23 systemd[1]: Started RF LED setup.
+Aug 25 08:45:12 GARDENA-2aeb23 kernel: rt3050-esw 10110000.esw: link changed 0x00
+Aug 25 08:45:12 GARDENA-2aeb23 systemd-logind[227]: New seat seat0.
+Aug 25 08:45:12 GARDENA-2aeb23 systemd[1]: Started Login Service.
+Aug 25 08:45:12 GARDENA-2aeb23 systemd-networkd[231]: Enumeration completed
+Aug 25 08:45:12 GARDENA-2aeb23 systemd[1]: Started Network Service.
+Aug 25 08:45:13 GARDENA-2aeb23 systemd[1]: Starting Wait for Network to be Configured...
+Aug 25 08:45:13 GARDENA-2aeb23 systemd-networkd[231]: eth0: Link UP
+Aug 25 08:45:13 GARDENA-2aeb23 dhcpcd[253]: eth0: waiting for carrier
+Aug 25 08:45:13 GARDENA-2aeb23 kernel: rt3050-esw 10110000.esw: link changed 0x01
+Aug 25 08:45:13 GARDENA-2aeb23 kernel: IPv6: ADDRCONF(NETDEV_CHANGE): eth0: link becomes ready
+Aug 25 08:45:13 GARDENA-2aeb23 dhcpcd[253]: wlan0: waiting for carrier
+Aug 25 08:45:13 GARDENA-2aeb23 systemd-networkd[231]: wlan0: Link UP
+Aug 25 08:45:13 GARDENA-2aeb23 dhcpcd[253]: wlan0: carrier acquired
+Aug 25 08:45:13 GARDENA-2aeb23 systemd-networkd[231]: eth0: Gained carrier
+Aug 25 08:45:14 GARDENA-2aeb23 dhcpcd[253]: DUID 00:01:00:01:2c:7b:0a:7a:94:bb:ae:2a:eb:87
+Aug 25 08:45:14 GARDENA-2aeb23 dhcpcd[253]: wlan0: IAID ae:2a:eb:87
+Aug 25 08:45:14 GARDENA-2aeb23 dhcpcd[253]: wlan0: adding address fe80::96bb:aeff:fe2a:eb87
+Aug 25 08:45:14 GARDENA-2aeb23 dhcpcd[253]: wlan0: carrier lost
+Aug 25 08:45:14 GARDENA-2aeb23 dhcpcd[253]: wlan0: deleting address fe80::96bb:aeff:fe2a:eb87
+Aug 25 08:45:14 GARDENA-2aeb23 dhcpcd[253]: eth0: carrier acquired
+Aug 25 08:45:14 GARDENA-2aeb23 dhcpcd[253]: eth0: IAID ae:2a:eb:23
+Aug 25 08:45:14 GARDENA-2aeb23 dhcpcd[253]: eth0: adding address fe80::96bb:aeff:fe2a:eb23
+Aug 25 08:45:14 GARDENA-2aeb23 openocd[226]: Open On-Chip Debugger 0.10.0+dev-00556-gd0be1630d-dirty (2023-08-25-06:51)
+Aug 25 08:45:14 GARDENA-2aeb23 openocd[226]: Licensed under GNU GPL v2
+Aug 25 08:45:14 GARDENA-2aeb23 openocd[226]: For bug reports, read
+Aug 25 08:45:14 GARDENA-2aeb23 openocd[226]:         http://openocd.org/doc/doxygen/bugs.html
+Aug 25 08:45:15 GARDENA-2aeb23 openocd[226]: SysfsGPIO nums: swclk = 36, swdio = 29
+Aug 25 08:45:15 GARDENA-2aeb23 openocd[226]: none separate
+Aug 25 08:45:15 GARDENA-2aeb23 dhcpcd[253]: eth0: soliciting a DHCP lease
+Aug 25 08:45:15 GARDENA-2aeb23 dhcpcd[253]: eth0: offered 10.42.215.63 from 10.42.0.1
+Aug 25 08:45:15 GARDENA-2aeb23 dhcpcd[253]: eth0: ignoring offer of 10.42.215.63 from 10.42.0.1
+Aug 25 08:45:15 GARDENA-2aeb23 dhcpcd[253]: eth0: probing address 10.42.215.63/16
+Aug 25 08:45:15 GARDENA-2aeb23 dhcpcd[253]: eth0: soliciting an IPv6 router
+Aug 25 08:45:15 GARDENA-2aeb23 systemd-networkd[231]: eth0: Gained IPv6LL
+Aug 25 08:45:15 GARDENA-2aeb23 systemd-timesyncd[163]: Network configuration changed, trying to establish connection.
+Aug 25 08:45:15 GARDENA-2aeb23 systemd[1]: Started Wait for Network to be Configured.
+Aug 25 08:45:15 GARDENA-2aeb23 openocd[226]: adapter speed: 1000 kHz
+Aug 25 08:45:15 GARDENA-2aeb23 openocd[226]: adapter_nsrst_delay: 100
+Aug 25 08:45:15 GARDENA-2aeb23 openocd[226]: Info : SysfsGPIO JTAG/SWD bitbang driver
+Aug 25 08:45:15 GARDENA-2aeb23 openocd[226]: Info : SWD only mode enabled (specify tck, tms, tdi and tdo gpios to add JTAG mode)
+Aug 25 08:45:15 GARDENA-2aeb23 openocd[226]: Info : This adapter doesn't support configurable speed
+Aug 25 08:45:15 GARDENA-2aeb23 openocd[226]: Info : SWD DPIDR 0x2ba01477
+Aug 25 08:45:16 GARDENA-2aeb23 openocd[226]: Info : SiM3x.cpu: hardware has 6 breakpoints, 4 watchpoints
+Aug 25 08:45:16 GARDENA-2aeb23 openocd[226]: Error: SiM3x.cpu -- clearing lockup after double fault
+Aug 25 08:45:16 GARDENA-2aeb23 openocd[226]: Polling target SiM3x.cpu failed, trying to reexamine
+Aug 25 08:45:16 GARDENA-2aeb23 openocd[226]: Info : SiM3x.cpu: hardware has 6 breakpoints, 4 watchpoints
+Aug 25 08:45:16 GARDENA-2aeb23 openocd[226]: Info : Listening on port 3333 for gdb connections
+Aug 25 08:45:16 GARDENA-2aeb23 openocd[226]: Warn : Only resetting the Cortex-M core, use a reset-init event handler to reset any peripherals or configure hardware srst support.
+Aug 25 08:45:16 GARDENA-2aeb23 openssl[228]: Generating a RSA private key
+Aug 25 08:45:16 GARDENA-2aeb23 openocd[226]: target halted due to debug-request, current mode: Thread
+Aug 25 08:45:16 GARDENA-2aeb23 openocd[226]: xPSR: 0x01000000 pc: 0xfffffffe msp: 0xfffffffc
+Aug 25 08:45:16 GARDENA-2aeb23 openocd[226]: ** Programming Started **
+Aug 25 08:45:16 GARDENA-2aeb23 openocd[226]: auto erase enabled
+Aug 25 08:45:17 GARDENA-2aeb23 openocd[226]: Info : SiM3U167 detected
+Aug 25 08:45:17 GARDENA-2aeb23 openocd[226]: Info : Flash size = 256KB
+Aug 25 08:45:17 GARDENA-2aeb23 systemd[1]: Started install simple iptable rules.
+Aug 25 08:45:17 GARDENA-2aeb23 systemd[1]: Reached target Network.
+Aug 25 08:45:17 GARDENA-2aeb23 systemd[1]: Reached target Network is Online.
+Aug 25 08:45:17 GARDENA-2aeb23 systemd[1]: Started SSH Tunnel Timer.
+Aug 25 08:45:17 GARDENA-2aeb23 systemd[1]: Started Run swupdate-check.service on startup and periodically thereafter.
+Aug 25 08:45:17 GARDENA-2aeb23 systemd[1]: Reached target Timers.
+Aug 25 08:45:17 GARDENA-2aeb23 systemd[1]: Condition check resulted in Check EOL test status and update status file being skipped.
+Aug 25 08:45:17 GARDENA-2aeb23 systemd[1]: Condition check resulted in Run EOL test during manufacturing being skipped.
+Aug 25 08:45:17 GARDENA-2aeb23 systemd[1]: Condition check resulted in Internet LED indication being skipped.
+Aug 25 08:45:17 GARDENA-2aeb23 systemd[1]: Starting Zero-configuration networking...
+Aug 25 08:45:18 GARDENA-2aeb23 systemd[1]: mdns.service: Can't open PID file /run/mdnsd.pid (yet?) after start: Operation not permitted
+Aug 25 08:45:18 GARDENA-2aeb23 mDNSResponder[321]: mDNSResponder (Engineering Build) (Aug 25 2023 06:50:02) starting
+Aug 25 08:45:18 GARDENA-2aeb23 systemd[1]: Started Zero-configuration networking.
+Aug 25 08:45:18 GARDENA-2aeb23 mDNSResponder[321]: Unable to parse DNS server list. Unicast DNS-SD unavailable
+Aug 25 08:45:18 GARDENA-2aeb23 mDNSResponder[321]: mDNSPlatformSourceAddrForDest: connect 1.1.1.1 failed errno 128 (Network is unreachable)
+Aug 25 08:45:18 GARDENA-2aeb23 systemd[1]: Condition check resulted in Accessory server daemon being skipped.
+Aug 25 08:45:20 GARDENA-2aeb23 dhcpcd[253]: eth0: leased 10.42.215.63 for 3600 seconds
+Aug 25 08:45:20 GARDENA-2aeb23 dhcpcd[253]: eth0: adding route to 10.42.0.0/16
+Aug 25 08:45:20 GARDENA-2aeb23 systemd-timesyncd[163]: Network configuration changed, trying to establish connection.
+Aug 25 08:45:20 GARDENA-2aeb23 dhcpcd[253]: eth0: adding default route via 10.42.0.1
+Aug 25 08:45:21 GARDENA-2aeb23 systemd[1]: swupdate-check.timer: Succeeded.
+Aug 25 08:45:21 GARDENA-2aeb23 systemd[1]: Stopped Run swupdate-check.service on startup and periodically thereafter.
+Aug 25 08:45:21 GARDENA-2aeb23 systemd[1]: Stopping Run swupdate-check.service on startup and periodically thereafter.
+Aug 25 08:45:21 GARDENA-2aeb23 systemd[1]: Started Run swupdate-check.service on startup and periodically thereafter.
+Aug 25 08:45:26 GARDENA-2aeb23 systemd[1]: Condition check resulted in Check EOL test status and update status file being skipped.
+Aug 25 08:45:26 GARDENA-2aeb23 systemd[1]: Condition check resulted in Software Update Service being skipped.
+Aug 25 08:45:27 GARDENA-2aeb23 dhcpcd[253]: eth0: no IPv6 Routers available
+Aug 25 08:45:31 GARDENA-2aeb23 openssl[228]: .........................++++
+Aug 25 08:45:44 GARDENA-2aeb23 kernel: rt3050-esw 10110000.esw: link changed 0x00
+Aug 25 08:45:44 GARDENA-2aeb23 dhcpcd[253]: eth0: carrier lost
+Aug 25 08:45:44 GARDENA-2aeb23 systemd-networkd[231]: eth0: Lost carrier
+Aug 25 08:45:44 GARDENA-2aeb23 dhcpcd[253]: eth0: deleting address fe80::96bb:aeff:fe2a:eb23
+Aug 25 08:45:44 GARDENA-2aeb23 dhcpcd[253]: eth0: deleting route to 10.42.0.0/16
+Aug 25 08:45:44 GARDENA-2aeb23 dhcpcd[253]: eth0: deleting default route via 10.42.0.1
+Aug 25 08:45:46 GARDENA-2aeb23 kernel: rt3050-esw 10110000.esw: link changed 0x01
+Aug 25 08:45:46 GARDENA-2aeb23 systemd-networkd[231]: eth0: Gained carrier
+Aug 25 08:45:46 GARDENA-2aeb23 dhcpcd[253]: eth0: carrier acquired
+Aug 25 08:45:46 GARDENA-2aeb23 dhcpcd[253]: eth0: IAID ae:2a:eb:23
+Aug 25 08:45:46 GARDENA-2aeb23 dhcpcd[253]: eth0: adding address fe80::96bb:aeff:fe2a:eb23
+Aug 25 08:45:46 GARDENA-2aeb23 kernel: rt3050-esw 10110000.esw: link changed 0x00
+Aug 25 08:45:47 GARDENA-2aeb23 dhcpcd[253]: eth0: rebinding lease of 10.42.215.63
+Aug 25 08:45:47 GARDENA-2aeb23 dhcpcd[253]: eth0: soliciting an IPv6 router
+Aug 25 08:45:47 GARDENA-2aeb23 dhcpcd[253]: eth0: carrier lost
+Aug 25 08:45:47 GARDENA-2aeb23 systemd-networkd[231]: eth0: Lost carrier
+Aug 25 08:45:47 GARDENA-2aeb23 systemd-networkd[231]: eth0: Gained IPv6LL
+Aug 25 08:45:48 GARDENA-2aeb23 dhcpcd[253]: eth0: deleting address fe80::96bb:aeff:fe2a:eb23
+Aug 25 08:45:49 GARDENA-2aeb23 kernel: rt3050-esw 10110000.esw: link changed 0x01
+Aug 25 08:45:49 GARDENA-2aeb23 systemd-networkd[231]: eth0: Gained carrier
+Aug 25 08:45:49 GARDENA-2aeb23 dhcpcd[253]: eth0: carrier acquired
+Aug 25 08:45:49 GARDENA-2aeb23 kernel: rt3050-esw 10110000.esw: link changed 0x00
+Aug 25 08:45:49 GARDENA-2aeb23 dhcpcd[253]: eth0: IAID ae:2a:eb:23
+Aug 25 08:45:49 GARDENA-2aeb23 dhcpcd[253]: eth0: adding address fe80::96bb:aeff:fe2a:eb23
+Aug 25 08:45:49 GARDENA-2aeb23 dhcpcd[253]: eth0: rebinding lease of 10.42.215.63
+Aug 25 08:45:50 GARDENA-2aeb23 dhcpcd[253]: eth0: soliciting an IPv6 router
+Aug 25 08:45:50 GARDENA-2aeb23 dhcpcd[253]: eth0: carrier lost
+Aug 25 08:45:50 GARDENA-2aeb23 systemd-networkd[231]: eth0: Lost carrier
+Aug 25 08:45:50 GARDENA-2aeb23 dhcpcd[253]: eth0: deleting address fe80::96bb:aeff:fe2a:eb23
+Aug 25 08:45:51 GARDENA-2aeb23 kernel: rt3050-esw 10110000.esw: link changed 0x01
+Aug 25 08:45:51 GARDENA-2aeb23 systemd-networkd[231]: eth0: Gained carrier
+Aug 25 08:45:51 GARDENA-2aeb23 dhcpcd[253]: eth0: carrier acquired
+Aug 25 08:45:51 GARDENA-2aeb23 dhcpcd[253]: eth0: IAID ae:2a:eb:23
+Aug 25 08:45:51 GARDENA-2aeb23 dhcpcd[253]: eth0: adding address fe80::96bb:aeff:fe2a:eb23
+Aug 25 08:45:52 GARDENA-2aeb23 dhcpcd[253]: eth0: rebinding lease of 10.42.215.63
+Aug 25 08:45:52 GARDENA-2aeb23 dhcpcd[253]: eth0: probing address 10.42.215.63/16
+Aug 25 08:45:52 GARDENA-2aeb23 dhcpcd[253]: eth0: soliciting an IPv6 router
+Aug 25 08:45:53 GARDENA-2aeb23 systemd-networkd[231]: eth0: Gained IPv6LL
+Aug 25 08:45:53 GARDENA-2aeb23 systemd-timesyncd[163]: Network configuration changed, trying to establish connection.
+Aug 25 08:45:57 GARDENA-2aeb23 dhcpcd[253]: eth0: leased 10.42.215.63 for 3600 seconds
+Aug 25 08:45:57 GARDENA-2aeb23 dhcpcd[253]: eth0: adding route to 10.42.0.0/16
+Aug 25 08:45:57 GARDENA-2aeb23 systemd-timesyncd[163]: Network configuration changed, trying to establish connection.
+Aug 25 08:45:57 GARDENA-2aeb23 dhcpcd[253]: eth0: adding default route via 10.42.0.1
+Aug 25 08:45:58 GARDENA-2aeb23 systemd[1]: swupdate-check.timer: Succeeded.
+Aug 25 08:45:58 GARDENA-2aeb23 systemd[1]: Stopped Run swupdate-check.service on startup and periodically thereafter.
+Aug 25 08:45:58 GARDENA-2aeb23 systemd[1]: Stopping Run swupdate-check.service on startup and periodically thereafter.
+Aug 25 08:45:58 GARDENA-2aeb23 systemd[1]: Started Run swupdate-check.service on startup and periodically thereafter.
+Aug 25 08:46:03 GARDENA-2aeb23 systemd[1]: Condition check resulted in Check EOL test status and update status file being skipped.
+Aug 25 08:46:03 GARDENA-2aeb23 systemd[1]: Condition check resulted in Software Update Service being skipped.
+Aug 25 08:46:05 GARDENA-2aeb23 dhcpcd[253]: eth0: no IPv6 Routers available
+Aug 25 08:46:10 GARDENA-2aeb23 kernel: rt3050-esw 10110000.esw: link changed 0x00
+Aug 25 08:46:10 GARDENA-2aeb23 dhcpcd[253]: eth0: carrier lost
+Aug 25 08:46:10 GARDENA-2aeb23 systemd-networkd[231]: eth0: Lost carrier
+Aug 25 08:46:10 GARDENA-2aeb23 dhcpcd[253]: eth0: deleting address fe80::96bb:aeff:fe2a:eb23
+Aug 25 08:46:10 GARDENA-2aeb23 dhcpcd[253]: eth0: deleting route to 10.42.0.0/16
+Aug 25 08:46:10 GARDENA-2aeb23 dhcpcd[253]: eth0: deleting default route via 10.42.0.1
+Aug 25 08:46:12 GARDENA-2aeb23 kernel: rt3050-esw 10110000.esw: link changed 0x01
+Aug 25 08:46:12 GARDENA-2aeb23 systemd-networkd[231]: eth0: Gained carrier
+Aug 25 08:46:12 GARDENA-2aeb23 dhcpcd[253]: eth0: carrier acquired
+Aug 25 08:46:12 GARDENA-2aeb23 dhcpcd[253]: eth0: IAID ae:2a:eb:23
+Aug 25 08:46:12 GARDENA-2aeb23 dhcpcd[253]: eth0: adding address fe80::96bb:aeff:fe2a:eb23
+Aug 25 08:46:13 GARDENA-2aeb23 dhcpcd[253]: eth0: soliciting an IPv6 router
+Aug 25 08:46:13 GARDENA-2aeb23 dhcpcd[253]: eth0: rebinding lease of 10.42.215.63
+Aug 25 08:46:13 GARDENA-2aeb23 dhcpcd[253]: eth0: probing address 10.42.215.63/16
+Aug 25 08:46:14 GARDENA-2aeb23 systemd-networkd[231]: eth0: Gained IPv6LL
+Aug 25 08:46:14 GARDENA-2aeb23 systemd-timesyncd[163]: Network configuration changed, trying to establish connection.
+Aug 25 08:46:18 GARDENA-2aeb23 dhcpcd[253]: eth0: leased 10.42.215.63 for 3600 seconds
+Aug 25 08:46:18 GARDENA-2aeb23 dhcpcd[253]: eth0: adding route to 10.42.0.0/16
+Aug 25 08:46:18 GARDENA-2aeb23 systemd-timesyncd[163]: Network configuration changed, trying to establish connection.
+Aug 25 08:46:18 GARDENA-2aeb23 dhcpcd[253]: eth0: adding default route via 10.42.0.1
+Aug 25 08:46:19 GARDENA-2aeb23 systemd[1]: swupdate-check.timer: Succeeded.
+Aug 25 08:46:19 GARDENA-2aeb23 systemd[1]: Stopped Run swupdate-check.service on startup and periodically thereafter.
+Aug 25 08:46:19 GARDENA-2aeb23 systemd[1]: Stopping Run swupdate-check.service on startup and periodically thereafter.
+Aug 25 08:46:19 GARDENA-2aeb23 systemd[1]: Started Run swupdate-check.service on startup and periodically thereafter.
+Aug 25 08:46:22 GARDENA-2aeb23 openssl[228]: ...........................................................................................++++
+Aug 25 08:46:22 GARDENA-2aeb23 openssl[228]: writing new private key to '/etc/gateway-config-interface/key.pem.tmp'
+Aug 25 08:46:22 GARDENA-2aeb23 openssl[228]: -----
+Aug 25 08:46:24 GARDENA-2aeb23 systemd[1]: Started SSL Key Generation for the GARDENA smart Gateway config interface.
+Aug 25 08:46:24 GARDENA-2aeb23 systemd[1]: Condition check resulted in Backend component for the GARDENA smart Gateway config interface being skipped.
+Aug 25 08:46:26 GARDENA-2aeb23 dhcpcd[253]: eth0: no IPv6 Routers available
+Aug 25 08:46:29 GARDENA-2aeb23 systemd[1]: Condition check resulted in Check EOL test status and update status file being skipped.
+Aug 25 08:46:29 GARDENA-2aeb23 systemd[1]: Condition check resulted in Software Update Service being skipped.
+Aug 25 08:46:38 GARDENA-2aeb23 openocd[226]: wrote 262144 bytes from file /usr/share/gardena/firmware/rm-test.bin in 81.950661s (3.124 KiB/s)
+Aug 25 08:46:38 GARDENA-2aeb23 openocd[226]: ** Programming Finished **
+Aug 25 08:46:38 GARDENA-2aeb23 openocd[226]: ** Verify Started **
+Aug 25 08:46:40 GARDENA-2aeb23 openocd[226]: verified 261330 bytes in 1.574597s (162.076 KiB/s)
+Aug 25 08:46:40 GARDENA-2aeb23 openocd[226]: ** Verified OK **
+Aug 25 08:46:40 GARDENA-2aeb23 openocd[226]: shutdown command invoked
+Aug 25 08:46:42 GARDENA-2aeb23 systemd[1]: Started Flash RM test firmware.
+Aug 25 08:46:42 GARDENA-2aeb23 systemd[1]: Starting Run IPR tool...
+Aug 25 08:46:43 GARDENA-2aeb23 ipr-setup[452]: adjtime state 5 status 40 time Fri 2023-08-25 06:46:43.064441 UTC
+Aug 25 10:44:09 GARDENA-2aeb23 ipr-setup[452]: adjtime state 0 status 2000 time Fri 2023-08-25 08:44:09.864749 UTC
+Aug 25 10:44:09 GARDENA-2aeb23 systemd-timesyncd[163]: Initial synchronization to time server 10.42.0.1:123 (time1.iot.sg.dss.husqvarnagroup.net).
+Aug 25 10:44:51 GARDENA-2aeb23 ipr-setup[462]: stdin: OK
+Aug 25 10:44:53 GARDENA-2aeb23 kernel: rt3050-esw 10110000.esw: link changed 0x00
+Aug 25 10:44:53 GARDENA-2aeb23 systemd-networkd[231]: eth0: Lost carrier
+Aug 25 10:44:53 GARDENA-2aeb23 dhcpcd[253]: eth0: carrier lost
+Aug 25 10:44:53 GARDENA-2aeb23 systemd-timesyncd[163]: No network connectivity, watching for changes.
+Aug 25 10:44:53 GARDENA-2aeb23 dhcpcd[253]: eth0: deleting address fe80::96bb:aeff:fe2a:eb23
+Aug 25 10:44:53 GARDENA-2aeb23 dhcpcd[253]: eth0: deleting route to 10.42.0.0/16
+Aug 25 10:44:53 GARDENA-2aeb23 dhcpcd[253]: eth0: deleting default route via 10.42.0.1
+Aug 25 10:44:55 GARDENA-2aeb23 kernel: rt3050-esw 10110000.esw: link changed 0x01
+Aug 25 10:44:55 GARDENA-2aeb23 dhcpcd[253]: eth0: carrier acquired
+Aug 25 10:44:55 GARDENA-2aeb23 systemd-networkd[231]: eth0: Gained carrier
+Aug 25 10:44:55 GARDENA-2aeb23 dhcpcd[253]: eth0: IAID ae:2a:eb:23
+Aug 25 10:44:55 GARDENA-2aeb23 dhcpcd[253]: eth0: adding address fe80::96bb:aeff:fe2a:eb23
+Aug 25 10:44:55 GARDENA-2aeb23 kernel: rt3050-esw 10110000.esw: link changed 0x00
+Aug 25 10:44:55 GARDENA-2aeb23 dhcpcd[253]: eth0: soliciting a DHCP lease
+Aug 25 10:44:56 GARDENA-2aeb23 ipr-setup[453]: Warning: Disassembly of the Linux module failed.
+Aug 25 10:44:56 GARDENA-2aeb23 ipr-setup[466]: Warning: Disassembly of the Linux module failed.
+Aug 25 10:44:56 GARDENA-2aeb23 ipr-setup[466]: raceback (most recent call last):
+Aug 25 10:44:56 GARDENA-2aeb23 ipr-setup[466]:   File "/usr/bin/ipr-tool", line 251, in <module>
+Aug 25 10:44:56 GARDENA-2aeb23 ipr-setup[466]:     main()
+Aug 25 10:44:56 GARDENA-2aeb23 ipr-setup[466]:   File "/usr/bin/ipr-tool", line 245, in main
+Aug 25 10:44:56 GARDENA-2aeb23 ipr-setup[466]:     verify_ipr_data()
+Aug 25 10:44:56 GARDENA-2aeb23 ipr-setup[466]:   File "/usr/bin/ipr-tool", line 211, in verify_ipr_data
+Aug 25 10:44:56 GARDENA-2aeb23 ipr-setup[466]:     cpms = CPMSClientBootstrapped()
+Aug 25 10:44:56 GARDENA-2aeb23 ipr-setup[466]:   File "/usr/lib/python3.8/site-packages/cpms_client.py", line 204, in __init__
+Aug 25 10:44:56 GARDENA-2aeb23 ipr-setup[466]:     cpms_config = CPMSConfiguration()
+Aug 25 10:44:56 GARDENA-2aeb23 ipr-setup[466]:   File "/usr/lib/python3.8/site-packages/cpms_config.py", line 25, in __init__
+Aug 25 10:44:56 GARDENA-2aeb23 ipr-setup[466]:     config_body = bootstrap_get_cpms_config()
+Aug 25 10:44:56 GARDENA-2aeb23 ipr-setup[466]:   File "/usr/lib/python3.8/site-packages/bootstrap.py", line 58, in bootstrap_get_cpms_config
+Aug 25 10:44:56 GARDENA-2aeb23 ipr-setup[466]:     return bootstrap_server_get(BOOTSTRAP_SERVER_CPMS_CONFIG_PATH)
+Aug 25 10:44:56 GARDENA-2aeb23 ipr-setup[466]:   File "/usr/lib/python3.8/site-packages/bootstrap.py", line 29, in bootstrap_server_get
+Aug 25 10:44:56 GARDENA-2aeb23 ipr-setup[466]:     connection.request("GET", path)
+Aug 25 10:44:56 GARDENA-2aeb23 ipr-setup[466]:   File "/usr/lib/python3.8/http/client.py", line 1256, in request
+Aug 25 10:44:56 GARDENA-2aeb23 ipr-setup[466]:     self._send_request(method, url, body, headers, encode_chunked)
+Aug 25 10:44:56 GARDENA-2aeb23 ipr-setup[466]:   File "/usr/lib/python3.8/http/client.py", line 1302, in _send_request
+Aug 25 10:44:56 GARDENA-2aeb23 ipr-setup[466]:     self.endheaders(body, encode_chunked=encode_chunked)
+Aug 25 10:44:56 GARDENA-2aeb23 ipr-setup[466]:   File "/usr/lib/python3.8/http/client.py", line 1251, in endheaders
+Aug 25 10:44:56 GARDENA-2aeb23 ipr-setup[466]:     self._send_output(message_body, encode_chunked=encode_chunked)
+Aug 25 10:44:56 GARDENA-2aeb23 ipr-setup[466]:   File "/usr/lib/python3.8/http/client.py", line 1011, in _send_output
+Aug 25 10:44:56 GARDENA-2aeb23 ipr-setup[466]:     self.send(msg)
+Aug 25 10:44:56 GARDENA-2aeb23 ipr-setup[466]:   File "/usr/lib/python3.8/http/client.py", line 951, in send
+Aug 25 10:44:56 GARDENA-2aeb23 ipr-setup[466]:     self.connect()
+Aug 25 10:44:56 GARDENA-2aeb23 ipr-setup[466]:   File "/usr/lib/python3.8/http/client.py", line 922, in connect
+Aug 25 10:44:56 GARDENA-2aeb23 ipr-setup[466]:     self.sock = self._create_connection(
+Aug 25 10:44:56 GARDENA-2aeb23 ipr-setup[466]:   File "/usr/lib/python3.8/socket.py", line 808, in create_connection
+Aug 25 10:44:56 GARDENA-2aeb23 ipr-setup[466]:     raise err
+Aug 25 10:44:56 GARDENA-2aeb23 ipr-setup[466]:   File "/usr/lib/python3.8/socket.py", line 796, in create_connection
+Aug 25 10:44:56 GARDENA-2aeb23 ipr-setup[466]:     sock.connect(
+Aug 25 10:44:56 GARDENA-2aeb23 systemd[1]: ipr.service: Main process exited, code=exited, status=1/FAILURE
+Aug 25 10:44:56 GARDENA-2aeb23 dhcpcd[253]: eth0: soliciting an IPv6 router
+Aug 25 10:44:56 GARDENA-2aeb23 dhcpcd[253]: eth0: carrier lost
+Aug 25 10:44:56 GARDENA-2aeb23 systemd-networkd[231]: eth0: Lost carrier
+Aug 25 10:44:56 GARDENA-2aeb23 dhcpcd[253]: eth0: deleting address fe80::96bb:aeff:fe2a:eb23
+Aug 25 10:44:58 GARDENA-2aeb23 kernel: rt3050-esw 10110000.esw: link changed 0x01
+Aug 25 10:44:58 GARDENA-2aeb23 systemd-networkd[231]: eth0: Gained carrier
+Aug 25 10:44:58 GARDENA-2aeb23 dhcpcd[253]: eth0: carrier acquired
+Aug 25 10:44:58 GARDENA-2aeb23 dhcpcd[253]: eth0: IAID ae:2a:eb:23
+Aug 25 10:44:58 GARDENA-2aeb23 dhcpcd[253]: eth0: adding address fe80::96bb:aeff:fe2a:eb23
+Aug 25 10:44:58 GARDENA-2aeb23 dhcpcd[253]: eth0: soliciting a DHCP lease
+Aug 25 10:44:58 GARDENA-2aeb23 dhcpcd[253]: eth0: offered 10.42.215.63 from 10.42.0.1
+Aug 25 10:44:58 GARDENA-2aeb23 dhcpcd[253]: eth0: ignoring offer of 10.42.215.63 from 10.42.0.1
+Aug 25 10:44:58 GARDENA-2aeb23 dhcpcd[253]: eth0: probing address 10.42.215.63/16
+Aug 25 10:44:58 GARDENA-2aeb23 dhcpcd[253]: eth0: soliciting an IPv6 router
+Aug 25 10:44:59 GARDENA-2aeb23 systemd[1]: Stopping Control power LED during boot process...
+Aug 25 10:44:59 GARDENA-2aeb23 systemd[1]: power-led.service: Succeeded.
+Aug 25 10:44:59 GARDENA-2aeb23 systemd[1]: Stopped Control power LED during boot process.
+Aug 25 10:44:59 GARDENA-2aeb23 systemd-networkd[231]: eth0: Gained IPv6LL
+Aug 25 10:44:59 GARDENA-2aeb23 systemd-timesyncd[163]: Network configuration changed, trying to establish connection.
+Aug 25 10:45:00 GARDENA-2aeb23 sh[495]: Traceback (most recent call last):
+Aug 25 10:45:00 GARDENA-2aeb23 sh[495]:   File "/usr/bin/cpms-errorhandler", line 134, in <module>
+Aug 25 10:45:00 GARDENA-2aeb23 sh[495]:     main()
+Aug 25 10:45:00 GARDENA-2aeb23 sh[495]:   File "/usr/bin/cpms-errorhandler", line 128, in main
+Aug 25 10:45:00 GARDENA-2aeb23 sh[495]:     add_event(info)
+Aug 25 10:45:00 GARDENA-2aeb23 sh[495]:   File "/usr/bin/cpms-errorhandler", line 78, in add_event
+Aug 25 10:45:00 GARDENA-2aeb23 sh[495]:     cpms = CPMSClientBootstrapped()
+Aug 25 10:45:00 GARDENA-2aeb23 sh[495]:   File "/usr/lib/python3.8/site-packages/cpms_client.py", line 204, in __init__
+Aug 25 10:45:00 GARDENA-2aeb23 sh[495]:     cpms_config = CPMSConfiguration()
+Aug 25 10:45:00 GARDENA-2aeb23 sh[495]:   File "/usr/lib/python3.8/site-packages/cpms_config.py", line 25, in __init__
+Aug 25 10:45:00 GARDENA-2aeb23 sh[495]:     config_body = bootstrap_get_cpms_config()
+Aug 25 10:45:00 GARDENA-2aeb23 sh[495]:   File "/usr/lib/python3.8/site-packages/bootstrap.py", line 58, in bootstrap_get_cpms_config
+Aug 25 10:45:00 GARDENA-2aeb23 sh[495]:     return bootstrap_server_get(BOOTSTRAP_SERVER_CPMS_CONFIG_PATH)
+Aug 25 10:45:00 GARDENA-2aeb23 sh[495]:   File "/usr/lib/python3.8/site-packages/bootstrap.py", line 29, in bootstrap_server_get
+Aug 25 10:45:00 GARDENA-2aeb23 sh[495]:     connection.request("GET", path)
+Aug 25 10:45:00 GARDENA-2aeb23 sh[495]:   File "/usr/lib/python3.8/http/client.py", line 1256, in request
+Aug 25 10:45:00 GARDENA-2aeb23 sh[495]:     self._send_request(method, url, body, headers, encode_chunked)
+Aug 25 10:45:00 GARDENA-2aeb23 sh[495]:   File "/usr/lib/python3.8/http/client.py", line 1302, in _send_request
+Aug 25 10:45:00 GARDENA-2aeb23 sh[495]:     self.endheaders(body, encode_chunked=encode_chunked)
+Aug 25 10:45:00 GARDENA-2aeb23 sh[495]:   File "/usr/lib/python3.8/http/client.py", line 1251, in endheaders
+Aug 25 10:45:00 GARDENA-2aeb23 sh[495]:     self._send_output(message_body, encode_chunked=encode_chunked)
+Aug 25 10:45:00 GARDENA-2aeb23 sh[495]:   File "/usr/lib/python3.8/http/client.py", line 1011, in _send_output
+Aug 25 10:45:00 GARDENA-2aeb23 sh[495]:     self.send(msg)
+Aug 25 10:45:00 GARDENA-2aeb23 sh[495]:   File "/usr/lib/python3.8/http/client.py", line 951, in send
+Aug 25 10:45:00 GARDENA-2aeb23 sh[495]:     self.connect()
+Aug 25 10:45:00 GARDENA-2aeb23 sh[495]:   File "/usr/lib/python3.8/http/client.py", line 922, in connect
+Aug 25 10:45:00 GARDENA-2aeb23 sh[495]:     self.sock = self._create_connection(
+Aug 25 10:45:00 GARDENA-2aeb23 sh[495]:   File "/usr/lib/python3.8/socket.py", line 808, in create_connection
+Aug 25 10:45:00 GARDENA-2aeb23 sh[495]:     raise err
+Aug 25 10:45:00 GARDENA-2aeb23 sh[495]:   File "/usr/lib/python3.8/socket.py", line 796, in create_connection
+Aug 25 10:45:00 GARDENA-2aeb23 sh[495]:     sock.connect(sa)
+Aug 25 10:45:00 GARDENA-2aeb23 sh[495]: OSError: [Errno 128] Network is unreachable
+Aug 25 10:45:00 GARDENA-2aeb23 systemd[1]: ipr.service: Control process exited, code=exited, status=1/FAILURE
+Aug 25 10:45:00 GARDENA-2aeb23 systemd[1]: ipr.service: Failed with result 'exit-code'.
+Aug 25 10:45:00 GARDENA-2aeb23 systemd[1]: Failed to start Run IPR tool.
+Aug 25 10:45:00 GARDENA-2aeb23 systemd[1]: Dependency failed for Run HomeKit setup during manufacturing.
+Aug 25 10:45:00 GARDENA-2aeb23 systemd[1]: Dependency failed for Run selftest during manufacturing.
+Aug 25 10:45:00 GARDENA-2aeb23 systemd[1]: selftest.service: Job selftest.service/start failed with result 'dependency'.
+Aug 25 10:45:00 GARDENA-2aeb23 systemd[1]: homekit-setup.service: Job homekit-setup.service/start failed with result 'dependency'.
+Aug 25 10:45:00 GARDENA-2aeb23 systemd[1]: ipr.service: Consumed 15.369s CPU time.
+Aug 25 10:45:00 GARDENA-2aeb23 systemd[1]: Started Serial Getty on ttyS0.
+Aug 25 10:45:00 GARDENA-2aeb23 systemd[1]: Reached target Login Prompts.
+Aug 25 10:45:00 GARDENA-2aeb23 systemd[1]: Reached target Multi-User System.
+Aug 25 10:45:00 GARDENA-2aeb23 kernel: rt3050-esw 10110000.esw: link changed 0x00
+Aug 25 10:45:00 GARDENA-2aeb23 systemd-networkd[231]: eth0: Lost carrier
+Aug 25 10:45:00 GARDENA-2aeb23 dhcpcd[253]: eth0: carrier lost
+Aug 25 10:45:00 GARDENA-2aeb23 systemd[1]: Starting Update UTMP about System Runlevel Changes...
+Aug 25 10:45:00 GARDENA-2aeb23 dhcpcd[253]: eth0: deleting address fe80::96bb:aeff:fe2a:eb23
+Aug 25 10:45:00 GARDENA-2aeb23 systemd[1]: systemd-update-utmp-runlevel.service: Succeeded.
+Aug 25 10:45:00 GARDENA-2aeb23 systemd[1]: Started Update UTMP about System Runlevel Changes.
+Aug 25 10:45:00 GARDENA-2aeb23 systemd[1]: Startup finished in 15.421s (kernel) + 2min 55.444s (userspace) = 3min 10.865s.
+Aug 25 10:45:02 GARDENA-2aeb23 kernel: rt3050-esw 10110000.esw: link changed 0x01
+Aug 25 10:45:02 GARDENA-2aeb23 dhcpcd[253]: eth0: carrier acquired
+Aug 25 10:45:02 GARDENA-2aeb23 systemd-networkd[231]: eth0: Gained carrier
+Aug 25 10:45:02 GARDENA-2aeb23 dhcpcd[253]: eth0: IAID ae:2a:eb:23
+Aug 25 10:45:02 GARDENA-2aeb23 dhcpcd[253]: eth0: adding address fe80::96bb:aeff:fe2a:eb23
+Aug 25 10:45:03 GARDENA-2aeb23 dhcpcd[253]: eth0: soliciting a DHCP lease
+Aug 25 10:45:03 GARDENA-2aeb23 dhcpcd[253]: eth0: offered 10.42.215.63 from 10.42.0.1
+Aug 25 10:45:03 GARDENA-2aeb23 dhcpcd[253]: eth0: ignoring offer of 10.42.215.63 from 10.42.0.1
+Aug 25 10:45:03 GARDENA-2aeb23 dhcpcd[253]: eth0: probing address 10.42.215.63/16
+Aug 25 10:45:03 GARDENA-2aeb23 kernel: rt3050-esw 10110000.esw: link changed 0x00
+Aug 25 10:45:03 GARDENA-2aeb23 systemd-networkd[231]: eth0: Lost carrier
+Aug 25 10:45:03 GARDENA-2aeb23 dhcpcd[253]: eth0: carrier lost
+Aug 25 10:45:04 GARDENA-2aeb23 dhcpcd[253]: eth0: deleting address fe80::96bb:aeff:fe2a:eb23
+Aug 25 10:45:06 GARDENA-2aeb23 kernel: rt3050-esw 10110000.esw: link changed 0x01
+Aug 25 10:45:06 GARDENA-2aeb23 systemd-networkd[231]: eth0: Gained carrier
+Aug 25 10:45:06 GARDENA-2aeb23 dhcpcd[253]: eth0: carrier acquired
+Aug 25 10:45:06 GARDENA-2aeb23 dhcpcd[253]: eth0: IAID ae:2a:eb:23
+Aug 25 10:45:06 GARDENA-2aeb23 dhcpcd[253]: eth0: adding address fe80::96bb:aeff:fe2a:eb23
+Aug 25 10:45:06 GARDENA-2aeb23 dhcpcd[253]: eth0: soliciting an IPv6 router
+Aug 25 10:45:06 GARDENA-2aeb23 dhcpcd[253]: eth0: soliciting a DHCP lease
+Aug 25 10:45:06 GARDENA-2aeb23 dhcpcd[253]: eth0: offered 10.42.215.63 from 10.42.0.1
+Aug 25 10:45:06 GARDENA-2aeb23 dhcpcd[253]: eth0: ignoring offer of 10.42.215.63 from 10.42.0.1
+Aug 25 10:45:06 GARDENA-2aeb23 dhcpcd[253]: eth0: probing address 10.42.215.63/16
+Aug 25 10:45:07 GARDENA-2aeb23 kernel: rt3050-esw 10110000.esw: link changed 0x00
+Aug 25 10:45:07 GARDENA-2aeb23 systemd-networkd[231]: eth0: Lost carrier
+Aug 25 10:45:07 GARDENA-2aeb23 dhcpcd[253]: eth0: carrier lost
+Aug 25 10:45:07 GARDENA-2aeb23 dhcpcd[253]: eth0: deleting address fe80::96bb:aeff:fe2a:eb23
+Aug 25 10:45:10 GARDENA-2aeb23 kernel: rt3050-esw 10110000.esw: link changed 0x01
+Aug 25 10:45:10 GARDENA-2aeb23 systemd-networkd[231]: eth0: Gained carrier
+Aug 25 10:45:10 GARDENA-2aeb23 dhcpcd[253]: eth0: carrier acquired
+Aug 25 10:45:10 GARDENA-2aeb23 dhcpcd[253]: eth0: IAID ae:2a:eb:23
+Aug 25 10:45:10 GARDENA-2aeb23 dhcpcd[253]: eth0: adding address fe80::96bb:aeff:fe2a:eb23
+Aug 25 10:45:10 GARDENA-2aeb23 kernel: rt3050-esw 10110000.esw: link changed 0x00
+Aug 25 10:45:11 GARDENA-2aeb23 dhcpcd[253]: eth0: soliciting a DHCP lease
+Aug 25 10:45:11 GARDENA-2aeb23 dhcpcd[253]: eth0: soliciting an IPv6 router
+Aug 25 10:45:11 GARDENA-2aeb23 systemd-networkd[231]: eth0: Lost carrier
+Aug 25 10:45:11 GARDENA-2aeb23 dhcpcd[253]: eth0: carrier lost
+Aug 25 10:45:11 GARDENA-2aeb23 dhcpcd[253]: eth0: deleting address fe80::96bb:aeff:fe2a:eb23
+Aug 25 10:45:13 GARDENA-2aeb23 kernel: rt3050-esw 10110000.esw: link changed 0x01
+Aug 25 10:45:13 GARDENA-2aeb23 systemd-networkd[231]: eth0: Gained carrier
+Aug 25 10:45:13 GARDENA-2aeb23 dhcpcd[253]: eth0: carrier acquired
+Aug 25 10:45:14 GARDENA-2aeb23 dhcpcd[253]: eth0: IAID ae:2a:eb:23
+Aug 25 10:45:14 GARDENA-2aeb23 dhcpcd[253]: eth0: adding address fe80::96bb:aeff:fe2a:eb23
+Aug 25 10:45:14 GARDENA-2aeb23 kernel: rt3050-esw 10110000.esw: link changed 0x00
+Aug 25 10:45:14 GARDENA-2aeb23 dhcpcd[253]: eth0: soliciting a DHCP lease
+Aug 25 10:45:14 GARDENA-2aeb23 dhcpcd[253]: eth0: soliciting an IPv6 router
+Aug 25 10:45:14 GARDENA-2aeb23 dhcpcd[253]: eth0: carrier lost
+Aug 25 10:45:14 GARDENA-2aeb23 systemd-networkd[231]: eth0: Lost carrier
+Aug 25 10:45:15 GARDENA-2aeb23 dhcpcd[253]: eth0: deleting address fe80::96bb:aeff:fe2a:eb23
+Aug 25 10:45:16 GARDENA-2aeb23 kernel: rt3050-esw 10110000.esw: link changed 0x01
+Aug 25 10:45:15 GARDENA-2aeb23 systemd-networkd[231]: eth0: Gained carrier
+Aug 25 10:45:15 GARDENA-2aeb23 dhcpcd[253]: eth0: carrier acquired
+Aug 25 10:45:16 GARDENA-2aeb23 dhcpcd[253]: eth0: IAID ae:2a:eb:23
+Aug 25 10:45:16 GARDENA-2aeb23 dhcpcd[253]: eth0: adding address fe80::96bb:aeff:fe2a:eb23
+Aug 25 10:45:16 GARDENA-2aeb23 dhcpcd[253]: eth0: soliciting an IPv6 router
+Aug 25 10:45:16 GARDENA-2aeb23 kernel: rt3050-esw 10110000.esw: link changed 0x00
+Aug 25 10:45:16 GARDENA-2aeb23 dhcpcd[253]: eth0: soliciting a DHCP lease
+Aug 25 10:45:17 GARDENA-2aeb23 dhcpcd[253]: eth0: carrier lost
+Aug 25 10:45:17 GARDENA-2aeb23 systemd-networkd[231]: eth0: Lost carrier
+Aug 25 10:45:17 GARDENA-2aeb23 systemd-networkd[231]: eth0: Gained IPv6LL
+Aug 25 10:45:17 GARDENA-2aeb23 dhcpcd[253]: eth0: deleting address fe80::96bb:aeff:fe2a:eb23
+Aug 25 10:45:18 GARDENA-2aeb23 kernel: rt3050-esw 10110000.esw: link changed 0x01
+Aug 25 10:45:18 GARDENA-2aeb23 systemd-networkd[231]: eth0: Gained carrier
+Aug 25 10:45:18 GARDENA-2aeb23 dhcpcd[253]: eth0: carrier acquired
+Aug 25 10:45:18 GARDENA-2aeb23 dhcpcd[253]: eth0: IAID ae:2a:eb:23
+Aug 25 10:45:18 GARDENA-2aeb23 dhcpcd[253]: eth0: adding address fe80::96bb:aeff:fe2a:eb23
+Aug 25 10:45:18 GARDENA-2aeb23 dhcpcd[253]: eth0: soliciting a DHCP lease
+Aug 25 10:45:18 GARDENA-2aeb23 dhcpcd[253]: eth0: offered 10.42.215.63 from 10.42.0.1
+Aug 25 10:45:18 GARDENA-2aeb23 dhcpcd[253]: eth0: ignoring offer of 10.42.215.63 from 10.42.0.1
+Aug 25 10:45:18 GARDENA-2aeb23 dhcpcd[253]: eth0: probing address 10.42.215.63/16
+Aug 25 10:45:18 GARDENA-2aeb23 kernel: rt3050-esw 10110000.esw: link changed 0x00
+Aug 25 10:45:18 GARDENA-2aeb23 dhcpcd[253]: eth0: soliciting an IPv6 router
+Aug 25 10:45:19 GARDENA-2aeb23 systemd-networkd[231]: eth0: Lost carrier
+Aug 25 10:45:19 GARDENA-2aeb23 dhcpcd[253]: eth0: carrier lost
+Aug 25 10:45:19 GARDENA-2aeb23 dhcpcd[253]: eth0: deleting address fe80::96bb:aeff:fe2a:eb23
+Aug 25 10:45:20 GARDENA-2aeb23 kernel: rt3050-esw 10110000.esw: link changed 0x01
+Aug 25 10:45:20 GARDENA-2aeb23 dhcpcd[253]: eth0: carrier acquired
+Aug 25 10:45:20 GARDENA-2aeb23 systemd-networkd[231]: eth0: Gained carrier
+Aug 25 10:45:20 GARDENA-2aeb23 dhcpcd[253]: eth0: IAID ae:2a:eb:23
+Aug 25 10:45:20 GARDENA-2aeb23 dhcpcd[253]: eth0: adding address fe80::96bb:aeff:fe2a:eb23
+Aug 25 10:45:20 GARDENA-2aeb23 kernel: rt3050-esw 10110000.esw: link changed 0x00
+Aug 25 10:45:21 GARDENA-2aeb23 dhcpcd[253]: eth0: soliciting a DHCP lease
+Aug 25 10:45:21 GARDENA-2aeb23 dhcpcd[253]: eth0: carrier lost
+Aug 25 10:45:21 GARDENA-2aeb23 systemd-networkd[231]: eth0: Lost carrier
+Aug 25 10:45:21 GARDENA-2aeb23 dhcpcd[253]: eth0: deleting address fe80::96bb:aeff:fe2a:eb23
+Aug 25 10:45:22 GARDENA-2aeb23 kernel: rt3050-esw 10110000.esw: link changed 0x01
+Aug 25 10:45:22 GARDENA-2aeb23 systemd-networkd[231]: eth0: Gained carrier
+Aug 25 10:45:22 GARDENA-2aeb23 dhcpcd[253]: eth0: carrier acquired
+Aug 25 10:45:22 GARDENA-2aeb23 dhcpcd[253]: eth0: IAID ae:2a:eb:23
+Aug 25 10:45:22 GARDENA-2aeb23 dhcpcd[253]: eth0: adding address fe80::96bb:aeff:fe2a:eb23
+Aug 25 10:45:22 GARDENA-2aeb23 dhcpcd[253]: eth0: soliciting a DHCP lease
+Aug 25 10:45:22 GARDENA-2aeb23 dhcpcd[253]: eth0: offered 10.42.215.63 from 10.42.0.1
+Aug 25 10:45:22 GARDENA-2aeb23 dhcpcd[253]: eth0: ignoring offer of 10.42.215.63 from 10.42.0.1
+Aug 25 10:45:22 GARDENA-2aeb23 dhcpcd[253]: eth0: probing address 10.42.215.63/16
+Aug 25 10:45:23 GARDENA-2aeb23 dhcpcd[253]: eth0: soliciting an IPv6 router
+Aug 25 10:45:23 GARDENA-2aeb23 systemd-networkd[231]: eth0: Gained IPv6LL
+Aug 25 10:45:23 GARDENA-2aeb23 systemd-timesyncd[163]: Network configuration changed, trying to establish connection.
+Aug 25 10:45:27 GARDENA-2aeb23 dhcpcd[253]: eth0: leased 10.42.215.63 for 3600 seconds
+Aug 25 10:45:27 GARDENA-2aeb23 dhcpcd[253]: eth0: adding route to 10.42.0.0/16
+Aug 25 10:45:27 GARDENA-2aeb23 systemd-timesyncd[163]: Network configuration changed, trying to establish connection.
+Aug 25 10:45:27 GARDENA-2aeb23 dhcpcd[253]: eth0: adding default route via 10.42.0.1
+Aug 25 10:45:27 GARDENA-2aeb23 systemd[1]: swupdate-check.timer: Succeeded.
+Aug 25 10:45:27 GARDENA-2aeb23 systemd[1]: Stopped Run swupdate-check.service on startup and periodically thereafter.
+Aug 25 10:45:27 GARDENA-2aeb23 systemd[1]: Stopping Run swupdate-check.service on startup and periodically thereafter.
+Aug 25 10:45:27 GARDENA-2aeb23 systemd[1]: Started Run swupdate-check.service on startup and periodically thereafter.
+Aug 25 10:45:35 GARDENA-2aeb23 dhcpcd[253]: eth0: no IPv6 Routers available
+Aug 25 10:45:42 GARDENA-2aeb23 kernel: rt3050-esw 10110000.esw: link changed 0x00
+Aug 25 10:45:42 GARDENA-2aeb23 dhcpcd[253]: eth0: carrier lost
+Aug 25 10:45:42 GARDENA-2aeb23 systemd-networkd[231]: eth0: Lost carrier
+Aug 25 10:45:42 GARDENA-2aeb23 systemd[1]: Condition check resulted in Check EOL test status and update status file being skipped.
+Aug 25 10:45:42 GARDENA-2aeb23 systemd[1]: Condition check resulted in Software Update Service being skipped.
+Aug 25 10:45:42 GARDENA-2aeb23 dhcpcd[253]: eth0: deleting address fe80::96bb:aeff:fe2a:eb23
+Aug 25 10:45:42 GARDENA-2aeb23 dhcpcd[253]: eth0: deleting route to 10.42.0.0/16
+Aug 25 10:45:42 GARDENA-2aeb23 dhcpcd[253]: eth0: deleting default route via 10.42.0.1
+Aug 25 10:45:44 GARDENA-2aeb23 kernel: rt3050-esw 10110000.esw: link changed 0x01
+Aug 25 10:45:44 GARDENA-2aeb23 systemd-networkd[231]: eth0: Gained carrier
+Aug 25 10:45:44 GARDENA-2aeb23 dhcpcd[253]: eth0: carrier acquired
+Aug 25 10:45:44 GARDENA-2aeb23 dhcpcd[253]: eth0: IAID ae:2a:eb:23
+Aug 25 10:45:44 GARDENA-2aeb23 dhcpcd[253]: eth0: adding address fe80::96bb:aeff:fe2a:eb23
+Aug 25 10:45:45 GARDENA-2aeb23 dhcpcd[253]: eth0: soliciting an IPv6 router
+Aug 25 10:45:45 GARDENA-2aeb23 dhcpcd[253]: eth0: rebinding lease of 10.42.215.63
+Aug 25 10:45:45 GARDENA-2aeb23 dhcpcd[253]: eth0: probing address 10.42.215.63/16
+Aug 25 10:45:45 GARDENA-2aeb23 kernel: rt3050-esw 10110000.esw: link changed 0x00
+Aug 25 10:45:45 GARDENA-2aeb23 systemd-networkd[231]: eth0: Lost carrier
+Aug 25 10:45:45 GARDENA-2aeb23 dhcpcd[253]: eth0: carrier lost
+Aug 25 10:45:45 GARDENA-2aeb23 dhcpcd[253]: eth0: deleting address fe80::96bb:aeff:fe2a:eb23
+Aug 25 10:45:48 GARDENA-2aeb23 kernel: rt3050-esw 10110000.esw: link changed 0x01
+Aug 25 10:45:48 GARDENA-2aeb23 systemd-networkd[231]: eth0: Gained carrier
+Aug 25 10:45:48 GARDENA-2aeb23 dhcpcd[253]: eth0: carrier acquired
+Aug 25 10:45:48 GARDENA-2aeb23 dhcpcd[253]: eth0: IAID ae:2a:eb:23
+Aug 25 10:45:48 GARDENA-2aeb23 dhcpcd[253]: eth0: adding address fe80::96bb:aeff:fe2a:eb23
+Aug 25 10:45:48 GARDENA-2aeb23 dhcpcd[253]: eth0: soliciting an IPv6 router
+Aug 25 10:45:48 GARDENA-2aeb23 dhcpcd[253]: eth0: rebinding lease of 10.42.215.63
+Aug 25 10:45:48 GARDENA-2aeb23 dhcpcd[253]: eth0: probing address 10.42.215.63/16
+Aug 25 10:45:48 GARDENA-2aeb23 kernel: rt3050-esw 10110000.esw: link changed 0x00
+Aug 25 10:45:49 GARDENA-2aeb23 dhcpcd[253]: eth0: carrier lost
+Aug 25 10:45:49 GARDENA-2aeb23 systemd-networkd[231]: eth0: Lost carrier
+Aug 25 10:45:49 GARDENA-2aeb23 dhcpcd[253]: eth0: deleting address fe80::96bb:aeff:fe2a:eb23
+Aug 25 10:45:51 GARDENA-2aeb23 kernel: rt3050-esw 10110000.esw: link changed 0x01
+Aug 25 10:45:51 GARDENA-2aeb23 systemd-networkd[231]: eth0: Gained carrier
+Aug 25 10:45:51 GARDENA-2aeb23 dhcpcd[253]: eth0: carrier acquired
+Aug 25 10:45:51 GARDENA-2aeb23 dhcpcd[253]: eth0: IAID ae:2a:eb:23
+Aug 25 10:45:51 GARDENA-2aeb23 dhcpcd[253]: eth0: adding address fe80::96bb:aeff:fe2a:eb23
+Aug 25 10:45:51 GARDENA-2aeb23 dhcpcd[253]: eth0: rebinding lease of 10.42.215.63
+Aug 25 10:45:51 GARDENA-2aeb23 dhcpcd[253]: eth0: probing address 10.42.215.63/16
+Aug 25 10:45:52 GARDENA-2aeb23 dhcpcd[253]: eth0: soliciting an IPv6 router
+Aug 25 10:45:52 GARDENA-2aeb23 systemd-networkd[231]: eth0: Gained IPv6LL
+Aug 25 10:45:52 GARDENA-2aeb23 systemd-timesyncd[163]: Network configuration changed, trying to establish connection.
+Aug 25 10:45:56 GARDENA-2aeb23 dhcpcd[253]: eth0: leased 10.42.215.63 for 3600 seconds
+Aug 25 10:45:56 GARDENA-2aeb23 dhcpcd[253]: eth0: adding route to 10.42.0.0/16
+Aug 25 10:45:56 GARDENA-2aeb23 systemd-timesyncd[163]: Network configuration changed, trying to establish connection.
+Aug 25 10:45:56 GARDENA-2aeb23 dhcpcd[253]: eth0: adding default route via 10.42.0.1
+Aug 25 10:45:56 GARDENA-2aeb23 systemd[1]: swupdate-check.timer: Succeeded.
+Aug 25 10:45:56 GARDENA-2aeb23 systemd[1]: Stopped Run swupdate-check.service on startup and periodically thereafter.
+Aug 25 10:45:56 GARDENA-2aeb23 systemd[1]: Stopping Run swupdate-check.service on startup and periodically thereafter.
+Aug 25 10:45:56 GARDENA-2aeb23 systemd[1]: Started Run swupdate-check.service on startup and periodically thereafter.
+Aug 25 10:46:04 GARDENA-2aeb23 dhcpcd[253]: eth0: no IPv6 Routers available
+Aug 25 10:46:22 GARDENA-2aeb23 systemd[1]: Condition check resulted in Check EOL test status and update status file being skipped.
+Aug 25 10:46:22 GARDENA-2aeb23 systemd[1]: Condition check resulted in Software Update Service being skipped.
+Aug 25 10:46:52 GARDENA-2aeb23 systemd[1]: Condition check resulted in Check EOL test status and update status file being skipped.
+Aug 25 10:46:52 GARDENA-2aeb23 systemd[1]: Condition check resulted in Software Update Service being skipped.
+Aug 25 10:47:14 GARDENA-2aeb23 kernel: rt3050-esw 10110000.esw: link changed 0x00
+Aug 25 10:47:14 GARDENA-2aeb23 dhcpcd[253]: eth0: carrier lost
+Aug 25 10:47:14 GARDENA-2aeb23 systemd-networkd[231]: eth0: Lost carrier
+Aug 25 10:47:14 GARDENA-2aeb23 dhcpcd[253]: eth0: deleting address fe80::96bb:aeff:fe2a:eb23
+Aug 25 10:47:14 GARDENA-2aeb23 dhcpcd[253]: eth0: deleting route to 10.42.0.0/16
+Aug 25 10:47:14 GARDENA-2aeb23 dhcpcd[253]: eth0: deleting default route via 10.42.0.1
+Aug 25 10:47:16 GARDENA-2aeb23 kernel: rt3050-esw 10110000.esw: link changed 0x01
+Aug 25 10:47:16 GARDENA-2aeb23 systemd-networkd[231]: eth0: Gained carrier
+Aug 25 10:47:16 GARDENA-2aeb23 dhcpcd[253]: eth0: carrier acquired
+Aug 25 10:47:16 GARDENA-2aeb23 dhcpcd[253]: eth0: IAID ae:2a:eb:23
+Aug 25 10:47:16 GARDENA-2aeb23 dhcpcd[253]: eth0: adding address fe80::96bb:aeff:fe2a:eb23
+Aug 25 10:47:17 GARDENA-2aeb23 dhcpcd[253]: eth0: rebinding lease of 10.42.215.63
+Aug 25 10:47:17 GARDENA-2aeb23 dhcpcd[253]: eth0: probing address 10.42.215.63/16
+Aug 25 10:47:17 GARDENA-2aeb23 dhcpcd[253]: eth0: soliciting an IPv6 router
+Aug 25 10:47:18 GARDENA-2aeb23 systemd-networkd[231]: eth0: Gained IPv6LL
+Aug 25 10:47:18 GARDENA-2aeb23 systemd-timesyncd[163]: Network configuration changed, trying to establish connection.
+Aug 25 10:47:22 GARDENA-2aeb23 dhcpcd[253]: eth0: leased 10.42.215.63 for 3600 seconds
+Aug 25 10:47:22 GARDENA-2aeb23 dhcpcd[253]: eth0: adding route to 10.42.0.0/16
+Aug 25 10:47:22 GARDENA-2aeb23 systemd-timesyncd[163]: Network configuration changed, trying to establish connection.
+Aug 25 10:47:22 GARDENA-2aeb23 dhcpcd[253]: eth0: adding default route via 10.42.0.1
+Aug 25 10:47:22 GARDENA-2aeb23 systemd[1]: swupdate-check.timer: Succeeded.
+Aug 25 10:47:22 GARDENA-2aeb23 systemd[1]: Stopped Run swupdate-check.service on startup and periodically thereafter.
+Aug 25 10:47:22 GARDENA-2aeb23 systemd[1]: Stopping Run swupdate-check.service on startup and periodically thereafter.
+Aug 25 10:47:22 GARDENA-2aeb23 systemd[1]: Started Run swupdate-check.service on startup and periodically thereafter.
+Aug 25 10:47:30 GARDENA-2aeb23 dhcpcd[253]: eth0: no IPv6 Routers available
+Aug 25 10:47:39 GARDENA-2aeb23 kernel: rt3050-esw 10110000.esw: link changed 0x00
+Aug 25 10:47:39 GARDENA-2aeb23 dhcpcd[253]: eth0: carrier lost
+Aug 25 10:47:39 GARDENA-2aeb23 systemd-networkd[231]: eth0: Lost carrier
+Aug 25 10:47:39 GARDENA-2aeb23 dhcpcd[253]: eth0: deleting address fe80::96bb:aeff:fe2a:eb23
+Aug 25 10:47:39 GARDENA-2aeb23 dhcpcd[253]: eth0: deleting route to 10.42.0.0/16
+Aug 25 10:47:39 GARDENA-2aeb23 dhcpcd[253]: eth0: deleting default route via 10.42.0.1
+Aug 25 10:47:42 GARDENA-2aeb23 kernel: rt3050-esw 10110000.esw: link changed 0x01
+Aug 25 10:47:42 GARDENA-2aeb23 systemd-networkd[231]: eth0: Gained carrier
+Aug 25 10:47:42 GARDENA-2aeb23 dhcpcd[253]: eth0: carrier acquired
+Aug 25 10:47:42 GARDENA-2aeb23 dhcpcd[253]: eth0: IAID ae:2a:eb:23
+Aug 25 10:47:42 GARDENA-2aeb23 dhcpcd[253]: eth0: adding address fe80::96bb:aeff:fe2a:eb23
+Aug 25 10:47:42 GARDENA-2aeb23 kernel: rt3050-esw 10110000.esw: link changed 0x00
+Aug 25 10:47:42 GARDENA-2aeb23 dhcpcd[253]: eth0: soliciting an IPv6 router
+Aug 25 10:47:42 GARDENA-2aeb23 dhcpcd[253]: eth0: rebinding lease of 10.42.215.63
+Aug 25 10:47:43 GARDENA-2aeb23 dhcpcd[253]: eth0: carrier lost
+Aug 25 10:47:43 GARDENA-2aeb23 systemd-networkd[231]: eth0: Lost carrier
+Aug 25 10:47:43 GARDENA-2aeb23 dhcpcd[253]: eth0: deleting address fe80::96bb:aeff:fe2a:eb23
+Aug 25 10:47:44 GARDENA-2aeb23 kernel: rt3050-esw 10110000.esw: link changed 0x01
+Aug 25 10:47:44 GARDENA-2aeb23 systemd-networkd[231]: eth0: Gained carrier
+Aug 25 10:47:44 GARDENA-2aeb23 dhcpcd[253]: eth0: carrier acquired
+Aug 25 10:47:44 GARDENA-2aeb23 dhcpcd[253]: eth0: IAID ae:2a:eb:23
+Aug 25 10:47:44 GARDENA-2aeb23 dhcpcd[253]: eth0: adding address fe80::96bb:aeff:fe2a:eb23
+Aug 25 10:47:45 GARDENA-2aeb23 dhcpcd[253]: eth0: rebinding lease of 10.42.215.63
+Aug 25 10:47:45 GARDENA-2aeb23 dhcpcd[253]: eth0: probing address 10.42.215.63/16
+Aug 25 10:47:45 GARDENA-2aeb23 kernel: rt3050-esw 10110000.esw: link changed 0x00
+Aug 25 10:47:45 GARDENA-2aeb23 dhcpcd[253]: eth0: soliciting an IPv6 router
+Aug 25 10:47:45 GARDENA-2aeb23 dhcpcd[253]: eth0: carrier lost
+Aug 25 10:47:45 GARDENA-2aeb23 systemd-networkd[231]: eth0: Lost carrier
+Aug 25 10:47:45 GARDENA-2aeb23 dhcpcd[253]: eth0: deleting address fe80::96bb:aeff:fe2a:eb23
+Aug 25 10:47:47 GARDENA-2aeb23 kernel: rt3050-esw 10110000.esw: link changed 0x01
+Aug 25 10:47:47 GARDENA-2aeb23 systemd-networkd[231]: eth0: Gained carrier
+Aug 25 10:47:47 GARDENA-2aeb23 dhcpcd[253]: eth0: carrier acquired
+Aug 25 10:47:47 GARDENA-2aeb23 dhcpcd[253]: eth0: IAID ae:2a:eb:23
+Aug 25 10:47:47 GARDENA-2aeb23 dhcpcd[253]: eth0: adding address fe80::96bb:aeff:fe2a:eb23
+Aug 25 10:47:47 GARDENA-2aeb23 kernel: rt3050-esw 10110000.esw: link changed 0x00
+Aug 25 10:47:47 GARDENA-2aeb23 dhcpcd[253]: eth0: soliciting an IPv6 router
+Aug 25 10:47:48 GARDENA-2aeb23 dhcpcd[253]: eth0: rebinding lease of 10.42.215.63
+Aug 25 10:47:48 GARDENA-2aeb23 dhcpcd[253]: eth0: carrier lost
+Aug 25 10:47:48 GARDENA-2aeb23 systemd-networkd[231]: eth0: Lost carrier
+Aug 25 10:47:48 GARDENA-2aeb23 dhcpcd[253]: eth0: deleting address fe80::96bb:aeff:fe2a:eb23
+Aug 25 10:47:50 GARDENA-2aeb23 kernel: rt3050-esw 10110000.esw: link changed 0x01
+Aug 25 10:47:50 GARDENA-2aeb23 systemd-networkd[231]: eth0: Gained carrier
+Aug 25 10:47:50 GARDENA-2aeb23 dhcpcd[253]: eth0: carrier acquired
+Aug 25 10:47:50 GARDENA-2aeb23 dhcpcd[253]: eth0: IAID ae:2a:eb:23
+Aug 25 10:47:50 GARDENA-2aeb23 dhcpcd[253]: eth0: adding address fe80::96bb:aeff:fe2a:eb23
+Aug 25 10:47:51 GARDENA-2aeb23 dhcpcd[253]: eth0: rebinding lease of 10.42.215.63
+Aug 25 10:47:51 GARDENA-2aeb23 dhcpcd[253]: eth0: probing address 10.42.215.63/16
+Aug 25 10:47:51 GARDENA-2aeb23 dhcpcd[253]: eth0: soliciting an IPv6 router
+Aug 25 10:47:52 GARDENA-2aeb23 systemd[1]: Condition check resulted in Check EOL test status and update status file being skipped.
+Aug 25 10:47:52 GARDENA-2aeb23 systemd[1]: Condition check resulted in Software Update Service being skipped.
+Aug 25 10:47:52 GARDENA-2aeb23 systemd-networkd[231]: eth0: Gained IPv6LL
+Aug 25 10:47:52 GARDENA-2aeb23 systemd-timesyncd[163]: Network configuration changed, trying to establish connection.
+Aug 25 10:47:53 GARDENA-2aeb23 kernel: rt3050-esw 10110000.esw: link changed 0x00
+Aug 25 10:47:53 GARDENA-2aeb23 systemd-networkd[231]: eth0: Lost carrier
+Aug 25 10:47:53 GARDENA-2aeb23 dhcpcd[253]: eth0: carrier lost
+Aug 25 10:47:53 GARDENA-2aeb23 dhcpcd[253]: eth0: deleting address fe80::96bb:aeff:fe2a:eb23
+Aug 25 10:47:54 GARDENA-2aeb23 kernel: rt3050-esw 10110000.esw: link changed 0x01
+Aug 25 10:47:54 GARDENA-2aeb23 systemd-networkd[231]: eth0: Gained carrier
+Aug 25 10:47:54 GARDENA-2aeb23 dhcpcd[253]: eth0: carrier acquired
+Aug 25 10:47:54 GARDENA-2aeb23 dhcpcd[253]: eth0: IAID ae:2a:eb:23
+Aug 25 10:47:54 GARDENA-2aeb23 dhcpcd[253]: eth0: adding address fe80::96bb:aeff:fe2a:eb23
+Aug 25 10:47:54 GARDENA-2aeb23 kernel: rt3050-esw 10110000.esw: link changed 0x00
+Aug 25 10:47:55 GARDENA-2aeb23 dhcpcd[253]: eth0: soliciting an IPv6 router
+Aug 25 10:47:55 GARDENA-2aeb23 dhcpcd[253]: eth0: rebinding lease of 10.42.215.63
+Aug 25 10:47:55 GARDENA-2aeb23 systemd-networkd[231]: eth0: Lost carrier
+Aug 25 10:47:55 GARDENA-2aeb23 dhcpcd[253]: eth0: carrier lost
+Aug 25 10:47:55 GARDENA-2aeb23 dhcpcd[253]: eth0: deleting address fe80::96bb:aeff:fe2a:eb23
+Aug 25 10:47:56 GARDENA-2aeb23 kernel: rt3050-esw 10110000.esw: link changed 0x01
+Aug 25 10:47:56 GARDENA-2aeb23 systemd-networkd[231]: eth0: Gained carrier
+Aug 25 10:47:56 GARDENA-2aeb23 dhcpcd[253]: eth0: carrier acquired
+Aug 25 10:47:56 GARDENA-2aeb23 dhcpcd[253]: eth0: IAID ae:2a:eb:23
+Aug 25 10:47:56 GARDENA-2aeb23 dhcpcd[253]: eth0: adding address fe80::96bb:aeff:fe2a:eb23
+Aug 25 10:47:56 GARDENA-2aeb23 dhcpcd[253]: eth0: soliciting an IPv6 router
+Aug 25 10:47:57 GARDENA-2aeb23 dhcpcd[253]: eth0: rebinding lease of 10.42.215.63
+Aug 25 10:47:57 GARDENA-2aeb23 dhcpcd[253]: eth0: probing address 10.42.215.63/16
+Aug 25 10:47:57 GARDENA-2aeb23 systemd-networkd[231]: eth0: Gained IPv6LL
+Aug 25 10:47:57 GARDENA-2aeb23 systemd-timesyncd[163]: Network configuration changed, trying to establish connection.
+Aug 25 10:48:02 GARDENA-2aeb23 dhcpcd[253]: eth0: leased 10.42.215.63 for 3600 seconds
+Aug 25 10:48:02 GARDENA-2aeb23 dhcpcd[253]: eth0: adding route to 10.42.0.0/16
+Aug 25 10:48:02 GARDENA-2aeb23 systemd-timesyncd[163]: Network configuration changed, trying to establish connection.
+Aug 25 10:48:02 GARDENA-2aeb23 dhcpcd[253]: eth0: adding default route via 10.42.0.1
+Aug 25 10:48:02 GARDENA-2aeb23 systemd[1]: swupdate-check.timer: Succeeded.
+Aug 25 10:48:02 GARDENA-2aeb23 systemd[1]: Stopped Run swupdate-check.service on startup and periodically thereafter.
+Aug 25 10:48:02 GARDENA-2aeb23 systemd[1]: Stopping Run swupdate-check.service on startup and periodically thereafter.
+Aug 25 10:48:02 GARDENA-2aeb23 systemd[1]: Started Run swupdate-check.service on startup and periodically thereafter.
+Aug 25 10:48:09 GARDENA-2aeb23 dhcpcd[253]: eth0: no IPv6 Routers available
+Aug 25 10:48:12 GARDENA-2aeb23 dhcpcd[253]: eth0: carrier lost
+Aug 25 10:48:12 GARDENA-2aeb23 kernel: rt3050-esw 10110000.esw: link changed 0x00
+Aug 25 10:48:12 GARDENA-2aeb23 systemd-networkd[231]: eth0: Lost carrier
+Aug 25 10:48:12 GARDENA-2aeb23 dhcpcd[253]: eth0: deleting address fe80::96bb:aeff:fe2a:eb23
+Aug 25 10:48:12 GARDENA-2aeb23 dhcpcd[253]: eth0: deleting route to 10.42.0.0/16
+Aug 25 10:48:12 GARDENA-2aeb23 dhcpcd[253]: eth0: deleting default route via 10.42.0.1
+Aug 25 10:48:15 GARDENA-2aeb23 kernel: rt3050-esw 10110000.esw: link changed 0x01
+Aug 25 10:48:15 GARDENA-2aeb23 systemd-networkd[231]: eth0: Gained carrier
+Aug 25 10:48:15 GARDENA-2aeb23 dhcpcd[253]: eth0: carrier acquired
+Aug 25 10:48:15 GARDENA-2aeb23 systemd[1]: Condition check resulted in Check EOL test status and update status file being skipped.
+Aug 25 10:48:15 GARDENA-2aeb23 systemd[1]: Condition check resulted in Software Update Service being skipped.
+Aug 25 10:48:15 GARDENA-2aeb23 dhcpcd[253]: eth0: IAID ae:2a:eb:23
+Aug 25 10:48:15 GARDENA-2aeb23 dhcpcd[253]: eth0: adding address fe80::96bb:aeff:fe2a:eb23
+Aug 25 10:48:15 GARDENA-2aeb23 kernel: rt3050-esw 10110000.esw: link changed 0x00
+Aug 25 10:48:15 GARDENA-2aeb23 dhcpcd[253]: eth0: soliciting an IPv6 router
+Aug 25 10:48:15 GARDENA-2aeb23 dhcpcd[253]: eth0: rebinding lease of 10.42.215.63
+Aug 25 10:48:16 GARDENA-2aeb23 dhcpcd[253]: eth0: carrier lost
+Aug 25 10:48:16 GARDENA-2aeb23 systemd-networkd[231]: eth0: Lost carrier
+Aug 25 10:48:16 GARDENA-2aeb23 dhcpcd[253]: eth0: deleting address fe80::96bb:aeff:fe2a:eb23
+Aug 25 10:48:17 GARDENA-2aeb23 kernel: rt3050-esw 10110000.esw: link changed 0x01
+Aug 25 10:48:17 GARDENA-2aeb23 systemd-networkd[231]: eth0: Gained carrier
+Aug 25 10:48:17 GARDENA-2aeb23 dhcpcd[253]: eth0: carrier acquired
+Aug 25 10:48:17 GARDENA-2aeb23 kernel: rt3050-esw 10110000.esw: link changed 0x00
+Aug 25 10:48:17 GARDENA-2aeb23 dhcpcd[253]: eth0: IAID ae:2a:eb:23
+Aug 25 10:48:17 GARDENA-2aeb23 dhcpcd[253]: eth0: adding address fe80::96bb:aeff:fe2a:eb23
+Aug 25 10:48:18 GARDENA-2aeb23 dhcpcd[253]: eth0: soliciting an IPv6 router
+Aug 25 10:48:18 GARDENA-2aeb23 dhcpcd[253]: eth0: carrier lost
+Aug 25 10:48:18 GARDENA-2aeb23 systemd-networkd[231]: eth0: Lost carrier
+Aug 25 10:48:18 GARDENA-2aeb23 dhcpcd[253]: eth0: deleting address fe80::96bb:aeff:fe2a:eb23
+Aug 25 10:48:20 GARDENA-2aeb23 kernel: rt3050-esw 10110000.esw: link changed 0x01
+Aug 25 10:48:20 GARDENA-2aeb23 systemd-networkd[231]: eth0: Gained carrier
+Aug 25 10:48:20 GARDENA-2aeb23 dhcpcd[253]: eth0: carrier acquired
+Aug 25 10:48:20 GARDENA-2aeb23 dhcpcd[253]: eth0: IAID ae:2a:eb:23
+Aug 25 10:48:20 GARDENA-2aeb23 dhcpcd[253]: eth0: adding address fe80::96bb:aeff:fe2a:eb23
+Aug 25 10:48:20 GARDENA-2aeb23 dhcpcd[253]: eth0: rebinding lease of 10.42.215.63
+Aug 25 10:48:20 GARDENA-2aeb23 kernel: rt3050-esw 10110000.esw: link changed 0x00
+Aug 25 10:48:20 GARDENA-2aeb23 dhcpcd[253]: eth0: soliciting an IPv6 router
+Aug 25 10:48:21 GARDENA-2aeb23 dhcpcd[253]: eth0: carrier lost
+Aug 25 10:48:21 GARDENA-2aeb23 systemd-networkd[231]: eth0: Lost carrier
+Aug 25 10:48:21 GARDENA-2aeb23 dhcpcd[253]: eth0: deleting address fe80::96bb:aeff:fe2a:eb23
+Aug 25 10:48:23 GARDENA-2aeb23 kernel: rt3050-esw 10110000.esw: link changed 0x01
+Aug 25 10:48:23 GARDENA-2aeb23 systemd-networkd[231]: eth0: Gained carrier
+Aug 25 10:48:23 GARDENA-2aeb23 dhcpcd[253]: eth0: carrier acquired
+Aug 25 10:48:23 GARDENA-2aeb23 dhcpcd[253]: eth0: IAID ae:2a:eb:23
+Aug 25 10:48:23 GARDENA-2aeb23 dhcpcd[253]: eth0: adding address fe80::96bb:aeff:fe2a:eb23
+Aug 25 10:48:23 GARDENA-2aeb23 dhcpcd[253]: eth0: soliciting an IPv6 router
+Aug 25 10:48:24 GARDENA-2aeb23 dhcpcd[253]: eth0: rebinding lease of 10.42.215.63
+Aug 25 10:48:24 GARDENA-2aeb23 dhcpcd[253]: eth0: probing address 10.42.215.63/16
+Aug 25 10:48:25 GARDENA-2aeb23 systemd-networkd[231]: eth0: Gained IPv6LL
+Aug 25 10:48:25 GARDENA-2aeb23 systemd-timesyncd[163]: Network configuration changed, trying to establish connection.
+Aug 25 10:48:29 GARDENA-2aeb23 dhcpcd[253]: eth0: leased 10.42.215.63 for 3600 seconds
+Aug 25 10:48:29 GARDENA-2aeb23 dhcpcd[253]: eth0: adding route to 10.42.0.0/16
+Aug 25 10:48:29 GARDENA-2aeb23 systemd-timesyncd[163]: Network configuration changed, trying to establish connection.
+Aug 25 10:48:29 GARDENA-2aeb23 dhcpcd[253]: eth0: adding default route via 10.42.0.1
+Aug 25 10:48:29 GARDENA-2aeb23 systemd[1]: swupdate-check.timer: Succeeded.
+Aug 25 10:48:29 GARDENA-2aeb23 systemd[1]: Stopped Run swupdate-check.service on startup and periodically thereafter.
+Aug 25 10:48:29 GARDENA-2aeb23 systemd[1]: Stopping Run swupdate-check.service on startup and periodically thereafter.
+Aug 25 10:48:29 GARDENA-2aeb23 systemd[1]: Started Run swupdate-check.service on startup and periodically thereafter.
+Aug 25 10:48:37 GARDENA-2aeb23 dhcpcd[253]: eth0: no IPv6 Routers available
+Aug 25 10:48:59 GARDENA-2aeb23 systemd[1]: Condition check resulted in Check EOL test status and update status file being skipped.
+Aug 25 10:48:59 GARDENA-2aeb23 systemd[1]: Condition check resulted in Software Update Service being skipped.
+Aug 25 10:49:02 GARDENA-2aeb23 kernel: rt3050-esw 10110000.esw: link changed 0x00
+Aug 25 10:49:02 GARDENA-2aeb23 dhcpcd[253]: eth0: carrier lost
+Aug 25 10:49:02 GARDENA-2aeb23 systemd-networkd[231]: eth0: Lost carrier
+Aug 25 10:49:02 GARDENA-2aeb23 dhcpcd[253]: eth0: deleting address fe80::96bb:aeff:fe2a:eb23
+Aug 25 10:49:02 GARDENA-2aeb23 dhcpcd[253]: eth0: deleting route to 10.42.0.0/16
+Aug 25 10:49:02 GARDENA-2aeb23 dhcpcd[253]: eth0: deleting default route via 10.42.0.1
+Aug 25 10:49:05 GARDENA-2aeb23 kernel: rt3050-esw 10110000.esw: link changed 0x01
+Aug 25 10:49:05 GARDENA-2aeb23 systemd-networkd[231]: eth0: Gained carrier
+Aug 25 10:49:05 GARDENA-2aeb23 dhcpcd[253]: eth0: carrier acquired
+Aug 25 10:49:05 GARDENA-2aeb23 dhcpcd[253]: eth0: IAID ae:2a:eb:23
+Aug 25 10:49:05 GARDENA-2aeb23 dhcpcd[253]: eth0: adding address fe80::96bb:aeff:fe2a:eb23
+Aug 25 10:49:05 GARDENA-2aeb23 dhcpcd[253]: eth0: rebinding lease of 10.42.215.63
+Aug 25 10:49:05 GARDENA-2aeb23 dhcpcd[253]: eth0: soliciting an IPv6 router
+Aug 25 10:49:05 GARDENA-2aeb23 kernel: rt3050-esw 10110000.esw: link changed 0x00
+Aug 25 10:49:06 GARDENA-2aeb23 dhcpcd[253]: eth0: carrier lost
+Aug 25 10:49:06 GARDENA-2aeb23 systemd-networkd[231]: eth0: Lost carrier
+Aug 25 10:49:06 GARDENA-2aeb23 dhcpcd[253]: eth0: deleting address fe80::96bb:aeff:fe2a:eb23
+Aug 25 10:49:08 GARDENA-2aeb23 kernel: rt3050-esw 10110000.esw: link changed 0x01
+Aug 25 10:49:08 GARDENA-2aeb23 systemd-networkd[231]: eth0: Gained carrier
+Aug 25 10:49:08 GARDENA-2aeb23 dhcpcd[253]: eth0: carrier acquired
+Aug 25 10:49:08 GARDENA-2aeb23 dhcpcd[253]: eth0: IAID ae:2a:eb:23
+Aug 25 10:49:08 GARDENA-2aeb23 dhcpcd[253]: eth0: adding address fe80::96bb:aeff:fe2a:eb23
+Aug 25 10:49:09 GARDENA-2aeb23 dhcpcd[253]: eth0: soliciting an IPv6 router
+Aug 25 10:49:09 GARDENA-2aeb23 kernel: rt3050-esw 10110000.esw: link changed 0x00
+Aug 25 10:49:09 GARDENA-2aeb23 dhcpcd[253]: eth0: rebinding lease of 10.42.215.63
+Aug 25 10:49:09 GARDENA-2aeb23 dhcpcd[253]: eth0: carrier lost
+Aug 25 10:49:09 GARDENA-2aeb23 systemd-networkd[231]: eth0: Lost carrier
+Aug 25 10:49:09 GARDENA-2aeb23 dhcpcd[253]: eth0: deleting address fe80::96bb:aeff:fe2a:eb23
+Aug 25 10:49:11 GARDENA-2aeb23 kernel: rt3050-esw 10110000.esw: link changed 0x01
+Aug 25 10:49:11 GARDENA-2aeb23 systemd-networkd[231]: eth0: Gained carrier
+Aug 25 10:49:11 GARDENA-2aeb23 dhcpcd[253]: eth0: carrier acquired
+Aug 25 10:49:11 GARDENA-2aeb23 dhcpcd[253]: eth0: IAID ae:2a:eb:23
+Aug 25 10:49:11 GARDENA-2aeb23 dhcpcd[253]: eth0: adding address fe80::96bb:aeff:fe2a:eb23
+Aug 25 10:49:11 GARDENA-2aeb23 dhcpcd[253]: eth0: soliciting an IPv6 router
+Aug 25 10:49:11 GARDENA-2aeb23 dhcpcd[253]: eth0: rebinding lease of 10.42.215.63
+Aug 25 10:49:11 GARDENA-2aeb23 dhcpcd[253]: eth0: probing address 10.42.215.63/16
+Aug 25 10:49:12 GARDENA-2aeb23 systemd-networkd[231]: eth0: Gained IPv6LL
+Aug 25 10:49:12 GARDENA-2aeb23 systemd-timesyncd[163]: Network configuration changed, trying to establish connection.
+Aug 25 10:49:16 GARDENA-2aeb23 dhcpcd[253]: eth0: leased 10.42.215.63 for 3600 seconds
+Aug 25 10:49:16 GARDENA-2aeb23 systemd-timesyncd[163]: Network configuration changed, trying to establish connection.
+Aug 25 10:49:16 GARDENA-2aeb23 dhcpcd[253]: eth0: adding route to 10.42.0.0/16
+Aug 25 10:49:16 GARDENA-2aeb23 dhcpcd[253]: eth0: adding default route via 10.42.0.1
+Aug 25 10:49:16 GARDENA-2aeb23 systemd[1]: swupdate-check.timer: Succeeded.
+Aug 25 10:49:16 GARDENA-2aeb23 systemd[1]: Stopped Run swupdate-check.service on startup and periodically thereafter.
+Aug 25 10:49:16 GARDENA-2aeb23 systemd[1]: Stopping Run swupdate-check.service on startup and periodically thereafter.
+Aug 25 10:49:16 GARDENA-2aeb23 systemd[1]: Started Run swupdate-check.service on startup and periodically thereafter.
+Aug 25 10:49:17 GARDENA-2aeb23 kernel: rt3050-esw 10110000.esw: link changed 0x00
+Aug 25 10:49:17 GARDENA-2aeb23 dhcpcd[253]: eth0: carrier lost
+Aug 25 10:49:17 GARDENA-2aeb23 systemd-networkd[231]: eth0: Lost carrier
+Aug 25 10:49:18 GARDENA-2aeb23 dhcpcd[253]: eth0: deleting address fe80::96bb:aeff:fe2a:eb23
+Aug 25 10:49:18 GARDENA-2aeb23 dhcpcd[253]: eth0: deleting route to 10.42.0.0/16
+Aug 25 10:49:18 GARDENA-2aeb23 dhcpcd[253]: eth0: deleting default route via 10.42.0.1
+Aug 25 10:49:20 GARDENA-2aeb23 kernel: rt3050-esw 10110000.esw: link changed 0x01
+Aug 25 10:49:20 GARDENA-2aeb23 systemd-networkd[231]: eth0: Gained carrier
+Aug 25 10:49:20 GARDENA-2aeb23 dhcpcd[253]: eth0: carrier acquired
+Aug 25 10:49:20 GARDENA-2aeb23 dhcpcd[253]: eth0: IAID ae:2a:eb:23
+Aug 25 10:49:20 GARDENA-2aeb23 dhcpcd[253]: eth0: adding address fe80::96bb:aeff:fe2a:eb23
+Aug 25 10:49:20 GARDENA-2aeb23 dhcpcd[253]: eth0: soliciting an IPv6 router
+Aug 25 10:49:21 GARDENA-2aeb23 dhcpcd[253]: eth0: rebinding lease of 10.42.215.63
+Aug 25 10:49:21 GARDENA-2aeb23 dhcpcd[253]: eth0: probing address 10.42.215.63/16
+Aug 25 10:49:21 GARDENA-2aeb23 systemd-networkd[231]: eth0: Gained IPv6LL
+Aug 25 10:49:21 GARDENA-2aeb23 systemd-timesyncd[163]: Network configuration changed, trying to establish connection.
+Aug 25 10:49:21 GARDENA-2aeb23 systemd[1]: Condition check resulted in Check EOL test status and update status file being skipped.
+Aug 25 10:49:21 GARDENA-2aeb23 systemd[1]: Condition check resulted in Software Update Service being skipped.
+Aug 25 10:49:25 GARDENA-2aeb23 dhcpcd[253]: eth0: leased 10.42.215.63 for 3600 seconds
+Aug 25 10:49:25 GARDENA-2aeb23 systemd-timesyncd[163]: Network configuration changed, trying to establish connection.
+Aug 25 10:49:25 GARDENA-2aeb23 dhcpcd[253]: eth0: adding route to 10.42.0.0/16
+Aug 25 10:49:25 GARDENA-2aeb23 dhcpcd[253]: eth0: adding default route via 10.42.0.1
+Aug 25 10:49:26 GARDENA-2aeb23 systemd[1]: swupdate-check.timer: Succeeded.
+Aug 25 10:49:26 GARDENA-2aeb23 systemd[1]: Stopped Run swupdate-check.service on startup and periodically thereafter.
+Aug 25 10:49:26 GARDENA-2aeb23 systemd[1]: Stopping Run swupdate-check.service on startup and periodically thereafter.
+Aug 25 10:49:26 GARDENA-2aeb23 systemd[1]: Started Run swupdate-check.service on startup and periodically thereafter.
+Aug 25 10:49:30 GARDENA-2aeb23 kernel: rt3050-esw 10110000.esw: link changed 0x00
+Aug 25 10:49:30 GARDENA-2aeb23 dhcpcd[253]: eth0: carrier lost
+Aug 25 10:49:30 GARDENA-2aeb23 systemd-networkd[231]: eth0: Lost carrier
+Aug 25 10:49:30 GARDENA-2aeb23 dhcpcd[253]: eth0: deleting address fe80::96bb:aeff:fe2a:eb23
+Aug 25 10:49:30 GARDENA-2aeb23 dhcpcd[253]: eth0: deleting route to 10.42.0.0/16
+Aug 25 10:49:30 GARDENA-2aeb23 dhcpcd[253]: eth0: deleting default route via 10.42.0.1
+Aug 25 10:49:32 GARDENA-2aeb23 kernel: rt3050-esw 10110000.esw: link changed 0x01
+Aug 25 10:49:32 GARDENA-2aeb23 systemd-networkd[231]: eth0: Gained carrier
+Aug 25 10:49:32 GARDENA-2aeb23 dhcpcd[253]: eth0: carrier acquired
+Aug 25 10:49:32 GARDENA-2aeb23 dhcpcd[253]: eth0: IAID ae:2a:eb:23
+Aug 25 10:49:32 GARDENA-2aeb23 dhcpcd[253]: eth0: adding address fe80::96bb:aeff:fe2a:eb23
+Aug 25 10:49:33 GARDENA-2aeb23 dhcpcd[253]: eth0: rebinding lease of 10.42.215.63
+Aug 25 10:49:33 GARDENA-2aeb23 dhcpcd[253]: eth0: probing address 10.42.215.63/16
+Aug 25 10:49:33 GARDENA-2aeb23 dhcpcd[253]: eth0: soliciting an IPv6 router
+Aug 25 10:49:34 GARDENA-2aeb23 systemd-networkd[231]: eth0: Gained IPv6LL
+Aug 25 10:49:34 GARDENA-2aeb23 systemd-timesyncd[163]: Network configuration changed, trying to establish connection.
+Aug 25 10:49:34 GARDENA-2aeb23 systemd[1]: Condition check resulted in Check EOL test status and update status file being skipped.
+Aug 25 10:49:34 GARDENA-2aeb23 systemd[1]: Condition check resulted in Software Update Service being skipped.
+Aug 25 10:49:37 GARDENA-2aeb23 dhcpcd[253]: eth0: leased 10.42.215.63 for 3600 seconds
+Aug 25 10:49:37 GARDENA-2aeb23 dhcpcd[253]: eth0: adding route to 10.42.0.0/16
+Aug 25 10:49:37 GARDENA-2aeb23 systemd-timesyncd[163]: Network configuration changed, trying to establish connection.
+Aug 25 10:49:37 GARDENA-2aeb23 dhcpcd[253]: eth0: adding default route via 10.42.0.1
+Aug 25 10:49:38 GARDENA-2aeb23 systemd[1]: swupdate-check.timer: Succeeded.
+Aug 25 10:49:38 GARDENA-2aeb23 systemd[1]: Stopped Run swupdate-check.service on startup and periodically thereafter.
+Aug 25 10:49:38 GARDENA-2aeb23 systemd[1]: Stopping Run swupdate-check.service on startup and periodically thereafter.
+Aug 25 10:49:38 GARDENA-2aeb23 systemd[1]: Started Run swupdate-check.service on startup and periodically thereafter.
+Aug 25 10:49:39 GARDENA-2aeb23 kernel: rt3050-esw 10110000.esw: link changed 0x00
+Aug 25 10:49:39 GARDENA-2aeb23 dhcpcd[253]: eth0: carrier lost
+Aug 25 10:49:39 GARDENA-2aeb23 systemd-networkd[231]: eth0: Lost carrier
+Aug 25 10:49:40 GARDENA-2aeb23 dhcpcd[253]: eth0: deleting address fe80::96bb:aeff:fe2a:eb23
+Aug 25 10:49:40 GARDENA-2aeb23 dhcpcd[253]: eth0: deleting route to 10.42.0.0/16
+Aug 25 10:49:40 GARDENA-2aeb23 dhcpcd[253]: eth0: deleting default route via 10.42.0.1
+Aug 25 10:49:42 GARDENA-2aeb23 kernel: rt3050-esw 10110000.esw: link changed 0x01
+Aug 25 10:49:42 GARDENA-2aeb23 dhcpcd[253]: eth0: carrier acquired
+Aug 25 10:49:42 GARDENA-2aeb23 systemd-networkd[231]: eth0: Gained carrier
+Aug 25 10:49:42 GARDENA-2aeb23 dhcpcd[253]: eth0: IAID ae:2a:eb:23
+Aug 25 10:49:42 GARDENA-2aeb23 dhcpcd[253]: eth0: adding address fe80::96bb:aeff:fe2a:eb23
+Aug 25 10:49:42 GARDENA-2aeb23 dhcpcd[253]: eth0: rebinding lease of 10.42.215.63
+Aug 25 10:49:42 GARDENA-2aeb23 dhcpcd[253]: eth0: probing address 10.42.215.63/16
+Aug 25 10:49:42 GARDENA-2aeb23 dhcpcd[253]: eth0: soliciting an IPv6 router
+Aug 25 10:49:43 GARDENA-2aeb23 systemd-networkd[231]: eth0: Gained IPv6LL
+Aug 25 10:49:43 GARDENA-2aeb23 systemd-timesyncd[163]: Network configuration changed, trying to establish connection.
+Aug 25 10:49:43 GARDENA-2aeb23 systemd[1]: Condition check resulted in Check EOL test status and update status file being skipped.
+Aug 25 10:49:43 GARDENA-2aeb23 systemd[1]: Condition check resulted in Software Update Service being skipped.
+Aug 25 10:49:47 GARDENA-2aeb23 dhcpcd[253]: eth0: leased 10.42.215.63 for 3600 seconds
+Aug 25 10:49:47 GARDENA-2aeb23 systemd-timesyncd[163]: Network configuration changed, trying to establish connection.
+Aug 25 10:49:47 GARDENA-2aeb23 dhcpcd[253]: eth0: adding route to 10.42.0.0/16
+Aug 25 10:49:47 GARDENA-2aeb23 dhcpcd[253]: eth0: adding default route via 10.42.0.1
+Aug 25 10:49:47 GARDENA-2aeb23 systemd[1]: swupdate-check.timer: Succeeded.
+Aug 25 10:49:47 GARDENA-2aeb23 systemd[1]: Stopped Run swupdate-check.service on startup and periodically thereafter.
+Aug 25 10:49:47 GARDENA-2aeb23 systemd[1]: Stopping Run swupdate-check.service on startup and periodically thereafter.
+Aug 25 10:49:47 GARDENA-2aeb23 systemd[1]: Started Run swupdate-check.service on startup and periodically thereafter.
+Aug 25 10:49:47 GARDENA-2aeb23 kernel: rt3050-esw 10110000.esw: link changed 0x00
+Aug 25 10:49:47 GARDENA-2aeb23 systemd-networkd[231]: eth0: Lost carrier
+Aug 25 10:49:47 GARDENA-2aeb23 dhcpcd[253]: eth0: carrier lost
+Aug 25 10:49:47 GARDENA-2aeb23 dhcpcd[253]: eth0: deleting address fe80::96bb:aeff:fe2a:eb23
+Aug 25 10:49:47 GARDENA-2aeb23 dhcpcd[253]: eth0: deleting route to 10.42.0.0/16
+Aug 25 10:49:47 GARDENA-2aeb23 dhcpcd[253]: eth0: deleting default route via 10.42.0.1
+Aug 25 10:49:50 GARDENA-2aeb23 kernel: rt3050-esw 10110000.esw: link changed 0x01
+Aug 25 10:49:50 GARDENA-2aeb23 systemd-networkd[231]: eth0: Gained carrier
+Aug 25 10:49:50 GARDENA-2aeb23 dhcpcd[253]: eth0: carrier acquired
+Aug 25 10:49:50 GARDENA-2aeb23 dhcpcd[253]: eth0: IAID ae:2a:eb:23
+Aug 25 10:49:50 GARDENA-2aeb23 dhcpcd[253]: eth0: adding address fe80::96bb:aeff:fe2a:eb23
+Aug 25 10:49:50 GARDENA-2aeb23 dhcpcd[253]: eth0: soliciting an IPv6 router
+Aug 25 10:49:50 GARDENA-2aeb23 dhcpcd[253]: eth0: rebinding lease of 10.42.215.63
+Aug 25 10:49:50 GARDENA-2aeb23 dhcpcd[253]: eth0: probing address 10.42.215.63/16
+Aug 25 10:49:51 GARDENA-2aeb23 systemd-networkd[231]: eth0: Gained IPv6LL
+Aug 25 10:49:51 GARDENA-2aeb23 systemd-timesyncd[163]: Network configuration changed, trying to establish connection.
+Aug 25 10:49:55 GARDENA-2aeb23 kernel: rt3050-esw 10110000.esw: link changed 0x00
+Aug 25 10:49:55 GARDENA-2aeb23 systemd-networkd[231]: eth0: Lost carrier
+Aug 25 10:49:55 GARDENA-2aeb23 dhcpcd[253]: eth0: carrier lost
+Aug 25 10:49:55 GARDENA-2aeb23 dhcpcd[253]: eth0: deleting address fe80::96bb:aeff:fe2a:eb23
+Aug 25 10:49:57 GARDENA-2aeb23 kernel: rt3050-esw 10110000.esw: link changed 0x01
+Aug 25 10:49:57 GARDENA-2aeb23 systemd-networkd[231]: eth0: Gained carrier
+Aug 25 10:49:57 GARDENA-2aeb23 dhcpcd[253]: eth0: carrier acquired
+Aug 25 10:49:57 GARDENA-2aeb23 dhcpcd[253]: eth0: IAID ae:2a:eb:23
+Aug 25 10:49:57 GARDENA-2aeb23 dhcpcd[253]: eth0: adding address fe80::96bb:aeff:fe2a:eb23
+Aug 25 10:49:57 GARDENA-2aeb23 dhcpcd[253]: eth0: rebinding lease of 10.42.215.63
+Aug 25 10:49:58 GARDENA-2aeb23 dhcpcd[253]: eth0: soliciting an IPv6 router
+Aug 25 10:49:58 GARDENA-2aeb23 kernel: rt3050-esw 10110000.esw: link changed 0x00
+Aug 25 10:49:58 GARDENA-2aeb23 dhcpcd[253]: eth0: carrier lost
+Aug 25 10:49:58 GARDENA-2aeb23 systemd-networkd[231]: eth0: Lost carrier
+Aug 25 10:49:58 GARDENA-2aeb23 dhcpcd[253]: eth0: deleting address fe80::96bb:aeff:fe2a:eb23
+Aug 25 10:50:00 GARDENA-2aeb23 kernel: rt3050-esw 10110000.esw: link changed 0x01
+Aug 25 10:50:00 GARDENA-2aeb23 systemd-networkd[231]: eth0: Gained carrier
+Aug 25 10:50:00 GARDENA-2aeb23 dhcpcd[253]: eth0: carrier acquired
+Aug 25 10:50:00 GARDENA-2aeb23 dhcpcd[253]: eth0: IAID ae:2a:eb:23
+Aug 25 10:50:00 GARDENA-2aeb23 dhcpcd[253]: eth0: adding address fe80::96bb:aeff:fe2a:eb23
+Aug 25 10:50:01 GARDENA-2aeb23 dhcpcd[253]: eth0: soliciting an IPv6 router
+Aug 25 10:50:01 GARDENA-2aeb23 dhcpcd[253]: eth0: rebinding lease of 10.42.215.63
+Aug 25 10:50:01 GARDENA-2aeb23 dhcpcd[253]: eth0: probing address 10.42.215.63/16
+Aug 25 10:50:02 GARDENA-2aeb23 systemd-networkd[231]: eth0: Gained IPv6LL
+Aug 25 10:50:02 GARDENA-2aeb23 systemd-timesyncd[163]: Network configuration changed, trying to establish connection.
+Aug 25 10:50:02 GARDENA-2aeb23 systemd[1]: Condition check resulted in Check EOL test status and update status file being skipped.
+Aug 25 10:50:02 GARDENA-2aeb23 systemd[1]: Condition check resulted in Software Update Service being skipped.
+Aug 25 10:50:06 GARDENA-2aeb23 dhcpcd[253]: eth0: leased 10.42.215.63 for 3600 seconds
+Aug 25 10:50:06 GARDENA-2aeb23 dhcpcd[253]: eth0: adding route to 10.42.0.0/16
+Aug 25 10:50:06 GARDENA-2aeb23 systemd-timesyncd[163]: Network configuration changed, trying to establish connection.
+Aug 25 10:50:06 GARDENA-2aeb23 dhcpcd[253]: eth0: adding default route via 10.42.0.1
+Aug 25 10:50:07 GARDENA-2aeb23 systemd[1]: swupdate-check.timer: Succeeded.
+Aug 25 10:50:07 GARDENA-2aeb23 systemd[1]: Stopped Run swupdate-check.service on startup and periodically thereafter.
+Aug 25 10:50:07 GARDENA-2aeb23 systemd[1]: Stopping Run swupdate-check.service on startup and periodically thereafter.
+Aug 25 10:50:07 GARDENA-2aeb23 systemd[1]: Started Run swupdate-check.service on startup and periodically thereafter.
+Aug 25 10:50:14 GARDENA-2aeb23 dhcpcd[253]: eth0: no IPv6 Routers available
+Aug 25 10:50:22 GARDENA-2aeb23 systemd[1]: Condition check resulted in Check EOL test status and update status file being skipped.
+Aug 25 10:50:22 GARDENA-2aeb23 systemd[1]: Condition check resulted in Software Update Service being skipped.
+Aug 25 10:51:09 GARDENA-2aeb23 kernel: rt3050-esw 10110000.esw: link changed 0x00
+Aug 25 10:51:09 GARDENA-2aeb23 dhcpcd[253]: eth0: carrier lost
+Aug 25 10:51:09 GARDENA-2aeb23 systemd-networkd[231]: eth0: Lost carrier
+Aug 25 10:51:09 GARDENA-2aeb23 dhcpcd[253]: eth0: deleting address fe80::96bb:aeff:fe2a:eb23
+Aug 25 10:51:09 GARDENA-2aeb23 dhcpcd[253]: eth0: deleting route to 10.42.0.0/16
+Aug 25 10:51:09 GARDENA-2aeb23 dhcpcd[253]: eth0: deleting default route via 10.42.0.1
+Aug 25 10:51:11 GARDENA-2aeb23 kernel: rt3050-esw 10110000.esw: link changed 0x01
+Aug 25 10:51:11 GARDENA-2aeb23 systemd-networkd[231]: eth0: Gained carrier
+Aug 25 10:51:11 GARDENA-2aeb23 dhcpcd[253]: eth0: carrier acquired
+Aug 25 10:51:11 GARDENA-2aeb23 dhcpcd[253]: eth0: IAID ae:2a:eb:23
+Aug 25 10:51:11 GARDENA-2aeb23 dhcpcd[253]: eth0: adding address fe80::96bb:aeff:fe2a:eb23
+Aug 25 10:51:11 GARDENA-2aeb23 dhcpcd[253]: eth0: rebinding lease of 10.42.215.63
+Aug 25 10:51:12 GARDENA-2aeb23 kernel: rt3050-esw 10110000.esw: link changed 0x00
+Aug 25 10:51:12 GARDENA-2aeb23 dhcpcd[253]: eth0: soliciting an IPv6 router
+Aug 25 10:51:12 GARDENA-2aeb23 dhcpcd[253]: eth0: carrier lost
+Aug 25 10:51:12 GARDENA-2aeb23 systemd-networkd[231]: eth0: Lost carrier
+Aug 25 10:51:12 GARDENA-2aeb23 dhcpcd[253]: eth0: deleting address fe80::96bb:aeff:fe2a:eb23
+Aug 25 10:51:14 GARDENA-2aeb23 kernel: rt3050-esw 10110000.esw: link changed 0x01
+Aug 25 10:51:14 GARDENA-2aeb23 dhcpcd[253]: eth0: carrier acquired
+Aug 25 10:51:14 GARDENA-2aeb23 systemd-networkd[231]: eth0: Gained carrier
+Aug 25 10:51:14 GARDENA-2aeb23 dhcpcd[253]: eth0: IAID ae:2a:eb:23
+Aug 25 10:51:14 GARDENA-2aeb23 dhcpcd[253]: eth0: adding address fe80::96bb:aeff:fe2a:eb23
+Aug 25 10:51:14 GARDENA-2aeb23 dhcpcd[253]: eth0: soliciting an IPv6 router
+Aug 25 10:51:15 GARDENA-2aeb23 dhcpcd[253]: eth0: rebinding lease of 10.42.215.63
+Aug 25 10:51:15 GARDENA-2aeb23 dhcpcd[253]: eth0: probing address 10.42.215.63/16
+Aug 25 10:51:15 GARDENA-2aeb23 systemd-networkd[231]: eth0: Gained IPv6LL
+Aug 25 10:51:15 GARDENA-2aeb23 systemd-timesyncd[163]: Network configuration changed, trying to establish connection.
+Aug 25 10:51:15 GARDENA-2aeb23 kernel: rt3050-esw 10110000.esw: link changed 0x00
+Aug 25 10:51:15 GARDENA-2aeb23 dhcpcd[253]: eth0: carrier lost
+Aug 25 10:51:15 GARDENA-2aeb23 systemd-networkd[231]: eth0: Lost carrier
+Aug 25 10:51:16 GARDENA-2aeb23 dhcpcd[253]: eth0: deleting address fe80::96bb:aeff:fe2a:eb23
+Aug 25 10:51:18 GARDENA-2aeb23 kernel: rt3050-esw 10110000.esw: link changed 0x01
+Aug 25 10:51:18 GARDENA-2aeb23 systemd-networkd[231]: eth0: Gained carrier
+Aug 25 10:51:18 GARDENA-2aeb23 dhcpcd[253]: eth0: carrier acquired
+Aug 25 10:51:18 GARDENA-2aeb23 dhcpcd[253]: eth0: IAID ae:2a:eb:23
+Aug 25 10:51:18 GARDENA-2aeb23 dhcpcd[253]: eth0: adding address fe80::96bb:aeff:fe2a:eb23
+Aug 25 10:51:18 GARDENA-2aeb23 dhcpcd[253]: eth0: soliciting an IPv6 router
+Aug 25 10:51:19 GARDENA-2aeb23 dhcpcd[253]: eth0: rebinding lease of 10.42.215.63
+Aug 25 10:51:19 GARDENA-2aeb23 kernel: rt3050-esw 10110000.esw: link changed 0x00
+Aug 25 10:51:19 GARDENA-2aeb23 dhcpcd[253]: eth0: carrier lost
+Aug 25 10:51:19 GARDENA-2aeb23 systemd-networkd[231]: eth0: Lost carrier
+Aug 25 10:51:19 GARDENA-2aeb23 dhcpcd[253]: eth0: deleting address fe80::96bb:aeff:fe2a:eb23
+Aug 25 10:51:22 GARDENA-2aeb23 kernel: rt3050-esw 10110000.esw: link changed 0x01
+Aug 25 10:51:22 GARDENA-2aeb23 systemd-networkd[231]: eth0: Gained carrier
+Aug 25 10:51:22 GARDENA-2aeb23 dhcpcd[253]: eth0: carrier acquired
+Aug 25 10:51:22 GARDENA-2aeb23 dhcpcd[253]: eth0: IAID ae:2a:eb:23
+Aug 25 10:51:22 GARDENA-2aeb23 dhcpcd[253]: eth0: adding address fe80::96bb:aeff:fe2a:eb23
+Aug 25 10:51:22 GARDENA-2aeb23 dhcpcd[253]: eth0: rebinding lease of 10.42.215.63
+Aug 25 10:51:22 GARDENA-2aeb23 dhcpcd[253]: eth0: probing address 10.42.215.63/16
+Aug 25 10:51:22 GARDENA-2aeb23 dhcpcd[253]: eth0: soliciting an IPv6 router
+Aug 25 10:51:24 GARDENA-2aeb23 systemd-networkd[231]: eth0: Gained IPv6LL
+Aug 25 10:51:24 GARDENA-2aeb23 systemd-timesyncd[163]: Network configuration changed, trying to establish connection.
+Aug 25 10:51:27 GARDENA-2aeb23 kernel: rt3050-esw 10110000.esw: link changed 0x00
+Aug 25 10:51:27 GARDENA-2aeb23 systemd-networkd[231]: eth0: Lost carrier
+Aug 25 10:51:27 GARDENA-2aeb23 dhcpcd[253]: eth0: carrier lost
+Aug 25 10:51:27 GARDENA-2aeb23 dhcpcd[253]: eth0: deleting address fe80::96bb:aeff:fe2a:eb23
+Aug 25 10:51:29 GARDENA-2aeb23 kernel: rt3050-esw 10110000.esw: link changed 0x01
+Aug 25 10:51:29 GARDENA-2aeb23 dhcpcd[253]: eth0: carrier acquired
+Aug 25 10:51:29 GARDENA-2aeb23 systemd-networkd[231]: eth0: Gained carrier
+Aug 25 10:51:30 GARDENA-2aeb23 dhcpcd[253]: eth0: IAID ae:2a:eb:23
+Aug 25 10:51:30 GARDENA-2aeb23 dhcpcd[253]: eth0: adding address fe80::96bb:aeff:fe2a:eb23
+Aug 25 10:51:30 GARDENA-2aeb23 dhcpcd[253]: eth0: rebinding lease of 10.42.215.63
+Aug 25 10:51:30 GARDENA-2aeb23 dhcpcd[253]: eth0: soliciting an IPv6 router
+Aug 25 10:51:31 GARDENA-2aeb23 systemd-networkd[231]: eth0: Gained IPv6LL
+Aug 25 10:51:31 GARDENA-2aeb23 systemd-timesyncd[163]: Network configuration changed, trying to establish connection.
+Aug 25 10:51:33 GARDENA-2aeb23 dhcpcd[253]: eth0: probing address 10.42.215.63/16
+Aug 25 10:51:38 GARDENA-2aeb23 dhcpcd[253]: eth0: leased 10.42.215.63 for 3600 seconds
+Aug 25 10:51:38 GARDENA-2aeb23 dhcpcd[253]: eth0: adding route to 10.42.0.0/16
+Aug 25 10:51:38 GARDENA-2aeb23 systemd-timesyncd[163]: Network configuration changed, trying to establish connection.
+Aug 25 10:51:38 GARDENA-2aeb23 dhcpcd[253]: eth0: adding default route via 10.42.0.1
+Aug 25 10:51:38 GARDENA-2aeb23 systemd[1]: swupdate-check.timer: Succeeded.
+Aug 25 10:51:38 GARDENA-2aeb23 systemd[1]: Stopped Run swupdate-check.service on startup and periodically thereafter.
+Aug 25 10:51:38 GARDENA-2aeb23 systemd[1]: Stopping Run swupdate-check.service on startup and periodically thereafter.
+Aug 25 10:51:38 GARDENA-2aeb23 systemd[1]: Started Run swupdate-check.service on startup and periodically thereafter.
+Aug 25 10:51:43 GARDENA-2aeb23 dhcpcd[253]: eth0: no IPv6 Routers available
+Aug 25 10:51:52 GARDENA-2aeb23 agetty[521]: ttyS0: invalid character conversion for login name
+Aug 25 10:52:02 GARDENA-2aeb23 systemd[1]: serial-getty@ttyS0.service: Succeeded.
+Aug 25 10:52:02 GARDENA-2aeb23 systemd[1]: Condition check resulted in Check EOL test status and update status file being skipped.
+Aug 25 10:52:02 GARDENA-2aeb23 systemd[1]: Condition check resulted in Run EOL test during manufacturing being skipped.
+Aug 25 10:52:02 GARDENA-2aeb23 systemd[1]: Condition check resulted in Software Update Service being skipped.
+Aug 25 10:52:03 GARDENA-2aeb23 systemd[1]: serial-getty@ttyS0.service: Scheduled restart job, restart counter is at 1.
+Aug 25 10:52:03 GARDENA-2aeb23 systemd[1]: Condition check resulted in Check EOL test status and update status file being skipped.
+Aug 25 10:52:03 GARDENA-2aeb23 systemd[1]: Condition check resulted in Run EOL test during manufacturing being skipped.
+Aug 25 10:52:03 GARDENA-2aeb23 systemd[1]: Stopped Serial Getty on ttyS0.
+Aug 25 10:52:03 GARDENA-2aeb23 systemd[1]: Starting Run IPR tool...
+Aug 25 10:52:03 GARDENA-2aeb23 ipr-setup[1226]: adjtime state 0 status 2001 time Fri 2023-08-25 08:52:03.318282 UTC
+Aug 25 10:52:19 GARDENA-2aeb23 ipr-setup[1236]: stdin: OK
+Aug 25 10:52:22 GARDENA-2aeb23 kernel: rt3050-esw 10110000.esw: link changed 0x00
+Aug 25 10:52:22 GARDENA-2aeb23 dhcpcd[253]: eth0: carrier lost
+Aug 25 10:52:22 GARDENA-2aeb23 systemd-networkd[231]: eth0: Lost carrier
+Aug 25 10:52:22 GARDENA-2aeb23 dhcpcd[253]: eth0: deleting address fe80::96bb:aeff:fe2a:eb23
+Aug 25 10:52:22 GARDENA-2aeb23 dhcpcd[253]: eth0: deleting route to 10.42.0.0/16
+Aug 25 10:52:22 GARDENA-2aeb23 dhcpcd[253]: eth0: deleting default route via 10.42.0.1
+Aug 25 10:52:23 GARDENA-2aeb23 ipr-setup[1240]: Traceback (most recent call last):
+Aug 25 10:52:23 GARDENA-2aeb23 ipr-setup[1240]:   File "/usr/bin/ipr-tool", line 251, in <module>
+Aug 25 10:52:23 GARDENA-2aeb23 ipr-setup[1240]:     main()
+Aug 25 10:52:23 GARDENA-2aeb23 ipr-setup[1240]:   File "/usr/bin/ipr-tool", line 245, in main
+Aug 25 10:52:23 GARDENA-2aeb23 ipr-setup[1240]:     verify_ipr_data()
+Aug 25 10:52:23 GARDENA-2aeb23 ipr-setup[1240]:   File "/usr/bin/ipr-tool", line 211, in verify_ipr_data
+Aug 25 10:52:23 GARDENA-2aeb23 ipr-setup[1240]:     cpms = CPMSClientBootstrapped()
+Aug 25 10:52:23 GARDENA-2aeb23 ipr-setup[1240]:   File "/usr/lib/python3.8/site-packages/cpms_client.py", line 204, in __init__
+Aug 25 10:52:23 GARDENA-2aeb23 ipr-setup[1240]:     cpms_config = CPMSConfiguration()
+Aug 25 10:52:23 GARDENA-2aeb23 ipr-setup[1240]:   File "/usr/lib/python3.8/site-packages/cpms_config.py", line 25, in __init__
+Aug 25 10:52:23 GARDENA-2aeb23 ipr-setup[1240]:     config_body = bootstrap_get_cpms_config()
+Aug 25 10:52:23 GARDENA-2aeb23 ipr-setup[1240]:   File "/usr/lib/python3.8/site-packages/bootstrap.py", line 58, in bootstrap_get_cpms_config
+Aug 25 10:52:23 GARDENA-2aeb23 ipr-setup[1240]:     return bootstrap_server_get(BOOTSTRAP_SERVER_CPMS_CONFIG_PATH)
+Aug 25 10:52:23 GARDENA-2aeb23 ipr-setup[1240]:   File "/usr/lib/python3.8/site-packages/bootstrap.py", line 29, in bootstrap_server_get
+Aug 25 10:52:23 GARDENA-2aeb23 ipr-setup[1240]:     connection.request("GET", path)
+Aug 25 10:52:23 GARDENA-2aeb23 ipr-setup[1240]:   File "/usr/lib/python3.8/http/client.py", line 1256, in request
+Aug 25 10:52:23 GARDENA-2aeb23 ipr-setup[1240]:     self._send_request(method, url, body, headers, encode_chunked)
+Aug 25 10:52:23 GARDENA-2aeb23 ipr-setup[1240]:   File "/usr/lib/python3.8/http/client.py", line 1302, in _send_request
+Aug 25 10:52:23 GARDENA-2aeb23 ipr-setup[1240]:     self.endheaders(body, encode_chunked=encode_chunked)
+Aug 25 10:52:23 GARDENA-2aeb23 ipr-setup[1240]:   File "/usr/lib/python3.8/http/client.py", line 1251, in endheaders
+Aug 25 10:52:23 GARDENA-2aeb23 ipr-setup[1240]:     self._send_output(message_body, encode_chunked=encode_chunked)
+Aug 25 10:52:23 GARDENA-2aeb23 ipr-setup[1240]:   File "/usr/lib/python3.8/http/client.py", line 1011, in _send_output
+Aug 25 10:52:23 GARDENA-2aeb23 ipr-setup[1240]:     self.send(msg)
+Aug 25 10:52:23 GARDENA-2aeb23 ipr-setup[1240]:   File "/usr/lib/python3.8/http/client.py", line 951, in send
+Aug 25 10:52:23 GARDENA-2aeb23 ipr-setup[1240]:     self.connect()
+Aug 25 10:52:23 GARDENA-2aeb23 ipr-setup[1240]:   File "/usr/lib/python3.8/http/client.py", line 922, in connect
+Aug 25 10:52:23 GARDENA-2aeb23 ipr-setup[1240]:     self.sock = self._create_connection(
+Aug 25 10:52:23 GARDENA-2aeb23 ipr-setup[1240]:   File "/usr/lib/python3.8/socket.py", line 808, in create_connection
+Aug 25 10:52:23 GARDENA-2aeb23 ipr-setup[1240]:     raise err
+Aug 25 10:52:23 GARDENA-2aeb23 ipr-setup[1240]:   File "/usr/lib/python3.8/socket.py", line 796, in create_connection
+Aug 25 10:52:23 GARDENA-2aeb23 ipr-setup[1240]:     sock.connect(sa)
+Aug 25 10:52:23 GARDENA-2aeb23 ipr-setup[1240]: OSError: [Errno 128] Network is unreachable
+Aug 25 10:52:23 GARDENA-2aeb23 systemd[1]: ipr.service: Main process exited, code=exited, status=1/FAILURE
+Aug 25 10:52:24 GARDENA-2aeb23 kernel: rt3050-esw 10110000.esw: link changed 0x01
+Aug 25 10:52:24 GARDENA-2aeb23 systemd-networkd[231]: eth0: Gained carrier
+Aug 25 10:52:24 GARDENA-2aeb23 dhcpcd[253]: eth0: carrier acquired
+Aug 25 10:52:24 GARDENA-2aeb23 dhcpcd[253]: eth0: IAID ae:2a:eb:23
+Aug 25 10:52:24 GARDENA-2aeb23 dhcpcd[253]: eth0: adding address fe80::96bb:aeff:fe2a:eb23
+Aug 25 10:52:24 GARDENA-2aeb23 dhcpcd[253]: eth0: soliciting an IPv6 router
+Aug 25 10:52:24 GARDENA-2aeb23 dhcpcd[253]: eth0: rebinding lease of 10.42.215.63
+Aug 25 10:52:24 GARDENA-2aeb23 dhcpcd[253]: eth0: probing address 10.42.215.63/16
+Aug 25 10:52:26 GARDENA-2aeb23 systemd-networkd[231]: eth0: Gained IPv6LL
+Aug 25 10:52:26 GARDENA-2aeb23 systemd-timesyncd[163]: Network configuration changed, trying to establish connection.
+Aug 25 10:52:27 GARDENA-2aeb23 sh[1268]: Traceback (most recent call last):
+Aug 25 10:52:27 GARDENA-2aeb23 sh[1268]:   File "/usr/bin/cpms-errorhandler", line 134, in <module>
+Aug 25 10:52:27 GARDENA-2aeb23 sh[1268]:     main()
+Aug 25 10:52:27 GARDENA-2aeb23 sh[1268]:   File "/usr/bin/cpms-errorhandler", line 128, in main
+Aug 25 10:52:27 GARDENA-2aeb23 sh[1268]:     add_event(info)
+Aug 25 10:52:27 GARDENA-2aeb23 sh[1268]:   File "/usr/bin/cpms-errorhandler", line 78, in add_event
+Aug 25 10:52:27 GARDENA-2aeb23 sh[1268]:     cpms = CPMSClientBootstrapped()
+Aug 25 10:52:27 GARDENA-2aeb23 sh[1268]:   File "/usr/lib/python3.8/site-packages/cpms_client.py", line 204, in __init__
+Aug 25 10:52:27 GARDENA-2aeb23 sh[1268]:     cpms_config = CPMSConfiguration()
+Aug 25 10:52:27 GARDENA-2aeb23 sh[1268]:   File "/usr/lib/python3.8/site-packages/cpms_config.py", line 25, in __init__
+Aug 25 10:52:27 GARDENA-2aeb23 sh[1268]:     config_body = bootstrap_get_cpms_config()
+Aug 25 10:52:27 GARDENA-2aeb23 sh[1268]:   File "/usr/lib/python3.8/site-packages/bootstrap.py", line 58, in bootstrap_get_cpms_config
+Aug 25 10:52:27 GARDENA-2aeb23 sh[1268]:     return bootstrap_server_get(BOOTSTRAP_SERVER_CPMS_CONFIG_PATH)
+Aug 25 10:52:27 GARDENA-2aeb23 sh[1268]:   File "/usr/lib/python3.8/site-packages/bootstrap.py", line 29, in bootstrap_server_get
+Aug 25 10:52:27 GARDENA-2aeb23 sh[1268]:     connection.request("GET", path)
+Aug 25 10:52:27 GARDENA-2aeb23 sh[1268]:   File "/usr/lib/python3.8/http/client.py", line 1256, in request
+Aug 25 10:52:27 GARDENA-2aeb23 sh[1268]:     self._send_request(method, url, body, headers, encode_chunked)
+Aug 25 10:52:27 GARDENA-2aeb23 sh[1268]:   File "/usr/lib/python3.8/http/client.py", line 1302, in _send_request
+Aug 25 10:52:27 GARDENA-2aeb23 sh[1268]:     self.endheaders(body, encode_chunked=encode_chunked)
+Aug 25 10:52:27 GARDENA-2aeb23 sh[1268]:   File "/usr/lib/python3.8/http/client.py", line 1251, in endheaders
+Aug 25 10:52:27 GARDENA-2aeb23 sh[1268]:     self._send_output(message_body, encode_chunked=encode_chunked)
+Aug 25 10:52:27 GARDENA-2aeb23 sh[1268]:   File "/usr/lib/python3.8/http/client.py", line 1011, in _send_output
+Aug 25 10:52:27 GARDENA-2aeb23 sh[1268]:     self.send(msg)
+Aug 25 10:52:27 GARDENA-2aeb23 sh[1268]:   File "/usr/lib/python3.8/http/client.py", line 951, in send
+Aug 25 10:52:27 GARDENA-2aeb23 sh[1268]:     self.connect()
+Aug 25 10:52:27 GARDENA-2aeb23 sh[1268]:   File "/usr/lib/python3.8/http/client.py", line 922, in connect
+Aug 25 10:52:27 GARDENA-2aeb23 sh[1268]:     self.sock = self._create_connection(
+Aug 25 10:52:27 GARDENA-2aeb23 sh[1268]:   File "/usr/lib/python3.8/socket.py", line 808, in create_connection
+Aug 25 10:52:27 GARDENA-2aeb23 sh[1268]:     raise err
+Aug 25 10:52:27 GARDENA-2aeb23 sh[1268]:   File "/usr/lib/python3.8/socket.py", line 796, in create_connection
+Aug 25 10:52:27 GARDENA-2aeb23 sh[1268]:     sock.connect(sa)
+Aug 25 10:52:27 GARDENA-2aeb23 sh[1268]: OSError: [Errno 128] Network is unreachable
+Aug 25 10:52:27 GARDENA-2aeb23 systemd[1]: ipr.service: Control process exited, code=exited, status=1/FAILURE
+Aug 25 10:52:27 GARDENA-2aeb23 systemd[1]: ipr.service: Failed with result 'exit-code'.
+Aug 25 10:52:27 GARDENA-2aeb23 systemd[1]: Failed to start Run IPR tool.
+Aug 25 10:52:27 GARDENA-2aeb23 systemd[1]: Dependency failed for Run HomeKit setup during manufacturing.
+Aug 25 10:52:27 GARDENA-2aeb23 systemd[1]: Dependency failed for Run selftest during manufacturing.
+Aug 25 10:52:27 GARDENA-2aeb23 systemd[1]: selftest.service: Job selftest.service/start failed with result 'dependency'.
+Aug 25 10:52:27 GARDENA-2aeb23 systemd[1]: homekit-setup.service: Job homekit-setup.service/start failed with result 'dependency'.
+Aug 25 10:52:27 GARDENA-2aeb23 systemd[1]: ipr.service: Consumed 10.464s CPU time.
+Aug 25 10:52:27 GARDENA-2aeb23 systemd[1]: Started Serial Getty on ttyS0.
+Aug 25 10:52:29 GARDENA-2aeb23 dhcpcd[253]: eth0: leased 10.42.215.63 for 3600 seconds
+Aug 25 10:52:29 GARDENA-2aeb23 dhcpcd[253]: eth0: adding route to 10.42.0.0/16
+Aug 25 10:52:29 GARDENA-2aeb23 systemd-timesyncd[163]: Network configuration changed, trying to establish connection.
+Aug 25 10:52:29 GARDENA-2aeb23 dhcpcd[253]: eth0: adding default route via 10.42.0.1
+Aug 25 10:52:30 GARDENA-2aeb23 systemd[1]: swupdate-check.timer: Succeeded.
+Aug 25 10:52:30 GARDENA-2aeb23 systemd[1]: Stopped Run swupdate-check.service on startup and periodically thereafter.
+Aug 25 10:52:30 GARDENA-2aeb23 systemd[1]: Stopping Run swupdate-check.service on startup and periodically thereafter.
+Aug 25 10:52:30 GARDENA-2aeb23 systemd[1]: Started Run swupdate-check.service on startup and periodically thereafter.
+Aug 25 10:52:32 GARDENA-2aeb23 login[1284]: ROOT LOGIN  on '/dev/ttyS0'
+Aug 25 10:52:38 GARDENA-2aeb23 dhcpcd[253]: eth0: no IPv6 Routers available
+root@GARDENA-2aeb23:~# 
+FATAL: read zero bytes from port
+term_exitfunc: reset failed for dev UNKNOWN: Input/output error
+reto@michael:~$ 

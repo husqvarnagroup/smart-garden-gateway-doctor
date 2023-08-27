@@ -1,0 +1,1232 @@
+
+FATAL: read zero bytes from port
+term_exitfunc: reset failed for dev UNKNOWN: Input/output error
+reto@michael:~$ picocom -b 115200 /dev/ttyUSB0 
+picocom v3.1
+
+port is        : /dev/ttyUSB0
+flowcontrol    : none
+baudrate is    : 115200
+parity is      : none
+databits are   : 8
+stopbits are   : 1
+escape is      : C-a
+local echo is  : no
+noinit is      : no
+noreset is     : no
+hangup is      : no
+nolock is      : no
+send_cmd is    : sz -vv
+receive_cmd is : rz -vv -E
+imap is        : 
+omap is        : 
+emap is        : crcrlf,delbs,
+logfile is     : none
+initstring     : none
+exit_after is  : not set
+exit is        : no
+
+Type [C-a] [C-h] to see available commands
+Terminal ready
+
+GARDENA-37ca54 login: root
+
+You can find the open source parts of the software for this product on
+GitHub [1] (this does not include the proprietary packages, which are
+needed to operate the gateway in the GARDENA smart system).
+
+Please be aware that any modification to your gateway, in particular a
+modification of U-Boot, may permanently brick your device and is not
+covered by warranty.
+
+Happy hacking!
+
+P.S. Interested in tinkering with GARDENA products full-time? Get in
+touch with us at jobs@hqv.ch to find out about currently open
+developer positions!
+
+[1] https://github.com/husqvarnagroup/smart-garden-gateway-public
+
+root@GARDENA-37ca54:~# journalctl -b
+-- Logs begin at Mon 2021-06-14 03:51:06 CEST, end at Fri 2023-08-25 11:32:23 CEST. --
+Jun 14 03:51:06 GARDENA-37ca54 kernel: Linux version 5.10.43-r4.0.1.8-yocto-tiny (oe-user@oe-host) (mipsel-gardena-linux-gcc (GCC) 9.3.0, GNU ld (GNU Binutils) 2.34.0.20200220) #1 Thu Jul 22 15:06:54 UTC 2021
+Jun 14 03:51:06 GARDENA-37ca54 kernel: Board has DDR2
+Jun 14 03:51:06 GARDENA-37ca54 kernel: Analog PMU set to hw control
+Jun 14 03:51:06 GARDENA-37ca54 kernel: Digital PMU set to hw control
+Jun 14 03:51:06 GARDENA-37ca54 kernel: SoC Type: MediaTek MT7688 ver:1 eco:2
+Jun 14 03:51:06 GARDENA-37ca54 kernel: printk: bootconsole [early0] enabled
+Jun 14 03:51:06 GARDENA-37ca54 kernel: CPU0 revision is: 00019655 (MIPS 24KEc)
+Jun 14 03:51:06 GARDENA-37ca54 kernel: MIPS: machine is GARDENA smart Gateway (MT7688)
+Jun 14 03:51:06 GARDENA-37ca54 kernel: Initrd not found or empty - disabling initrd
+Jun 14 03:51:06 GARDENA-37ca54 kernel: Primary instruction cache 64kB, VIPT, 4-way, linesize 32 bytes.
+Jun 14 03:51:06 GARDENA-37ca54 kernel: Primary data cache 32kB, 4-way, PIPT, no aliases, linesize 32 bytes
+Jun 14 03:51:06 GARDENA-37ca54 kernel: Zone ranges:
+Jun 14 03:51:06 GARDENA-37ca54 kernel:   Normal   [mem 0x0000000000000000-0x0000000007ffffff]
+Jun 14 03:51:06 GARDENA-37ca54 kernel: Movable zone start for each node
+Jun 14 03:51:06 GARDENA-37ca54 kernel: Early memory node ranges
+Jun 14 03:51:06 GARDENA-37ca54 kernel:   node   0: [mem 0x0000000000000000-0x0000000007ffffff]
+Jun 14 03:51:06 GARDENA-37ca54 kernel: Initmem setup node 0 [mem 0x0000000000000000-0x0000000007ffffff]
+Jun 14 03:51:06 GARDENA-37ca54 kernel: On node 0 totalpages: 32768
+Jun 14 03:51:06 GARDENA-37ca54 kernel:   Normal zone: 288 pages used for memmap
+Jun 14 03:51:06 GARDENA-37ca54 kernel:   Normal zone: 0 pages reserved
+Jun 14 03:51:06 GARDENA-37ca54 kernel:   Normal zone: 32768 pages, LIFO batch:7
+Jun 14 03:51:06 GARDENA-37ca54 kernel: pcpu-alloc: s0 r0 d32768 u32768 alloc=1*32768
+Jun 14 03:51:06 GARDENA-37ca54 kernel: pcpu-alloc: [0] 0 
+Jun 14 03:51:06 GARDENA-37ca54 kernel: Built 1 zonelists, mobility grouping on.  Total pages: 32480
+Jun 14 03:51:06 GARDENA-37ca54 kernel: Kernel command line: console=ttyS0,115200 root=/dev/ubiblock0_0 rootrw=ubi0:overlay rootrwfstype=ubifs rootrwoptions=rw,noatime ubi.block=0,rootfs0 ubi.mtd=nand init=/init mtdparts=spi0.0:640k(uboot),64k(uboot_env0),64k(uboot_env1),64k(factory),-(unused);spi0.1:-(nand)
+Jun 14 03:51:06 GARDENA-37ca54 kernel: Dentry cache hash table entries: 16384 (order: 4, 65536 bytes, linear)
+Jun 14 03:51:06 GARDENA-37ca54 kernel: Inode-cache hash table entries: 8192 (order: 3, 32768 bytes, linear)
+Jun 14 03:51:06 GARDENA-37ca54 kernel: Writing ErrCtl register=0005f2f3
+Jun 14 03:51:06 GARDENA-37ca54 kernel: Readback ErrCtl register=0005f2f3
+Jun 14 03:51:06 GARDENA-37ca54 kernel: mem auto-init: stack:off, heap alloc:off, heap free:off
+Jun 14 03:51:06 GARDENA-37ca54 kernel: Memory: 122560K/131072K available (5053K kernel code, 643K rwdata, 1008K rodata, 200K init, 251K bss, 8512K reserved, 0K cma-reserved)
+Jun 14 03:51:06 GARDENA-37ca54 kernel: NR_IRQS: 256
+Jun 14 03:51:06 GARDENA-37ca54 kernel: intc: using register map from devicetree
+Jun 14 03:51:06 GARDENA-37ca54 kernel: random: get_random_bytes called from 0x8068ea18 with crng_init=0
+Jun 14 03:51:06 GARDENA-37ca54 kernel: CPU Clock: 580MHz
+Jun 14 03:51:06 GARDENA-37ca54 kernel: timer_probe: no matching timers found
+Jun 14 03:51:06 GARDENA-37ca54 kernel: clocksource: MIPS: mask: 0xffffffff max_cycles: 0xffffffff, max_idle_ns: 6590553264 ns
+Jun 14 03:51:06 GARDENA-37ca54 kernel: sched_clock: 32 bits at 290MHz, resolution 3ns, wraps every 7405115902ns
+Jun 14 03:51:06 GARDENA-37ca54 kernel: Console: colour dummy device 80x25
+Jun 14 03:51:06 GARDENA-37ca54 kernel: Calibrating delay loop... 385.02 BogoMIPS (lpj=770048)
+Jun 14 03:51:06 GARDENA-37ca54 kernel: pid_max: default: 4096 minimum: 301
+Jun 14 03:51:06 GARDENA-37ca54 kernel: Mount-cache hash table entries: 1024 (order: 0, 4096 bytes, linear)
+Jun 14 03:51:06 GARDENA-37ca54 kernel: Mountpoint-cache hash table entries: 1024 (order: 0, 4096 bytes, linear)
+Jun 14 03:51:06 GARDENA-37ca54 kernel: devtmpfs: initialized
+Jun 14 03:51:06 GARDENA-37ca54 kernel: clocksource: jiffies: mask: 0xffffffff max_cycles: 0xffffffff, max_idle_ns: 7645041785100000 ns
+Jun 14 03:51:06 GARDENA-37ca54 kernel: futex hash table entries: 16 (order: -5, 192 bytes, linear)
+Jun 14 03:51:06 GARDENA-37ca54 kernel: pinctrl core: initialized pinctrl subsystem
+Jun 14 03:51:06 GARDENA-37ca54 kernel: NET: Registered protocol family 16
+Jun 14 03:51:06 GARDENA-37ca54 kernel: clocksource: Switched to clocksource MIPS
+Jun 14 03:51:06 GARDENA-37ca54 kernel: NET: Registered protocol family 2
+Jun 14 03:51:06 GARDENA-37ca54 kernel: IP idents hash table entries: 2048 (order: 2, 16384 bytes, linear)
+Jun 14 03:51:06 GARDENA-37ca54 kernel: tcp_listen_portaddr_hash hash table entries: 512 (order: 0, 4096 bytes, linear)
+Jun 14 03:51:06 GARDENA-37ca54 kernel: TCP established hash table entries: 1024 (order: 0, 4096 bytes, linear)
+Jun 14 03:51:06 GARDENA-37ca54 kernel: TCP bind hash table entries: 1024 (order: 0, 4096 bytes, linear)
+Jun 14 03:51:06 GARDENA-37ca54 kernel: TCP: Hash tables configured (established 1024 bind 1024)
+Jun 14 03:51:06 GARDENA-37ca54 kernel: UDP hash table entries: 256 (order: 0, 4096 bytes, linear)
+Jun 14 03:51:06 GARDENA-37ca54 kernel: UDP-Lite hash table entries: 256 (order: 0, 4096 bytes, linear)
+Jun 14 03:51:06 GARDENA-37ca54 kernel: NET: Registered protocol family 1
+Jun 14 03:51:06 GARDENA-37ca54 kernel: RPC: Registered named UNIX socket transport module.
+Jun 14 03:51:06 GARDENA-37ca54 kernel: RPC: Registered udp transport module.
+Jun 14 03:51:06 GARDENA-37ca54 kernel: RPC: Registered tcp transport module.
+Jun 14 03:51:06 GARDENA-37ca54 kernel: RPC: Registered tcp NFSv4.1 backchannel transport module.
+Jun 14 03:51:06 GARDENA-37ca54 kernel: PCI: CLS 0 bytes, default 32
+Jun 14 03:51:06 GARDENA-37ca54 kernel: workingset: timestamp_bits=14 max_order=15 bucket_order=1
+Jun 14 03:51:06 GARDENA-37ca54 kernel: squashfs: version 4.0 (2009/01/31) Phillip Lougher
+Jun 14 03:51:06 GARDENA-37ca54 kernel: NFS: Registering the id_resolver key type
+Jun 14 03:51:06 GARDENA-37ca54 kernel: Key type id_resolver registered
+Jun 14 03:51:06 GARDENA-37ca54 kernel: Key type id_legacy registered
+Jun 14 03:51:06 GARDENA-37ca54 kernel: NET: Registered protocol family 38
+Jun 14 03:51:06 GARDENA-37ca54 kernel: pinctrl-single 10000060.pinmux: 64 pins, size 8
+Jun 14 03:51:06 GARDENA-37ca54 kernel: mt7621_gpio 10000600.gpio: registering 32 gpios
+Jun 14 03:51:06 GARDENA-37ca54 kernel: mt7621_gpio 10000600.gpio: registering 32 gpios
+Jun 14 03:51:06 GARDENA-37ca54 kernel: mt7621_gpio 10000600.gpio: registering 32 gpios
+Jun 14 03:51:06 GARDENA-37ca54 kernel: Serial: 8250/16550 driver, 3 ports, IRQ sharing disabled
+Jun 14 03:51:06 GARDENA-37ca54 kernel: printk: console [ttyS0] disabled
+Jun 14 03:51:06 GARDENA-37ca54 kernel: 10000c00.uartlite: ttyS0 at MMIO 0x10000c00 (irq = 28, base_baud = 2500000) is a 16550A
+Jun 14 03:51:06 GARDENA-37ca54 kernel: printk: console [ttyS0] enabled
+Jun 14 03:51:06 GARDENA-37ca54 kernel: printk: bootconsole [early0] disabled
+Jun 14 03:51:06 GARDENA-37ca54 kernel: 10000d00.uart1: ttyS1 at MMIO 0x10000d00 (irq = 29, base_baud = 2500000) is a 16550A
+Jun 14 03:51:06 GARDENA-37ca54 kernel: 10000e00.uart2: ttyS2 at MMIO 0x10000e00 (irq = 30, base_baud = 2500000) is a 16550A
+Jun 14 03:51:06 GARDENA-37ca54 kernel: brd: module loaded
+Jun 14 03:51:06 GARDENA-37ca54 kernel: loop: module loaded
+Jun 14 03:51:06 GARDENA-37ca54 kernel: bootcount 1000006c.bootcount: U-Boot bootcounter driver registered using single-word
+Jun 14 03:51:06 GARDENA-37ca54 kernel: spi-mt7621 10000b00.spi: sys_freq: 193333333
+Jun 14 03:51:06 GARDENA-37ca54 kernel: spi-nor spi0.0: XM25QH64C (8192 Kbytes)
+Jun 14 03:51:06 GARDENA-37ca54 kernel: 5 cmdlinepart partitions found on MTD device spi0.0
+Jun 14 03:51:06 GARDENA-37ca54 kernel: Creating 5 MTD partitions on "spi0.0":
+Jun 14 03:51:06 GARDENA-37ca54 kernel: 0x000000000000-0x0000000a0000 : "uboot"
+Jun 14 03:51:06 GARDENA-37ca54 kernel: 0x0000000a0000-0x0000000b0000 : "uboot_env0"
+Jun 14 03:51:06 GARDENA-37ca54 kernel: 0x0000000b0000-0x0000000c0000 : "uboot_env1"
+Jun 14 03:51:06 GARDENA-37ca54 kernel: 0x0000000c0000-0x0000000d0000 : "factory"
+Jun 14 03:51:06 GARDENA-37ca54 kernel: 0x0000000d0000-0x000000800000 : "unused"
+Jun 14 03:51:06 GARDENA-37ca54 kernel: spi-nand spi0.1: GigaDevice SPI NAND was found.
+Jun 14 03:51:06 GARDENA-37ca54 kernel: spi-nand spi0.1: 128 MiB, block size: 128 KiB, page size: 2048, OOB size: 128
+Jun 14 03:51:06 GARDENA-37ca54 kernel: 1 cmdlinepart partitions found on MTD device spi0.1
+Jun 14 03:51:06 GARDENA-37ca54 kernel: Creating 1 MTD partitions on "spi0.1":
+Jun 14 03:51:06 GARDENA-37ca54 kernel: 0x000000000000-0x000008000000 : "nand"
+Jun 14 03:51:06 GARDENA-37ca54 kernel: libphy: Fixed MDIO Bus: probed
+Jun 14 03:51:06 GARDENA-37ca54 kernel: tun: Universal TUN/TAP device driver, 1.6
+Jun 14 03:51:06 GARDENA-37ca54 kernel: rt3050-esw 10110000.esw: link changed 0x00
+Jun 14 03:51:06 GARDENA-37ca54 kernel: mtk_soc_eth 10100000.ethernet eth0: mediatek frame engine at 0xb0100000, irq 5
+Jun 14 03:51:06 GARDENA-37ca54 kernel: PPP generic driver version 2.4.2
+Jun 14 03:51:06 GARDENA-37ca54 kernel: i2c /dev entries driver
+Jun 14 03:51:06 GARDENA-37ca54 kernel: i2c-mt7621 10000900.i2c: clock 100 kHz
+Jun 14 03:51:06 GARDENA-37ca54 kernel: NET: Registered protocol family 10
+Jun 14 03:51:06 GARDENA-37ca54 kernel: Segment Routing with IPv6
+Jun 14 03:51:06 GARDENA-37ca54 kernel: NET: Registered protocol family 17
+Jun 14 03:51:06 GARDENA-37ca54 kernel: Key type dns_resolver registered
+Jun 14 03:51:06 GARDENA-37ca54 kernel: registered taskstats version 1
+Jun 14 03:51:06 GARDENA-37ca54 kernel: ubi0: attaching mtd5
+Jun 14 03:51:06 GARDENA-37ca54 kernel: random: fast init done
+Jun 14 03:51:06 GARDENA-37ca54 kernel: ubi0: scanning is finished
+Jun 14 03:51:06 GARDENA-37ca54 kernel: ubi0: attached mtd5 (name "nand", size 128 MiB)
+Jun 14 03:51:06 GARDENA-37ca54 kernel: ubi0: PEB size: 131072 bytes (128 KiB), LEB size: 126976 bytes
+Jun 14 03:51:06 GARDENA-37ca54 kernel: ubi0: min./max. I/O unit sizes: 2048/2048, sub-page size 2048
+Jun 14 03:51:06 GARDENA-37ca54 kernel: ubi0: VID header offset: 2048 (aligned 2048), data offset: 4096
+Jun 14 03:51:06 GARDENA-37ca54 kernel: ubi0: good PEBs: 1024, bad PEBs: 0, corrupted PEBs: 0
+Jun 14 03:51:06 GARDENA-37ca54 kernel: ubi0: user volume: 5, internal volumes: 1, max. volumes count: 128
+Jun 14 03:51:06 GARDENA-37ca54 kernel: ubi0: max/mean erase counter: 2/1, WL threshold: 4096, image sequence number: 0
+Jun 14 03:51:06 GARDENA-37ca54 kernel: ubi0: available PEBs: 20, total reserved PEBs: 1004, PEBs reserved for bad PEB handling: 22
+Jun 14 03:51:06 GARDENA-37ca54 kernel: ubi0: background thread "ubi_bgt0d" started, PID 51
+Jun 14 03:51:06 GARDENA-37ca54 kernel: rt3050-esw 10110000.esw: link changed 0x01
+Jun 14 03:51:06 GARDENA-37ca54 kernel: block ubiblock0_0: created from ubi0:0(rootfs0)
+Jun 14 03:51:06 GARDENA-37ca54 kernel: input: gpio-keys as /devices/platform/gpio-keys/input/input0
+Jun 14 03:51:06 GARDENA-37ca54 kernel: evbug: Connected device: input0 (gpio-keys at gpio-keys/input0)
+Jun 14 03:51:06 GARDENA-37ca54 kernel: VFS: Mounted root (squashfs filesystem) readonly on device 254:0.
+Jun 14 03:51:06 GARDENA-37ca54 kernel: devtmpfs: mounted
+Jun 14 03:51:06 GARDENA-37ca54 kernel: Freeing unused kernel memory: 200K
+Jun 14 03:51:06 GARDENA-37ca54 kernel: This architecture does not have kernel memory protection.
+Jun 14 03:51:06 GARDENA-37ca54 kernel: Run /init as init process
+Jun 14 03:51:06 GARDENA-37ca54 kernel:   with arguments:
+Jun 14 03:51:06 GARDENA-37ca54 kernel:     /init
+Jun 14 03:51:06 GARDENA-37ca54 kernel:   with environment:
+Jun 14 03:51:06 GARDENA-37ca54 kernel:     HOME=/
+Jun 14 03:51:06 GARDENA-37ca54 kernel:     TERM=linux
+Jun 14 03:51:06 GARDENA-37ca54 kernel:     rootrw=ubi0:overlay
+Jun 14 03:51:06 GARDENA-37ca54 kernel:     rootrwfstype=ubifs
+Jun 14 03:51:06 GARDENA-37ca54 kernel:     rootrwoptions=rw,noatime
+Jun 14 03:51:06 GARDENA-37ca54 kernel: process '/bin/busybox.nosuid' started with executable stack
+Jun 14 03:51:06 GARDENA-37ca54 kernel: ubiblock0_0: Can't mount, would change RO state
+Jun 14 03:51:06 GARDENA-37ca54 kernel: UBIFS (ubi0:4): Mounting in unauthenticated mode
+Jun 14 03:51:06 GARDENA-37ca54 kernel: UBIFS (ubi0:4): background thread "ubifs_bgt0_4" started, PID 84
+Jun 14 03:51:06 GARDENA-37ca54 kernel: UBIFS (ubi0:4): recovery needed
+Jun 14 03:51:06 GARDENA-37ca54 kernel: UBIFS (ubi0:4): recovery completed
+Jun 14 03:51:06 GARDENA-37ca54 kernel: UBIFS (ubi0:4): UBIFS: mounted UBI device 0, volume 4, name "overlay"
+Jun 14 03:51:06 GARDENA-37ca54 kernel: UBIFS (ubi0:4): LEB size: 126976 bytes (124 KiB), min./max. I/O unit sizes: 2048 bytes/2048 bytes
+Jun 14 03:51:06 GARDENA-37ca54 kernel: UBIFS (ubi0:4): FS size: 30220288 bytes (28 MiB, 238 LEBs), journal size 1523712 bytes (1 MiB, 12 LEBs)
+Jun 14 03:51:06 GARDENA-37ca54 kernel: UBIFS (ubi0:4): reserved for root: 1427378 bytes (1393 KiB)
+Jun 14 03:51:06 GARDENA-37ca54 kernel: UBIFS (ubi0:4): media format: w5/r0 (latest is w5/r0), UUID F76C20F5-6A02-4B0D-A872-97507681BB7F, small LPT model
+Jun 14 03:51:06 GARDENA-37ca54 systemd[1]: System time before build time, advancing clock.
+Jun 14 03:51:06 GARDENA-37ca54 systemd[1]: systemd 244.5+ running in system mode. (-PAM -AUDIT -SELINUX +IMA -APPARMOR -SMACK +SYSVINIT +UTMP -LIBCRYPTSETUP -GCRYPT -GNUTLS -ACL +XZ -LZ4 -SECCOMP +BLKID -ELFUTILS +KMOD -IDN2 -IDN -PCRE2 default-hierarchy=hybrid)
+Jun 14 03:51:06 GARDENA-37ca54 systemd[1]: Detected architecture mips.
+Jun 14 03:51:06 GARDENA-37ca54 systemd[1]: Set hostname to <GARDENA-37ca54>.
+Jun 14 03:51:06 GARDENA-37ca54 systemd[1]: Hardware watchdog 'Mediatek Watchdog', version 0
+Jun 14 03:51:06 GARDENA-37ca54 systemd[1]: Set hardware watchdog to 1min.
+Jun 14 03:51:06 GARDENA-37ca54 systemd[1]: /lib/systemd/system/openvpn.service:12: PIDFile= references a path below legacy directory /var/run/, updating /var/run/openvpn/seluxit.pid → /run/openvpn/seluxit.pid; please update the unit file accordingly.
+Jun 14 03:51:06 GARDENA-37ca54 systemd[1]: /lib/systemd/system/mdns.service:10: PIDFile= references a path below legacy directory /var/run/, updating /var/run/mdnsd.pid → /run/mdnsd.pid; please update the unit file accordingly.
+Jun 14 03:51:06 GARDENA-37ca54 kernel: random: systemd: uninitialized urandom read (16 bytes read)
+Jun 14 03:51:06 GARDENA-37ca54 systemd[1]: Created slice system-getty.slice.
+Jun 14 03:51:06 GARDENA-37ca54 kernel: random: systemd: uninitialized urandom read (16 bytes read)
+Jun 14 03:51:06 GARDENA-37ca54 systemd[1]: Created slice system-serial\x2dgetty.slice.
+Jun 14 03:51:06 GARDENA-37ca54 kernel: random: systemd: uninitialized urandom read (16 bytes read)
+Jun 14 03:51:06 GARDENA-37ca54 systemd[1]: Created slice User and Session Slice.
+Jun 14 03:51:06 GARDENA-37ca54 systemd[1]: Started Dispatch Password Requests to Console Directory Watch.
+Jun 14 03:51:06 GARDENA-37ca54 systemd[1]: Started Forward Password Requests to Wall Directory Watch.
+Jun 14 03:51:06 GARDENA-37ca54 systemd[1]: Reached target Paths.
+Jun 14 03:51:06 GARDENA-37ca54 systemd[1]: Reached target Remote File Systems.
+Jun 14 03:51:06 GARDENA-37ca54 systemd[1]: Reached target Slices.
+Jun 14 03:51:06 GARDENA-37ca54 systemd[1]: Reached target Swap.
+Jun 14 03:51:06 GARDENA-37ca54 systemd[1]: Listening on initctl Compatibility Named Pipe.
+Jun 14 03:51:06 GARDENA-37ca54 systemd[1]: Condition check resulted in Journal Audit Socket being skipped.
+Jun 14 03:51:06 GARDENA-37ca54 systemd[1]: Listening on Journal Socket (/dev/log).
+Jun 14 03:51:06 GARDENA-37ca54 systemd[1]: Listening on Journal Socket.
+Jun 14 03:51:06 GARDENA-37ca54 systemd[1]: Listening on Network Service Netlink Socket.
+Jun 14 03:51:06 GARDENA-37ca54 systemd[1]: Listening on udev Control Socket.
+Jun 14 03:51:06 GARDENA-37ca54 systemd[1]: Listening on udev Kernel Socket.
+Jun 14 03:51:06 GARDENA-37ca54 systemd[1]: Condition check resulted in Huge Pages File System being skipped.
+Jun 14 03:51:06 GARDENA-37ca54 systemd[1]: Condition check resulted in POSIX Message Queue File System being skipped.
+Jun 14 03:51:06 GARDENA-37ca54 systemd[1]: Mounting Kernel Debug File System...
+Jun 14 03:51:06 GARDENA-37ca54 systemd[1]: Mounting Temporary Directory (/tmp)...
+Jun 14 03:51:06 GARDENA-37ca54 systemd[1]: Condition check resulted in Create list of static device nodes for the current kernel being skipped.
+Jun 14 03:51:06 GARDENA-37ca54 systemd[1]: Started Control power LED during boot process.
+Jun 14 03:51:06 GARDENA-37ca54 systemd[1]: Condition check resulted in File System Check on Root Device being skipped.
+Jun 14 03:51:06 GARDENA-37ca54 systemd[1]: Starting Journal Service...
+Jun 14 03:51:06 GARDENA-37ca54 systemd[1]: Condition check resulted in Load Kernel Modules being skipped.
+Jun 14 03:51:06 GARDENA-37ca54 systemd[1]: Condition check resulted in FUSE Control File System being skipped.
+Jun 14 03:51:06 GARDENA-37ca54 systemd[1]: Mounting Kernel Configuration File System...
+Jun 14 03:51:06 GARDENA-37ca54 systemd[1]: Starting Remount Root and Kernel File Systems...
+Jun 14 03:51:06 GARDENA-37ca54 systemd[1]: Starting Apply Kernel Variables...
+Jun 14 03:51:06 GARDENA-37ca54 systemd[1]: Starting udev Coldplug all Devices...
+Jun 14 03:51:06 GARDENA-37ca54 systemd[1]: Mounted Kernel Debug File System.
+Jun 14 03:51:06 GARDENA-37ca54 systemd[1]: Mounted Temporary Directory (/tmp).
+Jun 14 03:51:06 GARDENA-37ca54 systemd[1]: Mounted Kernel Configuration File System.
+Jun 14 03:51:06 GARDENA-37ca54 systemd[1]: Started Apply Kernel Variables.
+Jun 14 03:51:06 GARDENA-37ca54 systemd[1]: Started Remount Root and Kernel File Systems.
+Jun 14 03:51:06 GARDENA-37ca54 systemd[1]: Condition check resulted in Rebuild Hardware Database being skipped.
+Jun 14 03:51:06 GARDENA-37ca54 systemd[1]: Condition check resulted in Create System Users being skipped.
+Jun 14 03:51:06 GARDENA-37ca54 systemd[1]: Starting Create Static Device Nodes in /dev...
+Jun 14 03:51:06 GARDENA-37ca54 systemd-journald[110]: Journal started
+Jun 14 03:51:06 GARDENA-37ca54 systemd-journald[110]: Runtime Journal (/run/log/journal/63451b56aabb4ad08c914b943ceb5a43) is 2.5M, max 20.0M, 17.5M free.
+Jun 14 03:51:06 GARDENA-37ca54 systemd[1]: Started Journal Service.
+Jun 14 03:51:06 GARDENA-37ca54 systemd[1]: Starting Flush Journal to Persistent Storage...
+Jun 14 03:51:07 GARDENA-37ca54 systemd-journald[110]: Runtime Journal (/run/log/journal/63451b56aabb4ad08c914b943ceb5a43) is 2.5M, max 20.0M, 17.5M free.
+Jun 14 03:51:07 GARDENA-37ca54 systemd[1]: Started Flush Journal to Persistent Storage.
+Jun 14 03:51:07 GARDENA-37ca54 systemd-tmpfiles[121]: /etc/tmpfiles.d/openvpn.conf:1: Line references path below legacy directory /var/run/, updating /var/run/openvpn → /run/openvpn; please update the tmpfiles.d/ drop-in file accordingly.
+Jun 14 03:51:07 GARDENA-37ca54 systemd[1]: Started Create Static Device Nodes in /dev.
+Jun 14 03:51:07 GARDENA-37ca54 systemd[1]: Reached target Local File Systems (Pre).
+Jun 14 03:51:07 GARDENA-37ca54 systemd[1]: Condition check resulted in Virtual Machine and Container Storage (Compatibility) being skipped.
+Jun 14 03:51:07 GARDENA-37ca54 systemd[1]: Reached target Containers.
+Jun 14 03:51:07 GARDENA-37ca54 systemd[1]: Mounting /var/volatile...
+Jun 14 03:51:07 GARDENA-37ca54 systemd[1]: Starting udev Kernel Device Manager...
+Jun 14 03:51:07 GARDENA-37ca54 systemd[1]: Mounted /var/volatile.
+Jun 14 03:51:07 GARDENA-37ca54 systemd[1]: Condition check resulted in Bind mount volatile /var/cache being skipped.
+Jun 14 03:51:07 GARDENA-37ca54 systemd[1]: Condition check resulted in Bind mount volatile /var/lib being skipped.
+Jun 14 03:51:08 GARDENA-37ca54 systemd[1]: Starting Load/Save Random Seed...
+Jun 14 03:51:08 GARDENA-37ca54 systemd[1]: Condition check resulted in Bind mount volatile /var/spool being skipped.
+Jun 14 03:51:08 GARDENA-37ca54 systemd[1]: Condition check resulted in Bind mount volatile /srv being skipped.
+Jun 14 03:51:08 GARDENA-37ca54 systemd[1]: Reached target Local File Systems.
+Jun 14 03:51:08 GARDENA-37ca54 systemd[1]: Starting Ethernet LED configuration...
+Jun 14 03:51:08 GARDENA-37ca54 systemd[1]: Condition check resulted in Rebuild Dynamic Linker Cache being skipped.
+Jun 14 03:51:08 GARDENA-37ca54 systemd[1]: Condition check resulted in Commit a transient machine-id on disk being skipped.
+Jun 14 03:51:08 GARDENA-37ca54 systemd[1]: Starting Create Volatile Files and Directories...
+Jun 14 03:51:08 GARDENA-37ca54 systemd[1]: Starting Data migration...
+Jun 14 03:51:08 GARDENA-37ca54 systemd-tmpfiles[129]: /etc/tmpfiles.d/openvpn.conf:1: Line references path below legacy directory /var/run/, updating /var/run/openvpn → /run/openvpn; please update the tmpfiles.d/ drop-in file accordingly.
+Jun 14 03:51:08 GARDENA-37ca54 systemd[1]: Started Ethernet LED configuration.
+Jun 14 03:51:08 GARDENA-37ca54 sysupgrade[130]: System not changed since last startup
+Jun 14 03:51:08 GARDENA-37ca54 systemd[1]: Started Data migration.
+Jun 14 03:51:08 GARDENA-37ca54 kernel: random: crng init done
+Jun 14 03:51:08 GARDENA-37ca54 kernel: random: 7 urandom warning(s) missed due to ratelimiting
+Jun 14 03:51:08 GARDENA-37ca54 systemd[1]: Started Load/Save Random Seed.
+Jun 14 03:51:08 GARDENA-37ca54 systemd[1]: Started udev Coldplug all Devices.
+Jun 14 03:51:08 GARDENA-37ca54 systemd[1]: Started Create Volatile Files and Directories.
+Jun 14 03:51:09 GARDENA-37ca54 systemd[1]: Condition check resulted in Rebuild Journal Catalog being skipped.
+Jun 14 03:51:09 GARDENA-37ca54 systemd[1]: Starting Network Time Synchronization...
+Jun 14 03:51:09 GARDENA-37ca54 systemd[1]: Condition check resulted in Update is Completed being skipped.
+Jun 14 03:51:09 GARDENA-37ca54 systemd[1]: Starting Update UTMP about System Boot/Shutdown...
+Jun 14 03:51:09 GARDENA-37ca54 systemd[1]: Started Update UTMP about System Boot/Shutdown.
+Jun 14 03:51:09 GARDENA-37ca54 systemd[1]: Started udev Kernel Device Manager.
+Jun 14 03:51:10 GARDENA-37ca54 systemd-timesyncd[132]: System clock time unset or jumped backwards, restoring from recorded timestamp: Thu 2023-05-04 06:15:07 CEST
+May 04 06:15:07 GARDENA-37ca54 systemd[1]: Started Network Time Synchronization.
+May 04 06:15:07 GARDENA-37ca54 systemd[1]: Reached target System Initialization.
+May 04 06:15:07 GARDENA-37ca54 systemd[1]: Started Daily Cleanup of Temporary Directories.
+May 04 06:15:07 GARDENA-37ca54 systemd[1]: Reached target System Time Set.
+May 04 06:15:07 GARDENA-37ca54 systemd[1]: Reached target System Time Synchronized.
+May 04 06:15:07 GARDENA-37ca54 systemd[1]: Listening on D-Bus System Message Bus Socket.
+May 04 06:15:07 GARDENA-37ca54 systemd[1]: Listening on dropbear.socket.
+May 04 06:15:07 GARDENA-37ca54 systemd[1]: Listening on gateway-config-backend.socket.
+May 04 06:15:07 GARDENA-37ca54 systemd[1]: Reached target Sockets.
+May 04 06:15:07 GARDENA-37ca54 systemd[1]: Reached target Basic System.
+May 04 06:15:07 GARDENA-37ca54 systemd[1]: Started D-Bus System Message Bus.
+May 04 06:15:07 GARDENA-37ca54 systemd[1]: Condition check resulted in SSL Key Generation for the GARDENA smart Gateway config interface being skipped.
+May 04 06:15:07 GARDENA-37ca54 systemd[1]: Started Getty on tty1.
+May 04 06:15:07 GARDENA-37ca54 systemd[1]: Starting IPv6 Packet Filtering Framework...
+May 04 06:15:07 GARDENA-37ca54 systemd[1]: Starting IPv4 Packet Filtering Framework...
+May 04 06:15:07 GARDENA-37ca54 systemd[1]: Starting Create status files for manufacturing services...
+May 04 06:15:07 GARDENA-37ca54 systemd[1]: Starting Reset Radio Module on boot...
+May 04 06:15:07 GARDENA-37ca54 systemd[1]: Started SWUpdate progress service.
+May 04 06:15:08 GARDENA-37ca54 systemd[1]: Starting Login Service...
+May 04 06:15:08 GARDENA-37ca54 systemd[1]: Starting Configure unique hostname...
+May 04 06:15:08 GARDENA-37ca54 systemd[1]: Starting Update Hardware Revision file...
+May 04 06:15:08 GARDENA-37ca54 systemd[1]: Starting Update Software Versions file for SWUpdate...
+May 04 06:15:10 GARDENA-37ca54 systemd-udevd[134]: Using default interface naming scheme 'v243'.
+May 04 06:15:10 GARDENA-37ca54 systemd-udevd[134]: ethtool: autonegotiation is unset or enabled, the speed and duplex are not writable.
+May 04 06:15:10 GARDENA-37ca54 update-hw-revision[156]: Failed to extract the board revision from the U-Boot environment!
+May 04 06:15:11 GARDENA-37ca54 systemd[1]: Started IPv6 Packet Filtering Framework.
+May 04 06:15:11 GARDENA-37ca54 systemd[1]: Started IPv4 Packet Filtering Framework.
+May 04 06:15:11 GARDENA-37ca54 systemd[1]: Started Create status files for manufacturing services.
+May 04 06:15:12 GARDENA-37ca54 systemd[1]: Started Configure unique hostname.
+May 04 06:15:12 GARDENA-37ca54 systemd[1]: Started Update Hardware Revision file.
+May 04 06:15:12 GARDENA-37ca54 systemd[1]: Started Update Software Versions file for SWUpdate.
+May 04 06:15:12 GARDENA-37ca54 systemd-udevd[134]: ethtool: autonegotiation is unset or enabled, the speed and duplex are not writable.
+May 04 06:15:12 GARDENA-37ca54 systemd[1]: Reached target Network (Pre).
+May 04 06:15:12 GARDENA-37ca54 systemd[1]: Listening on Load/Save RF Kill Switch Status /dev/rfkill Watch.
+May 04 06:15:12 GARDENA-37ca54 systemd[1]: Starting dhcpcd on all interfaces...
+May 04 06:15:13 GARDENA-37ca54 systemd[1]: Starting install simple iptable rules...
+May 04 06:15:13 GARDENA-37ca54 systemd[1]: Condition check resulted in Check RM firmware version and flash RM if needed being skipped.
+May 04 06:15:13 GARDENA-37ca54 systemd[1]: Starting Flash RM test firmware...
+May 04 06:15:13 GARDENA-37ca54 systemd[1]: Starting Network Service...
+May 04 06:15:14 GARDENA-37ca54 systemd[1]: reset-rm.service: Succeeded.
+May 04 06:15:14 GARDENA-37ca54 systemd[1]: Started Reset Radio Module on boot.
+May 04 06:15:14 GARDENA-37ca54 systemd[1]: Condition check resulted in PPP link to radio module being skipped.
+May 04 06:15:14 GARDENA-37ca54 systemd[1]: Starting RF LED setup...
+May 04 06:15:14 GARDENA-37ca54 systemd-logind[192]: New seat seat0.
+May 04 06:15:14 GARDENA-37ca54 systemd[1]: Started RF LED setup.
+May 04 06:15:14 GARDENA-37ca54 systemd[1]: Started Login Service.
+May 04 06:15:15 GARDENA-37ca54 systemd-vconsole-setup[210]: KD_FONT_OP_GET failed while trying to get the font metadata: Function not implemented
+May 04 06:15:16 GARDENA-37ca54 systemd-vconsole-setup[210]: Fonts will not be copied to remaining consoles
+May 04 06:15:16 GARDENA-37ca54 dhcpcd[193]: dev: loaded udev
+May 04 06:15:16 GARDENA-37ca54 dhcpcd[193]: forked to background, child pid 227
+May 04 06:15:16 GARDENA-37ca54 systemd[1]: Started dhcpcd on all interfaces.
+May 04 06:15:16 GARDENA-37ca54 systemd-networkd[196]: Enumeration completed
+May 04 06:15:16 GARDENA-37ca54 systemd[1]: Started Network Service.
+May 04 06:15:17 GARDENA-37ca54 systemd[1]: Starting Wait for Network to be Configured...
+May 04 06:15:18 GARDENA-37ca54 systemd-networkd[196]: eth0: Link UP
+May 04 06:15:18 GARDENA-37ca54 systemd-networkd[196]: eth0: Gained carrier
+May 04 06:15:18 GARDENA-37ca54 dhcpcd[227]: eth0: waiting for carrier
+May 04 06:15:18 GARDENA-37ca54 dhcpcd[227]: eth0: carrier acquired
+May 04 06:15:18 GARDENA-37ca54 openocd[195]: Open On-Chip Debugger 0.10.0+dev-00556-gd0be1630d-dirty (2021-06-14-02:03)
+May 04 06:15:18 GARDENA-37ca54 openocd[195]: Licensed under GNU GPL v2
+May 04 06:15:18 GARDENA-37ca54 openocd[195]: For bug reports, read
+May 04 06:15:18 GARDENA-37ca54 openocd[195]:         http://openocd.org/doc/doxygen/bugs.html
+May 04 06:15:18 GARDENA-37ca54 dhcpcd[227]: DUID 00:01:00:01:28:59:72:a1:94:bb:ae:37:ca:54
+May 04 06:15:18 GARDENA-37ca54 dhcpcd[227]: eth0: IAID ae:37:ca:54
+May 04 06:15:18 GARDENA-37ca54 dhcpcd[227]: eth0: adding address fe80::96bb:aeff:fe37:ca54
+May 04 06:15:18 GARDENA-37ca54 kernel: mt76_wmac 10300000.wmac: ASIC revision: 76280001
+May 04 06:15:18 GARDENA-37ca54 dhcpcd[227]: eth0: soliciting an IPv6 router
+May 04 06:15:18 GARDENA-37ca54 openocd[195]: SysfsGPIO nums: swclk = 36, swdio = 29
+May 04 06:15:18 GARDENA-37ca54 openocd[195]: none separate
+May 04 06:15:19 GARDENA-37ca54 openocd[195]: adapter speed: 1000 kHz
+May 04 06:15:19 GARDENA-37ca54 openocd[195]: adapter_nsrst_delay: 100
+May 04 06:15:19 GARDENA-37ca54 openocd[195]: Info : SysfsGPIO JTAG/SWD bitbang driver
+May 04 06:15:19 GARDENA-37ca54 openocd[195]: Info : SWD only mode enabled (specify tck, tms, tdi and tdo gpios to add JTAG mode)
+May 04 06:15:19 GARDENA-37ca54 openocd[195]: Info : This adapter doesn't support configurable speed
+May 04 06:15:19 GARDENA-37ca54 openocd[195]: Info : SWD DPIDR 0x2ba01477
+May 04 06:15:19 GARDENA-37ca54 dhcpcd[227]: eth0: soliciting a DHCP lease
+May 04 06:15:19 GARDENA-37ca54 openocd[195]: Info : SiM3x.cpu: hardware has 6 breakpoints, 4 watchpoints
+May 04 06:15:19 GARDENA-37ca54 openocd[195]: Info : Listening on port 3333 for gdb connections
+May 04 06:15:19 GARDENA-37ca54 openocd[195]: Warn : Only resetting the Cortex-M core, use a reset-init event handler to reset any peripherals or configure hardware srst support.
+May 04 06:15:19 GARDENA-37ca54 systemd[1]: Started install simple iptable rules.
+May 04 06:15:19 GARDENA-37ca54 systemd[1]: Reached target Network.
+May 04 06:15:19 GARDENA-37ca54 systemd[1]: Condition check resulted in Backend component for the GARDENA smart Gateway config interface being skipped.
+May 04 06:15:19 GARDENA-37ca54 systemd[1]: Starting Zero-configuration networking...
+May 04 06:15:19 GARDENA-37ca54 systemd[1]: Starting Network Time Service...
+May 04 06:15:19 GARDENA-37ca54 kernel: mt76_wmac 10300000.wmac: Firmware Version: 20151201
+May 04 06:15:19 GARDENA-37ca54 kernel: mt76_wmac 10300000.wmac: Build Time: 20151201183641
+May 04 06:15:19 GARDENA-37ca54 kernel: mt76_wmac 10300000.wmac: firmware init done
+May 04 06:15:20 GARDENA-37ca54 kernel: ieee80211 phy0: Selected rate control algorithm 'minstrel_ht'
+May 04 06:15:20 GARDENA-37ca54 systemd[1]: Starting Load/Save RF Kill Switch Status...
+May 04 06:15:20 GARDENA-37ca54 openocd[195]: target halted due to debug-request, current mode: Thread
+May 04 06:15:20 GARDENA-37ca54 openocd[195]: xPSR: 0x01000000 pc: 0x00000124 msp: 0x20007ffc
+May 04 06:15:20 GARDENA-37ca54 openocd[195]: ** Programming Started **
+May 04 06:15:20 GARDENA-37ca54 systemd-networkd[196]: eth0: Gained IPv6LL
+May 04 06:15:20 GARDENA-37ca54 systemd-timesyncd[132]: Network configuration changed, trying to establish connection.
+May 04 06:15:20 GARDENA-37ca54 openocd[195]: auto erase enabled
+May 04 06:15:20 GARDENA-37ca54 systemd-udevd[136]: Using default interface naming scheme 'v243'.
+May 04 06:15:20 GARDENA-37ca54 systemd-udevd[136]: ethtool: autonegotiation is unset or enabled, the speed and duplex are not writable.
+May 04 06:15:20 GARDENA-37ca54 systemd[1]: Started Load/Save RF Kill Switch Status.
+May 04 06:15:20 GARDENA-37ca54 systemd-timesyncd[132]: Network configuration changed, trying to establish connection.
+May 04 06:15:20 GARDENA-37ca54 systemd[1]: Started Wait for Network to be Configured.
+May 04 06:15:20 GARDENA-37ca54 openocd[195]: Info : SiM3U167 detected
+May 04 06:15:20 GARDENA-37ca54 openocd[195]: Info : Flash size = 256KB
+May 04 06:15:20 GARDENA-37ca54 systemd[1]: Reached target Network is Online.
+May 04 06:15:20 GARDENA-37ca54 systemd[1]: Started Run healthcheck after startup and again every 23 hours.
+May 04 06:15:20 GARDENA-37ca54 systemd[1]: Started Run swupdate-check.service on startup and again every 12 hours.
+May 04 06:15:20 GARDENA-37ca54 systemd[1]: Reached target Timers.
+May 04 06:15:21 GARDENA-37ca54 systemd[1]: mdns.service: Can't open PID file /run/mdnsd.pid (yet?) after start: Operation not permitted
+May 04 06:15:21 GARDENA-37ca54 systemd-networkd[196]: wlan0: Link UP
+May 04 06:15:21 GARDENA-37ca54 systemd-timesyncd[132]: Network configuration changed, trying to establish connection.
+May 04 06:15:21 GARDENA-37ca54 dhcpcd[227]: wlan0: waiting for carrier
+May 04 06:15:21 GARDENA-37ca54 dhcpcd[227]: wlan0: carrier acquired
+May 04 06:15:21 GARDENA-37ca54 mDNSResponder[275]: Default: mDNSResponder (Engineering Build) (Jun 14 2021 02:00:01) starting
+May 04 06:15:21 GARDENA-37ca54 mDNSResponder[275]: Default: Unable to parse DNS server list. Unicast DNS-SD unavailable
+May 04 06:15:21 GARDENA-37ca54 systemd[1]: Started Zero-configuration networking.
+May 04 06:15:21 GARDENA-37ca54 mDNSResponder[275]: Default: mDNSPlatformSourceAddrForDest: connect 1.1.1.1 failed errno 128 (Network is unreachable)
+May 04 06:15:21 GARDENA-37ca54 dhcpcd[227]: wlan0: IAID ae:37:ca:b8
+May 04 06:15:21 GARDENA-37ca54 dhcpcd[227]: wlan0: adding address fe80::96bb:aeff:fe37:cab8
+May 04 06:15:21 GARDENA-37ca54 dhcpcd[227]: wlan0: carrier lost
+May 04 06:15:21 GARDENA-37ca54 dhcpcd[227]: wlan0: deleting address fe80::96bb:aeff:fe37:cab8
+May 04 06:15:22 GARDENA-37ca54 dhcpcd[227]: eth0: offered 10.42.221.224 from 10.42.0.1
+May 04 06:15:22 GARDENA-37ca54 dhcpcd[227]: eth0: ignoring offer of 10.42.221.224 from 10.42.0.1
+May 04 06:15:22 GARDENA-37ca54 dhcpcd[227]: eth0: probing address 10.42.221.224/16
+May 04 06:15:22 GARDENA-37ca54 ntpd[265]: ntpd 4.2.8p15@1.3728-o Mon 14 Jun 2021 02:14:04 AM UTC (2): Starting
+May 04 06:15:22 GARDENA-37ca54 ntpd[265]: Command line: /usr/sbin/ntpd -u ntp:ntp -p /run/ntpd.pid -g
+May 04 06:15:22 GARDENA-37ca54 ntpd[265]: ----------------------------------------------------
+May 04 06:15:22 GARDENA-37ca54 ntpd[265]: ntp-4 is maintained by Network Time Foundation,
+May 04 06:15:22 GARDENA-37ca54 ntpd[265]: Inc. (NTF), a non-profit 501(c)(3) public-benefit
+May 04 06:15:22 GARDENA-37ca54 ntpd[265]: corporation.  Support and training for ntp-4 are
+May 04 06:15:22 GARDENA-37ca54 ntpd[265]: available at https://www.nwtime.org/support
+May 04 06:15:22 GARDENA-37ca54 ntpd[265]: ----------------------------------------------------
+May 04 06:15:22 GARDENA-37ca54 ntpd[287]: proto: precision = 3.111 usec (-18)
+May 04 06:15:22 GARDENA-37ca54 ntpd[287]: basedate set to 2021-06-02
+May 04 06:15:22 GARDENA-37ca54 ntpd[287]: gps base set to 2021-06-06 (week 2161)
+May 04 06:15:22 GARDENA-37ca54 ntpd[287]: Listen normally on 0 lo 127.0.0.1:123
+May 04 06:15:22 GARDENA-37ca54 ntpd[287]: Listen normally on 1 lo [::1]:123
+May 04 06:15:23 GARDENA-37ca54 ntpd[287]: Listening on routing socket on fd #18 for interface updates
+May 04 06:15:23 GARDENA-37ca54 ntpd[287]: kernel reports TIME_ERROR: 0x41: Clock Unsynchronized
+May 04 06:15:23 GARDENA-37ca54 ntpd[287]: kernel reports TIME_ERROR: 0x41: Clock Unsynchronized
+May 04 06:15:23 GARDENA-37ca54 systemd[1]: Started Network Time Service.
+May 04 06:15:25 GARDENA-37ca54 systemd[1]: systemd-rfkill.service: Succeeded.
+May 04 06:15:27 GARDENA-37ca54 dhcpcd[227]: eth0: leased 10.42.221.224 for 3600 seconds
+May 04 06:15:27 GARDENA-37ca54 systemd-timesyncd[132]: Network configuration changed, trying to establish connection.
+May 04 06:15:27 GARDENA-37ca54 dhcpcd[227]: eth0: adding route to 10.42.0.0/16
+May 04 06:15:27 GARDENA-37ca54 dhcpcd[227]: eth0: adding default route via 10.42.0.1
+May 04 06:15:27 GARDENA-37ca54 systemd[1]: swupdate-check.timer: Succeeded.
+May 04 06:15:27 GARDENA-37ca54 systemd[1]: Stopped Run swupdate-check.service on startup and again every 12 hours.
+May 04 06:15:27 GARDENA-37ca54 systemd[1]: Stopping Run swupdate-check.service on startup and again every 12 hours.
+May 04 06:15:27 GARDENA-37ca54 systemd[1]: Started Run swupdate-check.service on startup and again every 12 hours.
+May 04 06:15:32 GARDENA-37ca54 dhcpcd[227]: eth0: no IPv6 Routers available
+Aug 25 11:27:38 GARDENA-37ca54 systemd-timesyncd[132]: Initial synchronization to time server 10.42.0.1:123 (time1.iot.sg.dss.husqvarnagroup.net).
+Aug 25 11:27:53 GARDENA-37ca54 openocd[195]: wrote 262144 bytes from file /usr/share/gardena/firmware/rm-test.bin in 9781953.000000s (0.000 KiB/s)
+Aug 25 11:27:53 GARDENA-37ca54 openocd[195]: ** Programming Finished **
+Aug 25 11:27:53 GARDENA-37ca54 openocd[195]: ** Verify Started **
+Aug 25 11:27:53 GARDENA-37ca54 openocd[195]: verified 261330 bytes in 0.496781s (513.717 KiB/s)
+Aug 25 11:27:53 GARDENA-37ca54 openocd[195]: ** Verified OK **
+Aug 25 11:27:53 GARDENA-37ca54 openocd[195]: shutdown command invoked
+Aug 25 11:27:55 GARDENA-37ca54 systemd[1]: Started Flash RM test firmware.
+Aug 25 11:27:56 GARDENA-37ca54 systemd[1]: Starting Run IPR tool...
+Aug 25 11:27:56 GARDENA-37ca54 ipr-setup[317]: adjtime state 0 status 2000 time Fri 2023-08-25 09:27:56.284296 UTC
+Aug 25 11:28:12 GARDENA-37ca54 ipr-setup[318]: Warning: Disassembly of the Linux module failed.Traceback (most recent call last):
+Aug 25 11:28:12 GARDENA-37ca54 ipr-setup[318]:   File "/usr/bin/ipr-tool", line 252, in <module>
+Aug 25 11:28:12 GARDENA-37ca54 ipr-setup[318]:     main()
+Aug 25 11:28:12 GARDENA-37ca54 ipr-setup[318]:   File "/usr/bin/ipr-tool", line 244, in main
+Aug 25 11:28:12 GARDENA-37ca54 ipr-setup[318]:     initialize_gateway()
+Aug 25 11:28:12 GARDENA-37ca54 ipr-setup[318]:   File "/usr/bin/ipr-tool", line 188, in initialize_gateway
+Aug 25 11:28:12 GARDENA-37ca54 ipr-setup[318]:     initialize_openvpn_credentials(ipr_id)
+Aug 25 11:28:12 GARDENA-37ca54 ipr-setup[318]:   File "/usr/bin/ipr-tool", line 53, in initialize_openvpn_credentials
+Aug 25 11:28:12 GARDENA-37ca54 ipr-setup[318]:     bootstrap_server_put('/openvpn/seluxit/register.py',
+Aug 25 11:28:12 GARDENA-37ca54 ipr-setup[318]:   File "/usr/lib/python3.8/site-packages/bootstrap.py", line 48, in bootstrap_server_put
+Aug 25 11:28:12 GARDENA-37ca54 ipr-setup[318]:     raise http.client.HTTPException(response.status, response.reason, response.read())
+Aug 25 11:28:12 GARDENA-37ca54 ipr-setup[318]: http.client.HTTPException: (404, 'Not Found', b'<?xml version="1.0" encoding="iso-8859-1"?>\n<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"\n         "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">\n<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">\n <head>\n  <title>404 Not Found</title>\n </head>\n <body>\n  <h1>404 Not Found</h1>\n </body>\n</html>\n')
+Aug 25 11:28:12 GARDENA-37ca54 systemd[1]: ipr.service: Main process exited, code=exited, status=1/FAILURE
+Aug 25 11:28:16 GARDENA-37ca54 systemd[1]: ipr.service: Failed with result 'exit-code'.
+Aug 25 11:28:16 GARDENA-37ca54 systemd[1]: Failed to start Run IPR tool.
+Aug 25 11:28:16 GARDENA-37ca54 systemd[1]: Dependency failed for Run selftest during manufacturing.
+Aug 25 11:28:16 GARDENA-37ca54 systemd[1]: selftest.service: Job selftest.service/start failed with result 'dependency'.
+Aug 25 11:28:16 GARDENA-37ca54 systemd[1]: Dependency failed for Check EOL test status and update status file.
+Aug 25 11:28:16 GARDENA-37ca54 systemd[1]: Dependency failed for Run EOL test during manufacturing.
+Aug 25 11:28:16 GARDENA-37ca54 systemd[1]: eoltest.service: Job eoltest.service/start failed with result 'dependency'.
+Aug 25 11:28:16 GARDENA-37ca54 systemd[1]: eoltest-check.service: Job eoltest-check.service/start failed with result 'dependency'.
+Aug 25 11:28:16 GARDENA-37ca54 systemd[1]: Dependency failed for Run HomeKit setup during manufacturing.
+Aug 25 11:28:16 GARDENA-37ca54 systemd[1]: homekit-setup.service: Job homekit-setup.service/start failed with result 'dependency'.
+Aug 25 11:28:16 GARDENA-37ca54 systemd[1]: ipr.service: Consumed 11.577s CPU time.
+Aug 25 11:28:16 GARDENA-37ca54 systemd[1]: Condition check resulted in Extract X.509 client certificate and key from U-Boot being skipped.
+Aug 25 11:28:16 GARDENA-37ca54 systemd[1]: Condition check resulted in Accessory server daemon being skipped.
+Aug 25 11:28:16 GARDENA-37ca54 systemd[1]: Condition check resulted in Internet LED indication being skipped.
+Aug 25 11:28:16 GARDENA-37ca54 systemd[1]: Condition check resulted in OpenVPN to Seluxit Servers being skipped.
+Aug 25 11:28:16 GARDENA-37ca54 systemd[1]: Started Serial Getty on ttyS0.
+Aug 25 11:28:16 GARDENA-37ca54 systemd[1]: Reached target Login Prompts.
+Aug 25 11:28:17 GARDENA-37ca54 systemd[1]: Reached target Multi-User System.
+Aug 25 11:28:17 GARDENA-37ca54 systemd[1]: Condition check resulted in Software Update Service being skipped.
+Aug 25 11:28:17 GARDENA-37ca54 systemd[1]: Starting Update UTMP about System Runlevel Changes...
+Aug 25 11:28:17 GARDENA-37ca54 systemd[1]: systemd-update-utmp-runlevel.service: Succeeded.
+Aug 25 11:28:17 GARDENA-37ca54 systemd[1]: Started Update UTMP about System Runlevel Changes.
+Aug 25 11:28:17 GARDENA-37ca54 systemd[1]: Startup finished in 17.031s (kernel) + 1min 36.845s (userspace) = 1min 53.877s.
+Aug 25 11:31:24 GARDENA-37ca54 systemd[1]: Starting Run IPR tool...
+Aug 25 11:31:25 GARDENA-37ca54 ipr-setup[362]: adjtime state 0 status 2001 time Fri 2023-08-25 09:31:25.136862 UTC
+Aug 25 11:31:33 GARDENA-37ca54 ipr-setup[363]: Traceback (most recent call last):
+Aug 25 11:31:33 GARDENA-37ca54 ipr-setup[363]:   File "/usr/bin/ipr-tool", line 252, in <module>
+Aug 25 11:31:33 GARDENA-37ca54 ipr-setup[363]:     main()
+Aug 25 11:31:33 GARDENA-37ca54 ipr-setup[363]:   File "/usr/bin/ipr-tool", line 244, in main
+Aug 25 11:31:33 GARDENA-37ca54 ipr-setup[363]:     initialize_gateway()
+Aug 25 11:31:33 GARDENA-37ca54 ipr-setup[363]:   File "/usr/bin/ipr-tool", line 188, in initialize_gateway
+Aug 25 11:31:33 GARDENA-37ca54 ipr-setup[363]:     initialize_openvpn_credentials(ipr_id)
+Aug 25 11:31:33 GARDENA-37ca54 ipr-setup[363]:   File "/usr/bin/ipr-tool", line 53, in initialize_openvpn_credentials
+Aug 25 11:31:33 GARDENA-37ca54 ipr-setup[363]:     bootstrap_server_put('/openvpn/seluxit/register.py',
+Aug 25 11:31:33 GARDENA-37ca54 ipr-setup[363]:   File "/usr/lib/python3.8/site-packages/bootstrap.py", line 48, in bootstrap_server_put
+Aug 25 11:31:33 GARDENA-37ca54 ipr-setup[363]:     raise http.client.HTTPException(response.status, response.reason, response.read())
+Aug 25 11:31:33 GARDENA-37ca54 ipr-setup[363]: http.client.HTTPException: (404, 'Not Found', b'<?xml version="1.0" encoding="iso-8859-1"?>\n<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"\n         "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">\n<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">\n <head>\n  <title>404 Not Found</title>\n </head>\n <body>\n  <h1>404 Not Found</h1>\n </body>\n</html>\n')
+Aug 25 11:31:34 GARDENA-37ca54 systemd[1]: ipr.service: Main process exited, code=exited, status=1/FAILURE
+Aug 25 11:31:37 GARDENA-37ca54 systemd[1]: ipr.service: Failed with result 'exit-code'.
+Aug 25 11:31:37 GARDENA-37ca54 systemd[1]: Failed to start Run IPR tool.
+Aug 25 11:31:37 GARDENA-37ca54 systemd[1]: Dependency failed for Check EOL test status and update status file.
+Aug 25 11:31:37 GARDENA-37ca54 systemd[1]: eoltest-check.service: Job eoltest-check.service/start failed with result 'dependency'.
+Aug 25 11:31:37 GARDENA-37ca54 systemd[1]: Dependency failed for Run HomeKit setup during manufacturing.
+Aug 25 11:31:37 GARDENA-37ca54 systemd[1]: homekit-setup.service: Job homekit-setup.service/start failed with result 'dependency'.
+Aug 25 11:31:37 GARDENA-37ca54 systemd[1]: ipr.service: Consumed 6.828s CPU time.
+Aug 25 11:31:37 GARDENA-37ca54 systemd[1]: Condition check resulted in Software Update Service being skipped.
+Aug 25 11:32:18 GARDENA-37ca54 kernel: sysrq: HELP : loglevel(0-9) reboot(b) crash(c) terminate-all-tasks(e) memory-full-oom-kill(f) kill-all-tasks(i) thaw-filesystems(j) sak(k) show-memory-usage(m) nice-all-RT-tasks(n) poweroff(o) show-registers(p) show-all-timers(q) unraw(r) sync(s) show-task-states(t) unmount(u) show-blocked-tasks(w) show-tlbs(x) 
+Aug 25 11:32:23 GARDENA-37ca54 login[342]: ROOT LOGIN  on '/dev/ttyS0'
+root@GARDENA-37ca54:~# cat /etc/os-release
+ID="gardena"
+NAME="GARDENA smart Gateway"
+VERSION="5.9.3"
+VERSION_ID="5.9.3"
+PRETTY_NAME="GARDENA smart Gateway 5.9.3 (A New Life)"
+BUILD_ID="20210813105539"
+CODENAME="A New Life"
+root@GARDENA-37ca54:~# reboot 
+[  OK  ] Stopped target Multi-User System.
+[  OK  ] Stopped target Login Prompts.
+[  OK  ] Stopped target Containers.
+[  OK  ] Stopped target Remote File Systems.
+[  OK  ] Stopped target System Time Synchronized.
+[  OK  ] Stopped target System Time Set.
+[  OK  ] Stopped target Timers.
+[  OK  ] Stopped Run healthcheck after startup and again every 23 hours.
+[  OK  ] Stopped Run swupdate-check.service on startup and again every 12 hours.
+[  OK  ] Stopped Daily Cleanup of Temporary Directories.
+[  OK  ] Stopped target Network is Online.
+[  OK  ] Closed Load/Save RF Kill Switch Status /dev/rfkill Watch.
+         Stopping D-Bus System Message Bus...
+         Stopping Getty on tty1...
+         Stopping Zero-configuration networking...
+         Stopping Network Time Service...
+[  OK  ] Stopped RF LED setup.
+[  OK  ] Stopped Flash RM test firmware.
+[  OK  ] Stopped Create status files for manufacturing services.
+         Stopping Serial Getty on tt         Stopping SWUpdate progress service...
+         Stopping Login Service...
+[  OK  ] Stopped Wait for Network to be Configured.
+         Stopping Load/Save Random Seed...
+[  OK  ] Stopped Data migration.
+[  OK  ] Stopped Update Hardware Revision file.
+[  OK  ] Stopped Update Software Versions file for SWUpdate.
+[  OK  ] Stopped D-Bus System Message Bus.
+[  OK  ] Stopped Getty on tty1.
+[  OK  ] Stopped SWUpdate progress service.
+[  OK  ] Stopped Login Service.
+[  OK  ] Stopped Zero-configuration networking.
+[  OK  ] Stopped Network Time Service.
+[  OK  ] Stopped Serial Getty on ttyS0.
+[  OK  ] Stopped Load/Save Random Seed.
+[  OK  ] Removed slice system-getty.slice.
+[  OK  ] Removed slice system-serial\x2dgetty.slice.
+[  OK  ] Stopped target Network.
+         Stopping dhcpcd on all interfaces...
+[  OK  ] Stopped install simple iptable rules.
+         Stopping Network Service...
+[  OK  ] Stopped Network Service.
+[  OK  ] Stopped dhcpcd on all interfaces.
+[  OK  ] Stopped target Network (Pre).
+[  OK  ] Stopped Ethernet LED configuration.
+[  OK  ] Stopped IPv6 Packet Filtering Framework.
+[  OK  ] Stopped IPv4 Packet Filtering Framework.
+[  OK  ] Stopped Configure unique hostname.
+[  OK  ] Stopped target Basic System.
+[  OK  ] Stopped target Paths.
+[  OK  ] Stopped Dispatch Password Requests to Console Directory Watch.
+[  OK  ] Stopped Forward Password Requests to Wall Directory Watch.
+[  OK  ] Stopped target Slices.
+[  OK  ] Removed slice User and Session Slice.
+[  OK  ] Stopped target Sockets.
+[  OK  ] Closed D-Bus System Message Bus Socket.
+[  OK  ] Closed dropbear.socket.
+[  OK  ] Closed gateway-config-backend.socket.
+[  OK  ] Stopped target System Initialization.
+[  OK  ] Stopped Apply Kernel Variables.
+         Stopping Network Time Synchronization...
+         Stopping Update UTMP about System Boot/Shutdown...
+[  OK  ] Stopped Network Time Synchronization.
+[  OK  ] Stopped Update UTMP about System Boot/Shutdown.
+[  OK  ] Stopped Create Volatile Files and Directories.
+[  OK  ] Stopped target Local File Systems.
+         Unmounting /media/rfs/ro...
+         Unmounting /media/rfs/rw...
+         Unmounting Temporary Directory (/tmp)...
+         Unmounting /var/volatile...
+[  OK  ] Unmounted /media/rfs/rw.
+[  OK  ] Unmounted /media/rfs/ro.
+[  OK  ] Unmounted Temporary Directory (/tmp).
+[  OK  ] Unmounted /var/volatile.
+[  OK  ] Stopped target Local File Systems (Pre).
+[  OK  ] Stopped target Swap.
+[  OK  ] Reached target Unmount All Filesystems.
+[  OK  ] Stopped Remount Root and Kernel File Systems.
+[  OK  ] Stopped Create Static Device Nodes in /dev.
+[  OK  ] Reached target Shutdown.
+[  OK  ] Reached target Final Step.
+[  OK  ] Started Reboot.
+[  OK  ] Reached target Reboot.
+[  381.556211] watchdog: watchdog0: watchdog did not stop!
+[  381.756117] reboot: Restarting system
+
+U-Boot SPL 2021.04-gardena-6 (Jun 10 2021 - 16:05:31 +0000)
+Trying to boot from NOR
+
+
+U-Boot 2021.04-gardena-6 (Jun 10 2021 - 16:05:31 +0000)
+
+CPU:   MediaTek MT7688A ver:1 eco:2
+Boot:  DDR2, SPI-NOR 3-Byte Addr, CPU clock from XTAL
+Clock: CPU: 580MHz, Bus: 193MHz, XTAL: 40MHz
+Model: GARDENA smart Gateway (MT7688)
+DRAM:  128 MiB
+WDT:   Started with servicing (60s timeout)
+Loading Environment from SPIFlash... SF: Detected XM25QH64C with page size 256 Bytes, erase size 4 KiB, total 8 MiB
+OK
+F-Data:factory-data version 1 detected
+Net:   eth0: eth@10110000
+Autoboot in 2 seconds
+linuxmoduleid=0a87d2a8-f67b-4f72-ba33-e2afd06fa26a
+gatewayid=c9bd6fc2-7164-40b6-851c-65348816985e
+radiomoduleid=63de4cad-d842-4f02-b007-f34bf776961b
+ubi0: default fastmap pool size: 50
+ubi0: default fastmap WL pool size: 25
+ubi0: attaching mtd7
+ubi0: scanning is finished
+ubi0: attached mtd7 (name "nand", size 128 MiB)
+ubi0: PEB size: 131072 bytes (128 KiB), LEB size: 126976 bytes
+ubi0: min./max. I/O unit sizes: 2048/2048, sub-page size 2048
+ubi0: VID header offset: 2048 (aligned 2048), data offset: 4096
+ubi0: good PEBs: 1024, bad PEBs: 0, corrupted PEBs: 0
+ubi0: user volume: 5, internal volumes: 1, max. volumes count: 128
+ubi0: max/mean erase counter: 2/1, WL threshold: 4096, image sequence number: 0
+ubi0: available PEBs: 18, total reserved PEBs: 1006, PEBs reserved for bad PEB handling: 22
+gpio: pin PA11 (gpio 11) value is 1
+## Error: "recovery_status" not defined
+gpio: pin PA11 (gpio 11) value is 1
+No size specified -> Using max size (3144016)
+Read 3144016 bytes from volume kernel0 to 80a00000
+## Loading kernel from FIT Image at 80a00000 ...
+   Using 'conf-ralink_gardena_smart_gateway_mt7688.dtb' configuration
+   Verifying Hash Integrity ... OK
+   Trying 'kernel-1' kernel subimage
+     Description:  Linux kernel
+     Type:         Kernel Image
+     Compression:  gzip compressed
+     Data Start:   0x80a00118
+     Data Size:    3134397 Bytes = 3 MiB
+     Architecture: MIPS
+     OS:           Linux
+     Load Address: 0x80000000
+     Entry Point:  0x80000400
+     Hash algo:    sha256
+     Hash value:   9c3115ee7cd2794843a52960a175a4d36573f041b8efa4d6b61126402dee1b56
+   Verifying Hash Integrity ... sha256+ OK
+## Loading fdt from FIT Image at 80a00000 ...
+   Using 'conf-ralink_gardena_smart_gateway_mt7688.dtb' configuration
+   Verifying Hash Integrity ... OK
+   Trying 'ftd-ralink_gardena_smart_gateway_mt7688.dtb' fdt subimage
+     Description:  Flattened Device Tree blob
+     Type:         Flat Device Tree
+     Compression:  uncompressed
+     Data Start:   0x80cfd600
+     Data Size:    7574 Bytes = 7.4 KiB
+     Architecture: MIPS
+     Hash algo:    sha256
+     Hash value:   5cc523f9207fbc3435951bfdcbf5cd85e9d64cbaac6dc586c34f11581b91292e
+   Verifying Hash Integrity ... sha256+ OK
+   Booting using the fdt blob at 0x80cfd600
+   Uncompressing Kernel Image
+   Loading Device Tree to 86f46000, end 86f4ad95 ... OK
+[    0.000000] timer_probe: no matching timers found
+
+U-Boot SPL 2021.04-gardena-6 (Jun 10 2021 - 16:05:31 +0000)
+Trying to boot from NOR
+
+
+U-Boot 2021.04-gardena-6 (Jun 10 2021 - 16:05:31 +0000)
+
+CPU:   MediaTek MT7688A ver:1 eco:2
+Boot:  DDR2, SPI-NOR 3-Byte Addr, CPU clock from XTAL
+Clock: CPU: 580MHz, Bus: 193MHz, XTAL: 40MHz
+Model: GARDENA smart Gateway (MT7688)
+DRAM:  128 MiB
+WDT:   Started with servicing (60s timeout)
+Loading Environment from SPIFlash... SF: Detected XM25QH64C with page size 256 Bytes, erase size 4 KiB, total 8 MiB
+OK
+F-Data:factory-data version 1 detected
+Net:   eth0: eth@10110000
+Autoboot in 2 seconds
+=> xxx
+Unknown command 'xxx' - try 'help'
+=> run do_start_over 
+## Resetting to default environment
+## Error: Can't force access to "bootcmd"
+## Error: Can't force access to "bootdelay"
+## Error: Can't force access to "baudrate"
+## Error: Can't force access to "arch"
+## Error: Can't force access to "cpu"
+## Error: Can't force access to "board"
+## Error: Can't force access to "board_name"
+## Error: Can't force access to "vendor"
+## Error: Can't force access to "soc"
+Saving Environment to SPIFlash... Erasing SPI flash...Writing to SPI flash...done
+Valid environment: 1
+OK
+resetting ...
+
+U-Boot SPL 2021.04-gardena-6 (Jun 10 2021 - 16:05:31 +0000)
+Trying to boot from NOR
+
+
+U-Boot 2021.04-gardena-6 (Jun 10 2021 - 16:05:31 +0000)
+
+CPU:   MediaTek MT7688A ver:1 eco:2
+Boot:  DDR2, SPI-NOR 3-Byte Addr, CPU clock from XTAL
+Clock: CPU: 580MHz, Bus: 193MHz, XTAL: 40MHz
+Model: GARDENA smart Gateway (MT7688)
+DRAM:  128 MiB
+WDT:   Started with servicing (60s timeout)
+Loading Environment from SPIFlash... SF: Detected XM25QH64C with page size 256 Bytes, erase size 4 KiB, total 8 MiB
+OK
+F-Data:factory-data version 1 detected
+F-Data:Values don't match env values -> saving
+Saving Environment to SPIFlash... Erasing SPI flash...Writing to SPI flash...done
+Valid environment: 2
+OK
+Net:   eth0: eth@10110000
+Autoboot in 2 seconds
+��������oot
+Terminating...
+Skipping tty reset...
+Thanks for using picocom
+reto@michael:~$ picocom -b 115200 /dev/ttyUSB0 
+picocom v3.1
+
+port is        : /dev/ttyUSB0
+flowcontrol    : none
+baudrate is    : 115200
+parity is      : none
+databits are   : 8
+stopbits are   : 1
+escape is      : C-a
+local echo is  : no
+noinit is      : no
+noreset is     : no
+hangup is      : no
+nolock is      : no
+send_cmd is    : sz -vv
+receive_cmd is : rz -vv -E
+imap is        : 
+omap is        : 
+emap is        : crcrlf,delbs,
+logfile is     : none
+initstring     : none
+exit_after is  : not set
+exit is        : no
+
+Type [C-a] [C-h] to see available commands
+Terminal ready
+
+U-Boot SPL 2021.04-gardena-6 (Jun 10 2021 - 16:05:31 +0000)
+Trying to boot from NOR
+
+
+U-Boot 2021.04-gardena-6 (Jun 10 2021 - 16:05:31 +0000)
+
+CPU:   MediaTek MT7688A ver:1 eco:2
+Boot:  DDR2, SPI-NOR 3-Byte Addr, CPU clock from XTAL
+Clock: CPU: 580MHz, Bus: 193MHz, XTAL: 40MHz
+Model: GARDENA smart Gateway (MT7688)
+DRAM:  128 MiB
+WDT:   Started with servicing (60s timeout)
+Loading Environment from SPIFlash... SF: Detected XM25QH64C with page size 256 Bytes, erase size 4 KiB, total 8 MiB
+OK
+F-Data:factory-data version 1 detected
+Net:   eth0: eth@10110000
+Autoboot in 2 seconds
+=> res
+resetting ...
+
+U-Boot SPL 2021.04-gardena-6 (Jun 10 2021 - 16:05:31 +0000)
+Trying to boot from NOR
+
+
+U-Boot 2021.04-gardena-6 (Jun 10 2021 - 16:05:31 +0000)
+
+CPU:   MediaTek MT7688A ver:1 eco:2
+Boot:  DDR2, SPI-NOR 3-Byte Addr, CPU clock from XTAL
+Clock: CPU: 580MHz, Bus: 193MHz, XTAL: 40MHz
+Model: GARDENA smart Gateway (MT7688)
+DRAM:  128 MiB
+WDT:   Started with servicing (60s timeout)
+Loading Environment from SPIFlash... SF: Detected XM25QH64C with page size 256 Bytes, erase size 4 KiB, total 8 MiB
+OK
+F-Data:factory-data version 1 detected
+Net:   eth0: eth@10110000
+Autoboot in 2 seconds
+linuxmoduleid=d42f8ded-6c11-404a-a4d1-431c9511a7e6
+gatewayid=dca4ec49-06e8-4e6f-a21b-c676c0b4ac87
+radiomoduleid=279a0634-e421-4cd5-8983-6f892893f3e5
+ubi0: default fastmap pool size: 50
+ubi0: default fastmap WL pool size: 25
+ubi0: attaching mtd7
+ubi0: scanning is finished
+ubi0: attached mtd7 (name "nand", size 128 MiB)
+ubi0: PEB size: 131072 bytes (128 KiB), LEB size: 126976 bytes
+ubi0: min./max. I/O unit sizes: 2048/2048, sub-page size 2048
+ubi0: VID header offset: 2048 (aligned 2048), data offset: 4096
+ubi0: good PEBs: 1024, bad PEBs: 0, corrupted PEBs: 0
+ubi0: user volume: 5, internal volumes: 1, max. volumes count: 128
+ubi0: max/mean erase counter: 2/1, WL threshold: 4096, image sequence number: 0
+ubi0: available PEBs: 18, total reserved PEBs: 1006, PEBs reserved for bad PEB handling: 22
+gpio: pin PA11 (gpio 11) value is 1
+## Error: "recovery_status" not defined
+gpio: pin PA11 (gpio 11) value is 1
+No size specified -> Using max size (3375440)
+Read 3375440 bytes from volume kernel0 to 80a00000
+## Loading kernel from FIT Image at 80a00000 ...
+   Using 'conf-ralink_gardena_smart_gateway_mt7688.dtb' configuration
+   Verifying Hash Integrity ... OK
+   Trying 'kernel-1' kernel subimage
+     Description:  Linux kernel
+     Type:         Kernel Image
+     Compression:  gzip compressed
+     Data Start:   0x80a00118
+     Data Size:    3365824 Bytes = 3.2 MiB
+     Architecture: MIPS
+     OS:           Linux
+     Load Address: 0x80000000
+     Entry Point:  0x80000400
+     Hash algo:    sha256
+     Hash value:   c533197cd96829af12f738e8148dd30367457043135e4ec6dcdc425747794261
+   Verifying Hash Integrity ... sha256+ OK
+## Loading fdt from FIT Image at 80a00000 ...
+   Using 'conf-ralink_gardena_smart_gateway_mt7688.dtb' configuration
+   Verifying Hash Integrity ... OK
+   Trying 'fdt-ralink_gardena_smart_gateway_mt7688.dtb' fdt subimage
+     Description:  Flattened Device Tree blob
+     Type:         Flat Device Tree
+     Compression:  uncompressed
+     Data Start:   0x80d35e00
+     Data Size:    7574 Bytes = 7.4 KiB
+     Architecture: MIPS
+     Hash algo:    sha256
+     Hash value:   5cc523f9207fbc3435951bfdcbf5cd85e9d64cbaac6dc586c34f11581b91292e
+   Verifying Hash Integrity ... sha256+ OK
+   Booting using the fdt blob at 0x80d35e00
+   Uncompressing Kernel Image
+   Loading Device Tree to 86f46000, end 86f4ad95 ... OK
+[    0.000000] timer_probe: no matching timers found
+rorootfs-overlay: Could not mount /dev/ubiblock0_0, bind mounting...
+
+Welcome to GARDENA smart Gateway 7.9.3 (Goodbye Dead Weight)!
+
+[  OK  ] Created slice system-getty.slice.
+[  OK  ] Created slice system-serial\x2dgetty.slice.
+[  OK  ] Created slice User and Session Slice.
+[  OK  ] Started Dispatch Password Requests to Console Directory Watch.
+[  OK  ] Started Forward Password Requests to Wall Directory Watch.
+[  OK  ] Reached target Paths.
+[  OK  ] Reached target Remote File Systems.
+[  OK  ] Reached target Slices.
+[  OK  ] Reached target Swap.
+[  OK  ] Listening on initctl Compatibility Named Pipe.
+[  OK  ] Listening on Journal Socket (/dev/log).
+[  OK  ] Listening on Journal Socket.
+[  OK  ] Listening on Network Service Netlink Socket.
+[  OK  ] Listening on udev Control Socket.
+[  OK  ] Listening on udev Kernel Socket.
+         Mounting Kernel Debug File System...
+         Mounting Temporary Directory (/tmp)...
+[  OK  ] Started Control power LED during boot process.
+         Mounting Kernel Configuration File System...
+         Starting Remount Root and Kernel File Systems...
+         Starting Apply Kernel Variables...
+         Starting udev Coldplug all Devices...
+         Starting Mount /run/log/journal as zram...
+[  OK  ] Mounted Kernel Debug File System.
+[  OK  ] Mounted Temporary Directory (/tmp).
+[  OK  ] Mounted Kernel Configuration File System.
+[  OK  ] Started Apply Kernel Variables.
+[  OK  ] Started Remount Root and Kernel File Systems.
+         Starting Create Static Device Nodes in /dev...
+[  OK  ] Started Create Static Device Nodes in /dev.
+[  OK  ] Reached target Local File Systems (Pre).
+         Mounting /var/volatile...
+         Starting udev Kernel Device Manager...
+[  OK  ] Mounted /var/volatile.
+         Starting Load/Save Random Seed...
+[  OK  ] Started Load/Save Random Seed.
+[  OK  ] Started udev Coldplug all Devices.
+[  OK  ] Started Mount /run/log/journal as zram.
+[  OK  ] Reached target Local File Systems.
+         Starting Ethernet LED configuration...
+         Starting Journal Service...
+         Starting Data migration...
+[  OK  ] Started Ethernet LED configuration.
+[  OK  ] Started Data migration.
+[  OK  ] Started udev Kernel Device Manager.
+[  OK  ] Started Journal Service.
+         Starting Flush Journal to Persistent Storage...
+[  OK  ] Started Flush Journal to Persistent Storage.
+         Starting Create Volatile Files and Directories...
+[  OK  ] Started Create Volatile Files and Directories.
+         Starting Network Time Synchronization...
+         Starting Update UTMP about System Boot/Shutdown...
+[  OK  ] Started Update UTMP about System Boot/Shutdown.
+[  OK  ] Started Network Time Synchronization.
+[  OK  ] Reached target System Initialization.
+[  OK  ] Started Daily Cleanup of Temporary Directories.
+[  OK  ] Reached target System Time Set.
+[  OK  ] Reached target System Time Synchronized.
+[  OK  ] Listening on D-Bus System Message Bus Socket.
+[  OK  ] Listening on dropbear.socket.
+[  OK  ] Listening on gateway-config-backend.socket.
+[  OK  ] Reached target Sockets.
+[  OK  ] Reached target Basic System.
+[  OK  ] Started D-Bus System Message Bus.
+         Starting U-Boot Environment Extractor...
+[  OK  ] Started Getty on tty1.
+         Starting IPv6 Packet Filtering Framework...
+         Starting IPv4 Packet Filtering Framework...
+         Starting Reset Radio Module on boot...
+         Starting Flash RM test firmware...
+[  OK  ] Started SWUpdate progress service.
+         Starting Login Service...
+         Starting Configure unique hostname...
+         Starting Update Hardware Revision file...
+         Starting Update Software Versions file for SWUpdate...
+[  OK  ] Started U-Boot Environment Extractor.
+[  OK  ] Started IPv6 Packet Filtering Framework.
+[  OK  ] Started IPv4 Packet Filtering Framework.
+[  OK  ] Started Configure unique hostname.
+[  OK  ] Started Update Hardware Revision file.
+[  OK  ] Started Update Software Versions file for SWUpdate.
+[  OK  ] Reached target Network (Pre).
+[  OK  ] Listening on Load/Save RF Kill Switch Status /dev/rfkill Watch.
+         Starting dhcpcd on all interfaces...
+         Starting install simple iptable rules...
+         Starting Run IPR tool...
+         Starting Network Service...
+         Starting Load/Save RF Kill Switch Status...
+[  OK  ] Started Login Service.
+[  OK  ] Started Run IPR tool.
+         Starting Run HomeKit setup during manufacturing...
+[  OK  ] Started Reset Radio Module on boot.
+         Starting RF LED setup...
+[  OK  ] Started RF LED setup.
+[  OK  ] Started Load/Save RF Kill Switch Status.
+[  OK  ] Started Run HomeKit setup during manufacturing.
+         Starting Run selftest during manufacturing...
+[  OK  ] Started dhcpcd on all interfaces.
+[  OK  ] Started Network Service.
+         Starting Wait for Network to be Configured...
+[  OK  ] Started Wait for Network to be Configured.
+[  OK  ] Started install simple iptable rules.
+[  OK  ] Reached target Network.
+[  OK  ] Reached target Network is Online.
+[  OK  ] Started SSH Tunnel Timer.
+[  OK  ] Started Run swupdate-check.service …artup and periodically thereafter.
+[  OK  ] Reached target Timers.
+         Starting Zero-configuration networking...
+[  OK  ] Started Zero-configuration networking.
+[  OK  ] Stopped Run swupdate-check.service …artup and periodically thereafter.
+         Stopping Run swupdate-check.service…artup and periodically thereafter.
+[  OK  ] Started Run swupdate-check.service …artup and periodically thereafter.
+         Starting Time & Date Service...
+[  OK  ] Started Time & Date Service.
+         Stopping Control power LED during boot process...
+[  OK  ] Stopped Control power LED during boot process.
+[FAILED] Failed to start Run selftest during manufacturing.
+See 'systemctl status selftest.service' for details.
+[  OK  ] Started Serial Getty on ttyS0.
+[  OK  ] Reached target Login Prompts.
+[  OK  ] Reached target Multi-User System.
+         Starting Update UTMP about System Runlevel Changes...
+
++------------------------------------------------------------------------+
+| Dear customer                                                          |
+|                                                                        |
+| You can log in to your GARDENA smart Gateway with user 'root' without  |
+| a password. Please understand that by doing so, you will void your     |
+| warranty. If anything breaks, you can try to do a factory reset (hold  |
+| the reset button while powering on the gateway); however, if that does |
+| not resolve the problem, customer support will not be able to help.    |
+| Please refrain from contacting customer support as this will cause us  |
+| to lock down future devices in the long run. For questions regarding   |
+| open source, please contact smart.open.source@husqvarnagroup.com.      |
+|                                                                        |
+| To unlock SSH access locally, execute the following:                   |
+| # fw_setenv dev_debug_allow_local_ssh 1 && systemctl restart firewall  |
++------------------------------------------------------------------------+
+
+GARDENA smart Gateway 7.9.3 GARDENA-37bfdc ttyS0
+
+GARDENA-37bfdc login: root
+
+You can find the open source parts of the software for this product on
+GitHub [1] (this does not include the proprietary packages, which are
+needed to operate the gateway in the GARDENA smart system).
+
+Please be aware that any modification to your gateway, in particular a
+modification of U-Boot, may permanently brick your device and is not
+covered by warranty.
+
+Happy hacking!
+
+P.S. Interested in tinkering with GARDENA products full-time? Get in
+touch with us at jobs@hqv.ch to find out about currently open
+developer positions!
+
+[1] https://github.com/husqvarnagroup/smart-garden-gateway-public
+
+root@GARDENA-37bfdc:~# systemctl status selftest.service
+* selftest.service - Run selftest during manufacturing
+     Loaded: loaded (/lib/systemd/system/selftest.service; enabled; vendor preset: enabled)
+     Active: failed (Result: exit-code) since Fri 2023-08-25 11:35:11 CEST; 12s ago
+    Process: 233 ExecStart=/usr/bin/selftest-check (code=exited, status=1/FAILURE)
+    Process: 364 ExecStopPost=/bin/sh -c if [ "$$EXIT_STATUS" != 0 ]; then cpms-errorhandler; fi (code=exited, status=0/SUCCESS)
+   Main PID: 233 (code=exited, status=1/FAILURE)
+        CPU: 29.557s
+
+Aug 25 11:04:55 GARDENA-37bfdc selftest-check[247]:     self.assertTrue(status['System clock synchronized'] == "yes")
+Aug 25 11:04:55 GARDENA-37bfdc selftest-check[247]: AssertionError: False is not true
+Aug 25 11:04:55 GARDENA-37bfdc selftest-check[247]: ----------------------------------------------------------------------
+Aug 25 11:04:55 GARDENA-37bfdc selftest-check[247]: Ran 16 tests in 18.317s
+Aug 25 11:04:55 GARDENA-37bfdc selftest-check[247]: FAILED (failures=1)
+Aug 25 11:04:56 GARDENA-37bfdc selftest-check[233]: Selftest failed!
+Aug 25 11:04:56 GARDENA-37bfdc systemd[1]: selftest.service: Main process exited, code=exited, status=1/FAILURE
+Aug 25 11:35:11 GARDENA-37bfdc systemd[1]: selftest.service: Failed with result 'exit-code'.
+Aug 25 11:35:11 GARDENA-37bfdc systemd[1]: Failed to start Run selftest during manufacturing.
+Aug 25 11:35:11 GARDENA-37bfdc systemd[1]: selftest.service: Consumed 29.557s CPU time.
+ERROR: 3 | root@GARDENA-37bfdc:~# timedatectl ^C
+ERROR: 3 | root@GARDENA-37bfdc:~# fw_printenv gatewayid
+gatewayid=dca4ec49-06e8-4e6f-a21b-c676c0b4ac87
+root@GARDENA-37bfdc:~# fw_printenv linuxmodule
+Error: "linuxmodule" not defined
+ERROR: 1 | root@GARDENA-37bfdc:~# fw_printenv linuxmoduleid
+linuxmoduleid=d42f8ded-6c11-404a-a4d1-431c9511a7e6
+root@GARDENA-37bfdc:~# reboot 
+[  OK  ] Stopped target Multi-User System.
+[  OK  ] Stopped target Login Prompts.
+[  OK  ] Stopped target Remote File Systems.
+[  OK  ] Stopped target System Time Synchronized.
+[  OK  ] Stopped target System Time Set.
+[  OK  ] Stopped target Timers.
+[  OK  ] Stopped SSH Tunnel Timer.
+[  OK  ] Stopped Run swupdate-check.service on startup and periodically thereafter.
+[  OK  ] Stopped Daily Cleanup of Temporary Directories.
+[  OK  ] Stopped target Network is Online.
+[  OK  ] Closed Load/Save RF Kill Switch Status /dev/rfkill Watch.
+         Stopping D-Bus System Message Bus...
+[  OK  ] Stopped U-Boot Environment Extractor.
+         Stopping Getty on tty1...
+         Stopping Zero-configuration networking...
+[  OK  ] Stopped RF LED setup.
+         Stopping Serial Getty on ttyS0...
+         Stopping SWUpdate progress service...
+         Stopping Login Service...
+[  OK  ] Stopped Wait for Network to be Configured.
+[  OK  ] Stopped Data migration.
+[  OK  ] Stopped Update Hardware Revision file.
+[  OK  ] Stopped Update Software Versions file for SWUpdate.
+[  OK  ] Stopped D-Bus System Message Bus.
+[  OK  ] Stopped Getty on tty1.
+[  OK  ] Stopped SWUpdate progress service.
+[  OK  ] Stopped Login Service.
+[  OK  ] Stopped Zero-configuration networking.
+[  OK  ] Stopped Serial Getty on ttyS0.
+[  OK  ] Removed slice system-getty.slice.
+[  OK  ] Removed slice system-serial\x2dgetty.slice.
+[  OK  ] Stopped target Network.
+         Stopping dhcpcd on all interfaces...
+[  OK  ] Stopped install simple iptable rules.
+         Stopping Run HomeKit setup during manufacturing...
+         Stopping Network Service...
+[  OK  ] Stopped Network Service.
+[  OK  ] Stopped Run HomeKit setup during manufacturing.
+         Stopping Run IPR tool...
+         Stopping Load/Save Random Seed...
+[  OK  ] Stopped Run IPR tool.
+[  OK  ] Stopped Load/Save Random Seed.
+[  OK  ] Stopped dhcpcd on all interfaces.
+[  OK  ] Stopped target Network (Pre).
+[  OK  ] Stopped Ethernet LED configuration.
+[  OK  ] Stopped IPv6 Packet Filtering Framework.
+[  OK  ] Stopped IPv4 Packet Filtering Framework.
+[  OK  ] Stopped Configure unique hostname.
+[  OK  ] Stopped target Basic System.
+[  OK  ] Stopped target Paths.
+[  OK  ] Stopped Dispatch Password Requests to Console Directory Watch.
+[  OK  ] Stopped Forward Password Requests to Wall Directory Watch.
+[  OK  ] Stopped target Slices.
+[  OK  ] Removed slice User and Session Slice.
+[  OK  ] Stopped target Sockets.
+[  OK  ] Closed D-Bus System Message Bus Socket.
+[  OK  ] Closed dropbear.socket.
+[  OK  ] Closed gateway-config-backend.socket.
+[  OK  ] Stopped target System Initialization.
+[  OK  ] Stopped Apply Kernel Variables.
+         Stopping Network Time Synchronization...
+[  OK  ] Stopped Network Time Synchronization.
+[  OK  ] Stopped Create Volatile Files and Directories.
+[  OK  ] Stopped target Local File Systems.
+         Unmounting /media/rfs/ro...
+         Unmounting /media/rfs/rw...
+         Unmounting /run/log/journal...
+         Unmounting Temporary Directory (/tmp)...
+         Unmounting /var/volatile...
+[  OK  ] Unmounted /media/rfs/ro.
+[  OK  ] Unmounted /media/rfs/rw.
+[FAILED] Failed unmounting /run/log/journal.
+[  OK  ] Unmounted Temporary Directory (/tmp).
+[  OK  ] Unmounted /var/volatile.
+[  OK  ] Stopped target Local File Systems (Pre).
+[  OK  ] Stopped target Swap.
+[  OK  ] Reached target Unmount All Filesystems.
+[  OK  ] Stopped Remount Root and Kernel File Systems.
+[  OK  ] Stopped Create Static Device Nodes in /dev.
+[  OK  ] Reached target Shutdown.
+[  OK  ] Reached target Final Step.
+[  OK  ] Started Reboot.
+[  OK  ] Reached target Reboot.
+[  235.798941] watchdog: watchdog0: watchdog did not stop!
+[  236.195944] reboot: Restarting system
+
+U-Boot SPL 2021.04-gardena-6 (Jun 10 2021 - 16:05:31 +0000)
+Trying to boot from NOR
+
+
+U-Boot 2021.04-gardena-6 (Jun 10 2021 - 16:05:31 +0000)
+
+CPU:   MediaTek MT7688A ver:1 eco:2
+Boot:  DDR2, SPI-NOR 3-Byte Addr, CPU clock from XTAL
+Clock: CPU: 580MHz, Bus: 193MHz, XTAL: 40MHz
+Model: GARDENA smart Gateway (MT7688)
+DRAM:  128 MiB
+WDT:   Started with servicing (60s timeout)
+Loading Environment from SPIFlash... SF: Detected XM25QH64C with page size 256 Bytes, erase size 4 KiB, total 8 MiB
+OK
+F-Data:factory-data version 1 detected
+Net:   eth0: eth@10110000
+Autoboot in 2 seconds
+=> run do_start_over 
+## Resetting to default environment
+## Error: Can't force access to "bootcmd"
+## Error: Can't force access to "bootdelay"
+## Error: Can't force access to "baudrate"
+## Error: Can't force access to "arch"
+## Error: Can't force access to "cpu"
+## Error: Can't force access to "board"
+## Error: Can't force access to "board_name"
+## Error: Can't force access to "vendor"
+## Error: Can't force access to "soc"
+Saving Environment to SPIFlash... Erasing SPI flash...Writing to SPI flash...done
+Valid environment: 1
+OK
+resetting ...
+
+U-Boot SPL 2021.04-gardena-6 (Jun 10 2021 - 16:05:31 +0000)
+Trying to boot from NOR
+
+
+U-Boot 2021.04-gardena-6 (Jun 10 2021 - 16:05:31 +0000)
+
+CPU:   MediaTek MT7688A ver:1 eco:2
+Boot:  DDR2, SPI-NOR 3-Byte Addr, CPU clock from XTAL
+Clock: CPU: 580MHz, Bus: 193MHz, XTAL: 40MHz
+Model: GARDENA smart Gateway (MT7688)
+DRAM:  128 MiB
+WDT:   Started with servicing (60s timeout)
+Loading Environment from SPIFlash... SF: Detected XM25QH64C with page size 256 Bytes, erase size 4 KiB, total 8 MiB
+OK
+F-Data:factory-data version 1 detected
+F-Data:Values don't match env values -> saving
+Saving Environment to SPIFlash... Erasing SPI flash...Writing to SPI flash...done
+Valid environment: 2
+OK
+Net:   eth0: eth@10110000
+Autoboot in 2 seconds
+
+FATAL: read zero bytes from port
+term_exitfunc: reset failed for dev UNKNOWN: Input/output error
+reto@michael:~$ picocom -b 115200 /dev/ttyUSB0 
+picocom v3.1
+
+port is        : /dev/ttyUSB0
+flowcontrol    : none
+baudrate is    : 115200
+parity is      : none
+databits are   : 8
+stopbits are   : 1
+escape is      : C-a
+local echo is  : no
+noinit is      : no
+noreset is     : no
+hangup is      : no
+nolock is      : no
+send_cmd is    : sz -vv
+receive_cmd is : rz -vv -E
+imap is        : 
+omap is        : 
+emap is        : crcrlf,delbs,
+logfile is     : none
+initstring     : none
+exit_after is  : not set
+exit is        : no
+
+Type [C-a] [C-h] to see available commands
+Terminal ready
+root
+
+You can find the open source parts of the software for this product on
+GitHub [1] (this does not include the proprietary packages, which are
+needed to operate the gateway in the GARDENA smart system).
+
+Please be aware that any modification to your gateway, in particular a
+modification of U-Boot, may permanently brick your device and is not
+covered by warranty.
+
+Happy hacking!
+
+P.S. Interested in tinkering with GARDENA products full-time? Get in
+touch with us at jobs@hqv.ch to find out about currently open
+developer positions!
+
+[1] https://github.com/husqvarnagroup/smart-garden-gateway-public
+
+root@GARDENA-37d07c:~# 

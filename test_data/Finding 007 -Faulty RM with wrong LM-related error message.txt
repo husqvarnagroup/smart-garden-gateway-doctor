@@ -1,0 +1,516 @@
+reto@michael:~$ picocom -b 115200 /dev/ttyUSB0 
+picocom v3.1
+
+port is        : /dev/ttyUSB0
+flowcontrol    : none
+baudrate is    : 115200
+parity is      : none
+databits are   : 8
+stopbits are   : 1
+escape is      : C-a
+local echo is  : no
+noinit is      : no
+noreset is     : no
+hangup is      : no
+nolock is      : no
+send_cmd is    : sz -vv
+receive_cmd is : rz -vv -E
+imap is        : 
+omap is        : 
+emap is        : crcrlf,delbs,
+logfile is     : none
+initstring     : none
+exit_after is  : not set
+exit is        : no
+
+Type [C-a] [C-h] to see available commands
+Terminal ready
+
+GARDENA-2be614 login: root
+
+You can find the open source parts of the software for this product on
+GitHub [1] (this does not include the proprietary packages, which are
+needed to operate the gateway in the GARDENA smart system).
+
+Please be aware that any modification to your gateway, in particular a
+modification of U-Boot, may permanently brick your device and is not
+covered by warranty.
+
+Happy hacking!
+
+P.S. Interested in tinkering with GARDENA products full-time? Get in
+touch with us at jobs@hqv.ch to find out about currently open
+developer positions!
+
+[1] https://github.com/husqvarnagroup/smart-garden-gateway-public
+
+root@GARDENA-2be614:~# journalctl -b
+-- Logs begin at Mon 2021-06-14 03:51:06 CEST, end at Fri 2023-08-25 11:24:38 CEST. --
+Jun 14 03:51:06 GARDENA-2be614 kernel: Linux version 5.10.43-r4.0.1.8-yocto-tiny (oe-user@oe-host) (mipsel-gardena-linux-gcc (GCC) 9.3.0, GNU ld (GNU Binutils) 2.34.0.20200220) #1 Thu Jul 22 15:06:54 UTC 2021
+Jun 14 03:51:06 GARDENA-2be614 kernel: Board has DDR2
+Jun 14 03:51:06 GARDENA-2be614 kernel: Analog PMU set to hw control
+Jun 14 03:51:06 GARDENA-2be614 kernel: Digital PMU set to hw control
+Jun 14 03:51:06 GARDENA-2be614 kernel: SoC Type: MediaTek MT7688 ver:1 eco:2
+Jun 14 03:51:06 GARDENA-2be614 kernel: printk: bootconsole [early0] enabled
+Jun 14 03:51:06 GARDENA-2be614 kernel: CPU0 revision is: 00019655 (MIPS 24KEc)
+Jun 14 03:51:06 GARDENA-2be614 kernel: MIPS: machine is GARDENA smart Gateway (MT7688)
+Jun 14 03:51:06 GARDENA-2be614 kernel: Initrd not found or empty - disabling initrd
+Jun 14 03:51:06 GARDENA-2be614 kernel: Primary instruction cache 64kB, VIPT, 4-way, linesize 32 bytes.
+Jun 14 03:51:06 GARDENA-2be614 kernel: Primary data cache 32kB, 4-way, PIPT, no aliases, linesize 32 bytes
+Jun 14 03:51:06 GARDENA-2be614 kernel: Zone ranges:
+Jun 14 03:51:06 GARDENA-2be614 kernel:   Normal   [mem 0x0000000000000000-0x0000000007ffffff]
+Jun 14 03:51:06 GARDENA-2be614 kernel: Movable zone start for each node
+Jun 14 03:51:06 GARDENA-2be614 kernel: Early memory node ranges
+Jun 14 03:51:06 GARDENA-2be614 kernel:   node   0: [mem 0x0000000000000000-0x0000000007ffffff]
+Jun 14 03:51:06 GARDENA-2be614 kernel: Initmem setup node 0 [mem 0x0000000000000000-0x0000000007ffffff]
+Jun 14 03:51:06 GARDENA-2be614 kernel: On node 0 totalpages: 32768
+Jun 14 03:51:06 GARDENA-2be614 kernel:   Normal zone: 288 pages used for memmap
+Jun 14 03:51:06 GARDENA-2be614 kernel:   Normal zone: 0 pages reserved
+Jun 14 03:51:06 GARDENA-2be614 kernel:   Normal zone: 32768 pages, LIFO batch:7
+Jun 14 03:51:06 GARDENA-2be614 kernel: pcpu-alloc: s0 r0 d32768 u32768 alloc=1*32768
+Jun 14 03:51:06 GARDENA-2be614 kernel: pcpu-alloc: [0] 0 
+Jun 14 03:51:06 GARDENA-2be614 kernel: Built 1 zonelists, mobility grouping on.  Total pages: 32480
+Jun 14 03:51:06 GARDENA-2be614 kernel: Kernel command line: console=ttyS0,115200 root=/dev/ubiblock0_0 rootrw=ubi0:overlay rootrwfstype=ubifs rootrwoptions=rw,noatime ubi.block=0,rootfs0 ubi.mtd=nand init=/init mtdparts=spi0.0:640k(uboot),64k(uboot_env0),64k(uboot_env1),64k(factory),-(unused);spi0.1:-(nand)
+Jun 14 03:51:06 GARDENA-2be614 kernel: Dentry cache hash table entries: 16384 (order: 4, 65536 bytes, linear)
+Jun 14 03:51:06 GARDENA-2be614 kernel: Inode-cache hash table entries: 8192 (order: 3, 32768 bytes, linear)
+Jun 14 03:51:06 GARDENA-2be614 kernel: Writing ErrCtl register=0004000d
+Jun 14 03:51:06 GARDENA-2be614 kernel: Readback ErrCtl register=0004000d
+Jun 14 03:51:06 GARDENA-2be614 kernel: mem auto-init: stack:off, heap alloc:off, heap free:off
+Jun 14 03:51:06 GARDENA-2be614 kernel: Memory: 122560K/131072K available (5053K kernel code, 643K rwdata, 1008K rodata, 200K init, 251K bss, 8512K reserved, 0K cma-reserved)
+Jun 14 03:51:06 GARDENA-2be614 kernel: NR_IRQS: 256
+Jun 14 03:51:06 GARDENA-2be614 kernel: intc: using register map from devicetree
+Jun 14 03:51:06 GARDENA-2be614 kernel: random: get_random_bytes called from 0x8068ea18 with crng_init=0
+Jun 14 03:51:06 GARDENA-2be614 kernel: CPU Clock: 580MHz
+Jun 14 03:51:06 GARDENA-2be614 kernel: timer_probe: no matching timers found
+Jun 14 03:51:06 GARDENA-2be614 kernel: clocksource: MIPS: mask: 0xffffffff max_cycles: 0xffffffff, max_idle_ns: 6590553264 ns
+Jun 14 03:51:06 GARDENA-2be614 kernel: sched_clock: 32 bits at 290MHz, resolution 3ns, wraps every 7405115902ns
+Jun 14 03:51:06 GARDENA-2be614 kernel: Console: colour dummy device 80x25
+Jun 14 03:51:06 GARDENA-2be614 kernel: Calibrating delay loop... 385.02 BogoMIPS (lpj=770048)
+Jun 14 03:51:06 GARDENA-2be614 kernel: pid_max: default: 4096 minimum: 301
+Jun 14 03:51:06 GARDENA-2be614 kernel: Mount-cache hash table entries: 1024 (order: 0, 4096 bytes, linear)
+Jun 14 03:51:06 GARDENA-2be614 kernel: Mountpoint-cache hash table entries: 1024 (order: 0, 4096 bytes, linear)
+Jun 14 03:51:06 GARDENA-2be614 kernel: devtmpfs: initialized
+Jun 14 03:51:06 GARDENA-2be614 kernel: clocksource: jiffies: mask: 0xffffffff max_cycles: 0xffffffff, max_idle_ns: 7645041785100000 ns
+Jun 14 03:51:06 GARDENA-2be614 kernel: futex hash table entries: 16 (order: -5, 192 bytes, linear)
+Jun 14 03:51:06 GARDENA-2be614 kernel: pinctrl core: initialized pinctrl subsystem
+Jun 14 03:51:06 GARDENA-2be614 kernel: NET: Registered protocol family 16
+Jun 14 03:51:06 GARDENA-2be614 kernel: clocksource: Switched to clocksource MIPS
+Jun 14 03:51:06 GARDENA-2be614 kernel: NET: Registered protocol family 2
+Jun 14 03:51:06 GARDENA-2be614 kernel: IP idents hash table entries: 2048 (order: 2, 16384 bytes, linear)
+Jun 14 03:51:06 GARDENA-2be614 kernel: tcp_listen_portaddr_hash hash table entries: 512 (order: 0, 4096 bytes, linear)
+Jun 14 03:51:06 GARDENA-2be614 kernel: TCP established hash table entries: 1024 (order: 0, 4096 bytes, linear)
+Jun 14 03:51:06 GARDENA-2be614 kernel: TCP bind hash table entries: 1024 (order: 0, 4096 bytes, linear)
+Jun 14 03:51:06 GARDENA-2be614 kernel: TCP: Hash tables configured (established 1024 bind 1024)
+Jun 14 03:51:06 GARDENA-2be614 kernel: UDP hash table entries: 256 (order: 0, 4096 bytes, linear)
+Jun 14 03:51:06 GARDENA-2be614 kernel: UDP-Lite hash table entries: 256 (order: 0, 4096 bytes, linear)
+Jun 14 03:51:06 GARDENA-2be614 kernel: NET: Registered protocol family 1
+Jun 14 03:51:06 GARDENA-2be614 kernel: RPC: Registered named UNIX socket transport module.
+Jun 14 03:51:06 GARDENA-2be614 kernel: RPC: Registered udp transport module.
+Jun 14 03:51:06 GARDENA-2be614 kernel: RPC: Registered tcp transport module.
+Jun 14 03:51:06 GARDENA-2be614 kernel: RPC: Registered tcp NFSv4.1 backchannel transport module.
+Jun 14 03:51:06 GARDENA-2be614 kernel: PCI: CLS 0 bytes, default 32
+Jun 14 03:51:06 GARDENA-2be614 kernel: workingset: timestamp_bits=14 max_order=15 bucket_order=1
+Jun 14 03:51:06 GARDENA-2be614 kernel: squashfs: version 4.0 (2009/01/31) Phillip Lougher
+Jun 14 03:51:06 GARDENA-2be614 kernel: NFS: Registering the id_resolver key type
+Jun 14 03:51:06 GARDENA-2be614 kernel: Key type id_resolver registered
+Jun 14 03:51:06 GARDENA-2be614 kernel: Key type id_legacy registered
+Jun 14 03:51:06 GARDENA-2be614 kernel: NET: Registered protocol family 38
+Jun 14 03:51:06 GARDENA-2be614 kernel: pinctrl-single 10000060.pinmux: 64 pins, size 8
+Jun 14 03:51:06 GARDENA-2be614 kernel: mt7621_gpio 10000600.gpio: registering 32 gpios
+Jun 14 03:51:06 GARDENA-2be614 kernel: mt7621_gpio 10000600.gpio: registering 32 gpios
+Jun 14 03:51:06 GARDENA-2be614 kernel: mt7621_gpio 10000600.gpio: registering 32 gpios
+Jun 14 03:51:06 GARDENA-2be614 kernel: Serial: 8250/16550 driver, 3 ports, IRQ sharing disabled
+Jun 14 03:51:06 GARDENA-2be614 kernel: printk: console [ttyS0] disabled
+Jun 14 03:51:06 GARDENA-2be614 kernel: 10000c00.uartlite: ttyS0 at MMIO 0x10000c00 (irq = 28, base_baud = 2500000) is a 16550A
+Jun 14 03:51:06 GARDENA-2be614 kernel: printk: console [ttyS0] enabled
+Jun 14 03:51:06 GARDENA-2be614 kernel: printk: bootconsole [early0] disabled
+Jun 14 03:51:06 GARDENA-2be614 kernel: 10000d00.uart1: ttyS1 at MMIO 0x10000d00 (irq = 29, base_baud = 2500000) is a 16550A
+Jun 14 03:51:06 GARDENA-2be614 kernel: 10000e00.uart2: ttyS2 at MMIO 0x10000e00 (irq = 30, base_baud = 2500000) is a 16550A
+Jun 14 03:51:06 GARDENA-2be614 kernel: brd: module loaded
+Jun 14 03:51:06 GARDENA-2be614 kernel: loop: module loaded
+Jun 14 03:51:06 GARDENA-2be614 kernel: bootcount 1000006c.bootcount: U-Boot bootcounter driver registered using single-word
+Jun 14 03:51:06 GARDENA-2be614 kernel: spi-mt7621 10000b00.spi: sys_freq: 193333333
+Jun 14 03:51:06 GARDENA-2be614 kernel: spi-nor spi0.0: XM25QH64C (8192 Kbytes)
+Jun 14 03:51:06 GARDENA-2be614 kernel: 5 cmdlinepart partitions found on MTD device spi0.0
+Jun 14 03:51:06 GARDENA-2be614 kernel: Creating 5 MTD partitions on "spi0.0":
+Jun 14 03:51:06 GARDENA-2be614 kernel: 0x000000000000-0x0000000a0000 : "uboot"
+Jun 14 03:51:06 GARDENA-2be614 kernel: 0x0000000a0000-0x0000000b0000 : "uboot_env0"
+Jun 14 03:51:06 GARDENA-2be614 kernel: 0x0000000b0000-0x0000000c0000 : "uboot_env1"
+Jun 14 03:51:06 GARDENA-2be614 kernel: 0x0000000c0000-0x0000000d0000 : "factory"
+Jun 14 03:51:06 GARDENA-2be614 kernel: 0x0000000d0000-0x000000800000 : "unused"
+Jun 14 03:51:06 GARDENA-2be614 kernel: spi-nand spi0.1: GigaDevice SPI NAND was found.
+Jun 14 03:51:06 GARDENA-2be614 kernel: spi-nand spi0.1: 128 MiB, block size: 128 KiB, page size: 2048, OOB size: 128
+Jun 14 03:51:06 GARDENA-2be614 kernel: 1 cmdlinepart partitions found on MTD device spi0.1
+Jun 14 03:51:06 GARDENA-2be614 kernel: Creating 1 MTD partitions on "spi0.1":
+Jun 14 03:51:06 GARDENA-2be614 kernel: 0x000000000000-0x000008000000 : "nand"
+Jun 14 03:51:06 GARDENA-2be614 kernel: libphy: Fixed MDIO Bus: probed
+Jun 14 03:51:06 GARDENA-2be614 kernel: tun: Universal TUN/TAP device driver, 1.6
+Jun 14 03:51:06 GARDENA-2be614 kernel: rt3050-esw 10110000.esw: link changed 0x00
+Jun 14 03:51:06 GARDENA-2be614 kernel: mtk_soc_eth 10100000.ethernet eth0: mediatek frame engine at 0xb0100000, irq 5
+Jun 14 03:51:06 GARDENA-2be614 kernel: PPP generic driver version 2.4.2
+Jun 14 03:51:06 GARDENA-2be614 kernel: i2c /dev entries driver
+Jun 14 03:51:06 GARDENA-2be614 kernel: i2c-mt7621 10000900.i2c: clock 100 kHz
+Jun 14 03:51:06 GARDENA-2be614 kernel: NET: Registered protocol family 10
+Jun 14 03:51:06 GARDENA-2be614 kernel: Segment Routing with IPv6
+Jun 14 03:51:06 GARDENA-2be614 kernel: NET: Registered protocol family 17
+Jun 14 03:51:06 GARDENA-2be614 kernel: Key type dns_resolver registered
+Jun 14 03:51:06 GARDENA-2be614 kernel: registered taskstats version 1
+Jun 14 03:51:06 GARDENA-2be614 kernel: ubi0: attaching mtd5
+Jun 14 03:51:06 GARDENA-2be614 kernel: random: fast init done
+Jun 14 03:51:06 GARDENA-2be614 kernel: ubi0: scanning is finished
+Jun 14 03:51:06 GARDENA-2be614 kernel: ubi0: attached mtd5 (name "nand", size 128 MiB)
+Jun 14 03:51:06 GARDENA-2be614 kernel: ubi0: PEB size: 131072 bytes (128 KiB), LEB size: 126976 bytes
+Jun 14 03:51:06 GARDENA-2be614 kernel: ubi0: min./max. I/O unit sizes: 2048/2048, sub-page size 2048
+Jun 14 03:51:06 GARDENA-2be614 kernel: ubi0: VID header offset: 2048 (aligned 2048), data offset: 4096
+Jun 14 03:51:06 GARDENA-2be614 kernel: ubi0: good PEBs: 1024, bad PEBs: 0, corrupted PEBs: 0
+Jun 14 03:51:06 GARDENA-2be614 kernel: ubi0: user volume: 5, internal volumes: 1, max. volumes count: 128
+Jun 14 03:51:06 GARDENA-2be614 kernel: ubi0: max/mean erase counter: 2/1, WL threshold: 4096, image sequence number: 0
+Jun 14 03:51:06 GARDENA-2be614 kernel: ubi0: available PEBs: 20, total reserved PEBs: 1004, PEBs reserved for bad PEB handling: 22
+Jun 14 03:51:06 GARDENA-2be614 kernel: ubi0: background thread "ubi_bgt0d" started, PID 51
+Jun 14 03:51:06 GARDENA-2be614 kernel: rt3050-esw 10110000.esw: link changed 0x01
+Jun 14 03:51:06 GARDENA-2be614 kernel: block ubiblock0_0: created from ubi0:0(rootfs0)
+Jun 14 03:51:06 GARDENA-2be614 kernel: input: gpio-keys as /devices/platform/gpio-keys/input/input0
+Jun 14 03:51:06 GARDENA-2be614 kernel: evbug: Connected device: input0 (gpio-keys at gpio-keys/input0)
+Jun 14 03:51:06 GARDENA-2be614 kernel: VFS: Mounted root (squashfs filesystem) readonly on device 254:0.
+Jun 14 03:51:06 GARDENA-2be614 kernel: devtmpfs: mounted
+Jun 14 03:51:06 GARDENA-2be614 kernel: Freeing unused kernel memory: 200K
+Jun 14 03:51:06 GARDENA-2be614 kernel: This architecture does not have kernel memory protection.
+Jun 14 03:51:06 GARDENA-2be614 kernel: Run /init as init process
+Jun 14 03:51:06 GARDENA-2be614 kernel:   with arguments:
+Jun 14 03:51:06 GARDENA-2be614 kernel:     /init
+Jun 14 03:51:06 GARDENA-2be614 kernel:   with environment:
+Jun 14 03:51:06 GARDENA-2be614 kernel:     HOME=/
+Jun 14 03:51:06 GARDENA-2be614 kernel:     TERM=linux
+Jun 14 03:51:06 GARDENA-2be614 kernel:     rootrw=ubi0:overlay
+Jun 14 03:51:06 GARDENA-2be614 kernel:     rootrwfstype=ubifs
+Jun 14 03:51:06 GARDENA-2be614 kernel:     rootrwoptions=rw,noatime
+Jun 14 03:51:06 GARDENA-2be614 kernel: process '/bin/busybox.nosuid' started with executable stack
+Jun 14 03:51:06 GARDENA-2be614 kernel: ubiblock0_0: Can't mount, would change RO state
+Jun 14 03:51:06 GARDENA-2be614 kernel: UBIFS (ubi0:4): Mounting in unauthenticated mode
+Jun 14 03:51:06 GARDENA-2be614 kernel: UBIFS (ubi0:4): background thread "ubifs_bgt0_4" started, PID 84
+Jun 14 03:51:06 GARDENA-2be614 kernel: UBIFS (ubi0:4): recovery needed
+Jun 14 03:51:06 GARDENA-2be614 kernel: UBIFS (ubi0:4): recovery completed
+Jun 14 03:51:06 GARDENA-2be614 kernel: UBIFS (ubi0:4): UBIFS: mounted UBI device 0, volume 4, name "overlay"
+Jun 14 03:51:06 GARDENA-2be614 kernel: UBIFS (ubi0:4): LEB size: 126976 bytes (124 KiB), min./max. I/O unit sizes: 2048 bytes/2048 bytes
+Jun 14 03:51:06 GARDENA-2be614 kernel: UBIFS (ubi0:4): FS size: 30220288 bytes (28 MiB, 238 LEBs), journal size 1523712 bytes (1 MiB, 12 LEBs)
+Jun 14 03:51:06 GARDENA-2be614 kernel: UBIFS (ubi0:4): reserved for root: 1427378 bytes (1393 KiB)
+Jun 14 03:51:06 GARDENA-2be614 kernel: UBIFS (ubi0:4): media format: w5/r0 (latest is w5/r0), UUID 052CAA48-05D6-4758-BB15-EFEA855A31B1, small LPT model
+Jun 14 03:51:06 GARDENA-2be614 systemd[1]: System time before build time, advancing clock.
+Jun 14 03:51:06 GARDENA-2be614 systemd[1]: systemd 244.5+ running in system mode. (-PAM -AUDIT -SELINUX +IMA -APPARMOR -SMACK +SYSVINIT +UTMP -LIBCRYPTSETUP -GCRYPT -GNUTLS -ACL +XZ -LZ4 -SECCOMP +BLKID -ELFUTILS +KMOD -IDN2 -IDN -PCRE2 default-hierarchy=hybrid)
+Jun 14 03:51:06 GARDENA-2be614 systemd[1]: Detected architecture mips.
+Jun 14 03:51:06 GARDENA-2be614 systemd[1]: Set hostname to <GARDENA-2be614>.
+Jun 14 03:51:06 GARDENA-2be614 systemd[1]: Hardware watchdog 'Mediatek Watchdog', version 0
+Jun 14 03:51:06 GARDENA-2be614 systemd[1]: Set hardware watchdog to 1min.
+Jun 14 03:51:06 GARDENA-2be614 systemd[1]: /lib/systemd/system/openvpn.service:12: PIDFile= references a path below legacy directory /var/run/, updating /var/run/openvpn/seluxit.pid → /run/openvpn/seluxit.pid; please update the unit file accordingly.
+Jun 14 03:51:06 GARDENA-2be614 systemd[1]: /lib/systemd/system/mdns.service:10: PIDFile= references a path below legacy directory /var/run/, updating /var/run/mdnsd.pid → /run/mdnsd.pid; please update the unit file accordingly.
+Jun 14 03:51:06 GARDENA-2be614 kernel: random: systemd: uninitialized urandom read (16 bytes read)
+Jun 14 03:51:06 GARDENA-2be614 systemd[1]: Created slice system-getty.slice.
+Jun 14 03:51:06 GARDENA-2be614 kernel: random: systemd: uninitialized urandom read (16 bytes read)
+Jun 14 03:51:06 GARDENA-2be614 systemd[1]: Created slice system-serial\x2dgetty.slice.
+Jun 14 03:51:06 GARDENA-2be614 kernel: random: systemd: uninitialized urandom read (16 bytes read)
+Jun 14 03:51:06 GARDENA-2be614 systemd[1]: Created slice User and Session Slice.
+Jun 14 03:51:06 GARDENA-2be614 systemd[1]: Started Dispatch Password Requests to Console Directory Watch.
+Jun 14 03:51:06 GARDENA-2be614 systemd[1]: Started Forward Password Requests to Wall Directory Watch.
+Jun 14 03:51:06 GARDENA-2be614 systemd[1]: Reached target Paths.
+Jun 14 03:51:06 GARDENA-2be614 systemd[1]: Reached target Remote File Systems.
+Jun 14 03:51:06 GARDENA-2be614 systemd[1]: Reached target Slices.
+Jun 14 03:51:06 GARDENA-2be614 systemd[1]: Reached target Swap.
+Jun 14 03:51:06 GARDENA-2be614 systemd[1]: Listening on initctl Compatibility Named Pipe.
+Jun 14 03:51:06 GARDENA-2be614 systemd[1]: Condition check resulted in Journal Audit Socket being skipped.
+Jun 14 03:51:06 GARDENA-2be614 systemd[1]: Listening on Journal Socket (/dev/log).
+Jun 14 03:51:06 GARDENA-2be614 systemd[1]: Listening on Journal Socket.
+Jun 14 03:51:06 GARDENA-2be614 systemd[1]: Listening on Network Service Netlink Socket.
+Jun 14 03:51:06 GARDENA-2be614 systemd[1]: Listening on udev Control Socket.
+Jun 14 03:51:06 GARDENA-2be614 systemd[1]: Listening on udev Kernel Socket.
+Jun 14 03:51:06 GARDENA-2be614 systemd[1]: Condition check resulted in Huge Pages File System being skipped.
+Jun 14 03:51:06 GARDENA-2be614 systemd[1]: Condition check resulted in POSIX Message Queue File System being skipped.
+Jun 14 03:51:06 GARDENA-2be614 systemd[1]: Mounting Kernel Debug File System...
+Jun 14 03:51:06 GARDENA-2be614 systemd[1]: Mounting Temporary Directory (/tmp)...
+Jun 14 03:51:06 GARDENA-2be614 systemd[1]: Condition check resulted in Create list of static device nodes for the current kernel being skipped.
+Jun 14 03:51:06 GARDENA-2be614 systemd[1]: Started Control power LED during boot process.
+Jun 14 03:51:06 GARDENA-2be614 systemd[1]: Condition check resulted in File System Check on Root Device being skipped.
+Jun 14 03:51:06 GARDENA-2be614 systemd[1]: Starting Journal Service...
+Jun 14 03:51:06 GARDENA-2be614 systemd[1]: Condition check resulted in Load Kernel Modules being skipped.
+Jun 14 03:51:06 GARDENA-2be614 systemd[1]: Condition check resulted in FUSE Control File System being skipped.
+Jun 14 03:51:06 GARDENA-2be614 systemd[1]: Mounting Kernel Configuration File System...
+Jun 14 03:51:06 GARDENA-2be614 systemd[1]: Starting Remount Root and Kernel File Systems...
+Jun 14 03:51:06 GARDENA-2be614 systemd[1]: Starting Apply Kernel Variables...
+Jun 14 03:51:06 GARDENA-2be614 systemd[1]: Starting udev Coldplug all Devices...
+Jun 14 03:51:06 GARDENA-2be614 systemd[1]: Mounted Kernel Debug File System.
+Jun 14 03:51:06 GARDENA-2be614 systemd[1]: Mounted Temporary Directory (/tmp).
+Jun 14 03:51:06 GARDENA-2be614 systemd[1]: Mounted Kernel Configuration File System.
+Jun 14 03:51:06 GARDENA-2be614 systemd[1]: Started Apply Kernel Variables.
+Jun 14 03:51:06 GARDENA-2be614 systemd[1]: Started Remount Root and Kernel File Systems.
+Jun 14 03:51:06 GARDENA-2be614 systemd[1]: Condition check resulted in Rebuild Hardware Database being skipped.
+Jun 14 03:51:06 GARDENA-2be614 systemd[1]: Condition check resulted in Create System Users being skipped.
+Jun 14 03:51:06 GARDENA-2be614 systemd[1]: Starting Create Static Device Nodes in /dev...
+Jun 14 03:51:06 GARDENA-2be614 systemd-journald[110]: Journal started
+Jun 14 03:51:06 GARDENA-2be614 systemd-journald[110]: Runtime Journal (/run/log/journal/34ddcc7459d04806b5bf2892e2b4e027) is 2.5M, max 20.0M, 17.5M free.
+Jun 14 03:51:06 GARDENA-2be614 systemd[1]: Started Journal Service.
+Jun 14 03:51:06 GARDENA-2be614 systemd[1]: Starting Flush Journal to Persistent Storage...
+Jun 14 03:51:07 GARDENA-2be614 systemd-journald[110]: Runtime Journal (/run/log/journal/34ddcc7459d04806b5bf2892e2b4e027) is 2.5M, max 20.0M, 17.5M free.
+Jun 14 03:51:07 GARDENA-2be614 systemd[1]: Started Flush Journal to Persistent Storage.
+Jun 14 03:51:07 GARDENA-2be614 systemd-tmpfiles[121]: /etc/tmpfiles.d/openvpn.conf:1: Line references path below legacy directory /var/run/, updating /var/run/openvpn → /run/openvpn; please update the tmpfiles.d/ drop-in file accordingly.
+Jun 14 03:51:07 GARDENA-2be614 systemd[1]: Started Create Static Device Nodes in /dev.
+Jun 14 03:51:07 GARDENA-2be614 systemd[1]: Reached target Local File Systems (Pre).
+Jun 14 03:51:07 GARDENA-2be614 systemd[1]: Condition check resulted in Virtual Machine and Container Storage (Compatibility) being skipped.
+Jun 14 03:51:07 GARDENA-2be614 systemd[1]: Reached target Containers.
+Jun 14 03:51:07 GARDENA-2be614 systemd[1]: Mounting /var/volatile...
+Jun 14 03:51:07 GARDENA-2be614 systemd[1]: Starting udev Kernel Device Manager...
+Jun 14 03:51:07 GARDENA-2be614 systemd[1]: Mounted /var/volatile.
+Jun 14 03:51:07 GARDENA-2be614 systemd[1]: Condition check resulted in Bind mount volatile /var/cache being skipped.
+Jun 14 03:51:07 GARDENA-2be614 systemd[1]: Condition check resulted in Bind mount volatile /var/lib being skipped.
+Jun 14 03:51:07 GARDENA-2be614 systemd[1]: Starting Load/Save Random Seed...
+Jun 14 03:51:07 GARDENA-2be614 systemd[1]: Condition check resulted in Bind mount volatile /var/spool being skipped.
+Jun 14 03:51:07 GARDENA-2be614 systemd[1]: Condition check resulted in Bind mount volatile /srv being skipped.
+Jun 14 03:51:07 GARDENA-2be614 systemd[1]: Reached target Local File Systems.
+Jun 14 03:51:08 GARDENA-2be614 systemd[1]: Starting Ethernet LED configuration...
+Jun 14 03:51:08 GARDENA-2be614 systemd[1]: Condition check resulted in Rebuild Dynamic Linker Cache being skipped.
+Jun 14 03:51:08 GARDENA-2be614 systemd[1]: Condition check resulted in Commit a transient machine-id on disk being skipped.
+Jun 14 03:51:08 GARDENA-2be614 systemd[1]: Starting Create Volatile Files and Directories...
+Jun 14 03:51:08 GARDENA-2be614 systemd[1]: Starting Data migration...
+Jun 14 03:51:08 GARDENA-2be614 systemd-tmpfiles[128]: /etc/tmpfiles.d/openvpn.conf:1: Line references path below legacy directory /var/run/, updating /var/run/openvpn → /run/openvpn; please update the tmpfiles.d/ drop-in file accordingly.
+Jun 14 03:51:08 GARDENA-2be614 systemd[1]: Started Ethernet LED configuration.
+Jun 14 03:51:08 GARDENA-2be614 sysupgrade[129]: System not changed since last startup
+Jun 14 03:51:08 GARDENA-2be614 systemd[1]: Started Data migration.
+Jun 14 03:51:08 GARDENA-2be614 kernel: random: crng init done
+Jun 14 03:51:08 GARDENA-2be614 kernel: random: 7 urandom warning(s) missed due to ratelimiting
+Jun 14 03:51:08 GARDENA-2be614 systemd[1]: Started Load/Save Random Seed.
+Jun 14 03:51:08 GARDENA-2be614 systemd[1]: Started udev Coldplug all Devices.
+Jun 14 03:51:08 GARDENA-2be614 systemd[1]: Started Create Volatile Files and Directories.
+Jun 14 03:51:08 GARDENA-2be614 systemd[1]: Condition check resulted in Rebuild Journal Catalog being skipped.
+Jun 14 03:51:09 GARDENA-2be614 systemd[1]: Starting Network Time Synchronization...
+Jun 14 03:51:09 GARDENA-2be614 systemd[1]: Condition check resulted in Update is Completed being skipped.
+Jun 14 03:51:09 GARDENA-2be614 systemd[1]: Starting Update UTMP about System Boot/Shutdown...
+Jun 14 03:51:09 GARDENA-2be614 systemd[1]: Started Update UTMP about System Boot/Shutdown.
+Jun 14 03:51:09 GARDENA-2be614 systemd[1]: Started udev Kernel Device Manager.
+Jun 14 03:51:10 GARDENA-2be614 systemd-timesyncd[132]: System clock time unset or jumped backwards, restoring from recorded timestamp: Wed 2023-02-15 12:07:10 CET
+Feb 15 12:07:10 GARDENA-2be614 systemd[1]: Started Network Time Synchronization.
+Feb 15 12:07:10 GARDENA-2be614 systemd[1]: Reached target System Initialization.
+Feb 15 12:07:10 GARDENA-2be614 systemd[1]: Started Daily Cleanup of Temporary Directories.
+Feb 15 12:07:10 GARDENA-2be614 systemd[1]: Reached target System Time Set.
+Feb 15 12:07:10 GARDENA-2be614 systemd[1]: Reached target System Time Synchronized.
+Feb 15 12:07:10 GARDENA-2be614 systemd[1]: Listening on D-Bus System Message Bus Socket.
+Feb 15 12:07:10 GARDENA-2be614 systemd[1]: Listening on dropbear.socket.
+Feb 15 12:07:10 GARDENA-2be614 systemd[1]: Listening on gateway-config-backend.socket.
+Feb 15 12:07:10 GARDENA-2be614 systemd[1]: Reached target Sockets.
+Feb 15 12:07:10 GARDENA-2be614 systemd[1]: Reached target Basic System.
+Feb 15 12:07:10 GARDENA-2be614 systemd[1]: Started D-Bus System Message Bus.
+Feb 15 12:07:10 GARDENA-2be614 systemd[1]: Condition check resulted in SSL Key Generation for the GARDENA smart Gateway config interface being skipped.
+Feb 15 12:07:10 GARDENA-2be614 systemd[1]: Started Getty on tty1.
+Feb 15 12:07:10 GARDENA-2be614 systemd[1]: Starting IPv6 Packet Filtering Framework...
+Feb 15 12:07:10 GARDENA-2be614 systemd[1]: Starting IPv4 Packet Filtering Framework...
+Feb 15 12:07:10 GARDENA-2be614 systemd[1]: Starting Create status files for manufacturing services...
+Feb 15 12:07:10 GARDENA-2be614 systemd[1]: Starting Reset Radio Module on boot...
+Feb 15 12:07:10 GARDENA-2be614 systemd[1]: Started SWUpdate progress service.
+Feb 15 12:07:10 GARDENA-2be614 systemd[1]: Starting Login Service...
+Feb 15 12:07:10 GARDENA-2be614 systemd[1]: Starting Configure unique hostname...
+Feb 15 12:07:11 GARDENA-2be614 systemd[1]: Starting Update Hardware Revision file...
+Feb 15 12:07:11 GARDENA-2be614 systemd[1]: Starting Update Software Versions file for SWUpdate...
+Feb 15 12:07:12 GARDENA-2be614 systemd-udevd[134]: Using default interface naming scheme 'v243'.
+Feb 15 12:07:13 GARDENA-2be614 systemd-udevd[134]: ethtool: autonegotiation is unset or enabled, the speed and duplex are not writable.
+Feb 15 12:07:13 GARDENA-2be614 update-hw-revision[158]: Failed to extract the board revision from the U-Boot environment!
+Feb 15 12:07:14 GARDENA-2be614 systemd[1]: Started IPv6 Packet Filtering Framework.
+Feb 15 12:07:14 GARDENA-2be614 systemd[1]: Started IPv4 Packet Filtering Framework.
+Feb 15 12:07:14 GARDENA-2be614 systemd[1]: Started Create status files for manufacturing services.
+Feb 15 12:07:15 GARDENA-2be614 systemd[1]: Started Configure unique hostname.
+Feb 15 12:07:15 GARDENA-2be614 systemd[1]: Started Update Hardware Revision file.
+Feb 15 12:07:15 GARDENA-2be614 systemd-udevd[136]: ethtool: autonegotiation is unset or enabled, the speed and duplex are not writable.
+Feb 15 12:07:15 GARDENA-2be614 systemd[1]: Started Update Software Versions file for SWUpdate.
+Feb 15 12:07:15 GARDENA-2be614 systemd[1]: Reached target Network (Pre).
+Feb 15 12:07:15 GARDENA-2be614 systemd[1]: Listening on Load/Save RF Kill Switch Status /dev/rfkill Watch.
+Feb 15 12:07:16 GARDENA-2be614 systemd[1]: Starting dhcpcd on all interfaces...
+Feb 15 12:07:16 GARDENA-2be614 systemd[1]: Starting install simple iptable rules...
+Feb 15 12:07:16 GARDENA-2be614 systemd[1]: Condition check resulted in Check RM firmware version and flash RM if needed being skipped.
+Feb 15 12:07:16 GARDENA-2be614 systemd[1]: Starting Flash RM test firmware...
+Feb 15 12:07:16 GARDENA-2be614 systemd[1]: Starting Network Service...
+Feb 15 12:07:17 GARDENA-2be614 systemd[1]: reset-rm.service: Succeeded.
+Feb 15 12:07:17 GARDENA-2be614 systemd[1]: Started Reset Radio Module on boot.
+Feb 15 12:07:17 GARDENA-2be614 systemd[1]: Condition check resulted in PPP link to radio module being skipped.
+Feb 15 12:07:17 GARDENA-2be614 systemd[1]: Starting RF LED setup...
+Feb 15 12:07:17 GARDENA-2be614 systemd[1]: Started RF LED setup.
+Feb 15 12:07:17 GARDENA-2be614 systemd-logind[193]: New seat seat0.
+Feb 15 12:07:18 GARDENA-2be614 systemd[1]: Started Login Service.
+Feb 15 12:07:18 GARDENA-2be614 systemd-vconsole-setup[203]: KD_FONT_OP_GET failed while trying to get the font metadata: Function not implemented
+Feb 15 12:07:18 GARDENA-2be614 systemd-vconsole-setup[203]: Fonts will not be copied to remaining consoles
+Feb 15 12:07:19 GARDENA-2be614 dhcpcd[194]: dev: loaded udev
+Feb 15 12:07:19 GARDENA-2be614 dhcpcd[194]: forked to background, child pid 223
+Feb 15 12:07:19 GARDENA-2be614 systemd[1]: Started dhcpcd on all interfaces.
+Feb 15 12:07:20 GARDENA-2be614 systemd-networkd[197]: Enumeration completed
+Feb 15 12:07:20 GARDENA-2be614 systemd[1]: Started Network Service.
+Feb 15 12:07:20 GARDENA-2be614 systemd[1]: Starting Wait for Network to be Configured...
+Feb 15 12:07:21 GARDENA-2be614 systemd-networkd[197]: eth0: Link UP
+Feb 15 12:07:21 GARDENA-2be614 systemd-networkd[197]: eth0: Gained carrier
+Feb 15 12:07:21 GARDENA-2be614 dhcpcd[223]: eth0: waiting for carrier
+Feb 15 12:07:21 GARDENA-2be614 dhcpcd[223]: eth0: carrier acquired
+Feb 15 12:07:21 GARDENA-2be614 dhcpcd[223]: DUID 00:01:00:01:28:59:72:a2:94:bb:ae:2b:e6:14
+Feb 15 12:07:21 GARDENA-2be614 dhcpcd[223]: eth0: IAID ae:2b:e6:14
+Feb 15 12:07:21 GARDENA-2be614 dhcpcd[223]: eth0: adding address fe80::96bb:aeff:fe2b:e614
+Feb 15 12:07:21 GARDENA-2be614 openocd[196]: Open On-Chip Debugger 0.10.0+dev-00556-gd0be1630d-dirty (2021-06-14-02:03)
+Feb 15 12:07:21 GARDENA-2be614 openocd[196]: Licensed under GNU GPL v2
+Feb 15 12:07:21 GARDENA-2be614 openocd[196]: For bug reports, read
+Feb 15 12:07:21 GARDENA-2be614 openocd[196]:         http://openocd.org/doc/doxygen/bugs.html
+Feb 15 12:07:21 GARDENA-2be614 kernel: mt76_wmac 10300000.wmac: ASIC revision: 76280001
+Feb 15 12:07:21 GARDENA-2be614 openocd[196]: SysfsGPIO nums: swclk = 36, swdio = 29
+Feb 15 12:07:21 GARDENA-2be614 openocd[196]: none separate
+Feb 15 12:07:21 GARDENA-2be614 dhcpcd[223]: eth0: rebinding lease of 10.42.234.169
+Feb 15 12:07:22 GARDENA-2be614 openocd[196]: adapter speed: 1000 kHz
+Feb 15 12:07:22 GARDENA-2be614 openocd[196]: adapter_nsrst_delay: 100
+Feb 15 12:07:22 GARDENA-2be614 openocd[196]: Info : SysfsGPIO JTAG/SWD bitbang driver
+Feb 15 12:07:22 GARDENA-2be614 openocd[196]: Info : SWD only mode enabled (specify tck, tms, tdi and tdo gpios to add JTAG mode)
+Feb 15 12:07:22 GARDENA-2be614 openocd[196]: Info : This adapter doesn't support configurable speed
+Feb 15 12:07:22 GARDENA-2be614 openocd[196]: Info : SWD DPIDR 0x2ba01477
+Feb 15 12:07:22 GARDENA-2be614 dhcpcd[223]: eth0: soliciting an IPv6 router
+Feb 15 12:07:22 GARDENA-2be614 openocd[196]: Info : SiM3x.cpu: hardware has 6 breakpoints, 4 watchpoints
+Feb 15 12:07:22 GARDENA-2be614 openocd[196]: Info : Listening on port 3333 for gdb connections
+Feb 15 12:07:22 GARDENA-2be614 openocd[196]: Warn : Only resetting the Cortex-M core, use a reset-init event handler to reset any peripherals or configure hardware srst support.
+Feb 15 12:07:22 GARDENA-2be614 systemd[1]: Started install simple iptable rules.
+Feb 15 12:07:22 GARDENA-2be614 systemd[1]: Reached target Network.
+Feb 15 12:07:22 GARDENA-2be614 systemd[1]: Condition check resulted in Backend component for the GARDENA smart Gateway config interface being skipped.
+Feb 15 12:07:22 GARDENA-2be614 systemd[1]: Starting Zero-configuration networking...
+Feb 15 12:07:22 GARDENA-2be614 systemd[1]: Starting Network Time Service...
+Feb 15 12:07:23 GARDENA-2be614 kernel: mt76_wmac 10300000.wmac: Firmware Version: 20151201
+Feb 15 12:07:23 GARDENA-2be614 kernel: mt76_wmac 10300000.wmac: Build Time: 20151201183641
+Feb 15 12:07:23 GARDENA-2be614 kernel: mt76_wmac 10300000.wmac: firmware init done
+Feb 15 12:07:23 GARDENA-2be614 openocd[196]: target halted due to debug-request, current mode: Thread
+Feb 15 12:07:23 GARDENA-2be614 openocd[196]: xPSR: 0x01000000 pc: 0x00000124 msp: 0x20007ffc
+Feb 15 12:07:23 GARDENA-2be614 openocd[196]: ** Programming Started **
+Feb 15 12:07:23 GARDENA-2be614 openocd[196]: auto erase enabled
+Feb 15 12:07:23 GARDENA-2be614 kernel: ieee80211 phy0: Selected rate control algorithm 'minstrel_ht'
+Feb 15 12:07:23 GARDENA-2be614 systemd[1]: Starting Load/Save RF Kill Switch Status...
+Feb 15 12:07:23 GARDENA-2be614 systemd-networkd[197]: eth0: Gained IPv6LL
+Feb 15 12:07:23 GARDENA-2be614 systemd-timesyncd[132]: Network configuration changed, trying to establish connection.
+Feb 15 12:07:23 GARDENA-2be614 systemd-udevd[136]: Using default interface naming scheme 'v243'.
+Feb 15 12:07:23 GARDENA-2be614 systemd-udevd[136]: ethtool: autonegotiation is unset or enabled, the speed and duplex are not writable.
+Feb 15 12:07:23 GARDENA-2be614 openocd[196]: Info : SiM3U167 detected
+Feb 15 12:07:23 GARDENA-2be614 openocd[196]: Info : Flash size = 256KB
+Feb 15 12:07:24 GARDENA-2be614 systemd[1]: Started Load/Save RF Kill Switch Status.
+Feb 15 12:07:24 GARDENA-2be614 systemd-timesyncd[132]: Network configuration changed, trying to establish connection.
+Feb 15 12:07:24 GARDENA-2be614 systemd[1]: Started Wait for Network to be Configured.
+Feb 15 12:07:24 GARDENA-2be614 systemd[1]: Reached target Network is Online.
+Feb 15 12:07:24 GARDENA-2be614 systemd[1]: Started Run healthcheck after startup and again every 23 hours.
+Feb 15 12:07:24 GARDENA-2be614 systemd[1]: Started Run swupdate-check.service on startup and again every 12 hours.
+Feb 15 12:07:24 GARDENA-2be614 systemd[1]: Reached target Timers.
+Feb 15 12:07:24 GARDENA-2be614 systemd[1]: mdns.service: Can't open PID file /run/mdnsd.pid (yet?) after start: Operation not permitted
+Feb 15 12:07:24 GARDENA-2be614 mDNSResponder[272]: Default: mDNSResponder (Engineering Build) (Jun 14 2021 02:00:01) starting
+Feb 15 12:07:24 GARDENA-2be614 systemd[1]: Started Zero-configuration networking.
+Feb 15 12:07:24 GARDENA-2be614 mDNSResponder[272]: Default: Unable to parse DNS server list. Unicast DNS-SD unavailable
+Feb 15 12:07:24 GARDENA-2be614 mDNSResponder[272]: Default: mDNSPlatformSourceAddrForDest: connect 1.1.1.1 failed errno 128 (Network is unreachable)
+Feb 15 12:07:24 GARDENA-2be614 systemd-networkd[197]: wlan0: Link UP
+Feb 15 12:07:24 GARDENA-2be614 dhcpcd[223]: wlan0: waiting for carrier
+Feb 15 12:07:24 GARDENA-2be614 dhcpcd[223]: wlan0: carrier acquired
+Feb 15 12:07:24 GARDENA-2be614 systemd-timesyncd[132]: Network configuration changed, trying to establish connection.
+Feb 15 12:07:24 GARDENA-2be614 dhcpcd[223]: wlan0: IAID ae:2b:e6:78
+Feb 15 12:07:24 GARDENA-2be614 dhcpcd[223]: wlan0: adding address fe80::96bb:aeff:fe2b:e678
+Feb 15 12:07:24 GARDENA-2be614 dhcpcd[223]: wlan0: carrier lost
+Feb 15 12:07:25 GARDENA-2be614 dhcpcd[223]: wlan0: deleting address fe80::96bb:aeff:fe2b:e678
+Feb 15 12:07:25 GARDENA-2be614 ntpd[265]: ntpd 4.2.8p15@1.3728-o Mon 14 Jun 2021 02:14:04 AM UTC (2): Starting
+Feb 15 12:07:25 GARDENA-2be614 ntpd[265]: Command line: /usr/sbin/ntpd -u ntp:ntp -p /run/ntpd.pid -g
+Feb 15 12:07:25 GARDENA-2be614 ntpd[265]: ----------------------------------------------------
+Feb 15 12:07:25 GARDENA-2be614 ntpd[265]: ntp-4 is maintained by Network Time Foundation,
+Feb 15 12:07:25 GARDENA-2be614 ntpd[265]: Inc. (NTF), a non-profit 501(c)(3) public-benefit
+Feb 15 12:07:25 GARDENA-2be614 ntpd[265]: corporation.  Support and training for ntp-4 are
+Feb 15 12:07:25 GARDENA-2be614 ntpd[265]: available at https://www.nwtime.org/support
+Feb 15 12:07:25 GARDENA-2be614 ntpd[265]: ----------------------------------------------------
+Feb 15 12:07:26 GARDENA-2be614 ntpd[287]: proto: precision = 3.107 usec (-18)
+Feb 15 12:07:26 GARDENA-2be614 ntpd[287]: basedate set to 2021-06-02
+Feb 15 12:07:26 GARDENA-2be614 ntpd[287]: gps base set to 2021-06-06 (week 2161)
+Feb 15 12:07:26 GARDENA-2be614 ntpd[287]: Listen normally on 0 lo 127.0.0.1:123
+Feb 15 12:07:26 GARDENA-2be614 ntpd[287]: Listen normally on 1 lo [::1]:123
+Feb 15 12:07:26 GARDENA-2be614 ntpd[287]: Listening on routing socket on fd #18 for interface updates
+Feb 15 12:07:26 GARDENA-2be614 ntpd[287]: kernel reports TIME_ERROR: 0x41: Clock Unsynchronized
+Feb 15 12:07:26 GARDENA-2be614 ntpd[287]: kernel reports TIME_ERROR: 0x41: Clock Unsynchronized
+Feb 15 12:07:26 GARDENA-2be614 systemd[1]: Started Network Time Service.
+Feb 15 12:07:27 GARDENA-2be614 dhcpcd[223]: eth0: probing for an IPv4LL address
+Feb 15 12:07:27 GARDENA-2be614 dhcpcd[223]: eth0: DHCP lease expired
+Feb 15 12:07:27 GARDENA-2be614 dhcpcd[223]: eth0: soliciting a DHCP lease
+Feb 15 12:07:29 GARDENA-2be614 systemd[1]: systemd-rfkill.service: Succeeded.
+Feb 15 12:07:30 GARDENA-2be614 dhcpcd[223]: eth0: offered 10.42.234.169 from 10.42.0.1
+Feb 15 12:07:30 GARDENA-2be614 dhcpcd[223]: eth0: ignoring offer of 10.42.234.169 from 10.42.0.1
+Feb 15 12:07:30 GARDENA-2be614 dhcpcd[223]: eth0: probing address 10.42.234.169/16
+Feb 15 12:07:32 GARDENA-2be614 dhcpcd[223]: eth0: using IPv4LL address 169.254.231.172
+Feb 15 12:07:32 GARDENA-2be614 systemd-timesyncd[132]: Network configuration changed, trying to establish connection.
+Feb 15 12:07:32 GARDENA-2be614 dhcpcd[223]: eth0: adding route to 169.254.0.0/16
+Feb 15 12:07:32 GARDENA-2be614 dhcpcd[223]: eth0: adding default route
+Feb 15 12:07:35 GARDENA-2be614 dhcpcd[223]: eth0: leased 10.42.234.169 for 3600 seconds
+Feb 15 12:07:35 GARDENA-2be614 dhcpcd[223]: eth0: adding route to 10.42.0.0/16
+Feb 15 12:07:35 GARDENA-2be614 dhcpcd[223]: eth0: changing default route via 10.42.0.1
+Feb 15 12:07:35 GARDENA-2be614 systemd[1]: swupdate-check.timer: Succeeded.
+Feb 15 12:07:35 GARDENA-2be614 systemd[1]: Stopped Run swupdate-check.service on startup and again every 12 hours.
+Feb 15 12:07:35 GARDENA-2be614 systemd[1]: Stopping Run swupdate-check.service on startup and again every 12 hours.
+Feb 15 12:07:35 GARDENA-2be614 systemd[1]: Started Run swupdate-check.service on startup and again every 12 hours.
+Feb 15 12:07:35 GARDENA-2be614 dhcpcd[223]: eth0: deleting route to 169.254.0.0/16
+Feb 15 12:07:36 GARDENA-2be614 dhcpcd[223]: eth0: no IPv6 Routers available
+Aug 25 11:19:22 GARDENA-2be614 systemd-timesyncd[132]: Initial synchronization to time server 10.42.0.1:123 (time1.iot.sg.dss.husqvarnagroup.net).
+Aug 25 11:19:35 GARDENA-2be614 openocd[196]: wrote 262144 bytes from file /usr/share/gardena/firmware/rm-test.bin in 16495932.000000s (0.000 KiB/s)
+Aug 25 11:19:35 GARDENA-2be614 openocd[196]: ** Programming Finished **
+Aug 25 11:19:35 GARDENA-2be614 openocd[196]: ** Verify Started **
+Aug 25 11:19:35 GARDENA-2be614 openocd[196]: verified 261330 bytes in 0.501150s (509.239 KiB/s)
+Aug 25 11:19:35 GARDENA-2be614 openocd[196]: ** Verified OK **
+Aug 25 11:19:35 GARDENA-2be614 openocd[196]: shutdown command invoked
+Aug 25 11:19:38 GARDENA-2be614 systemd[1]: Started Flash RM test firmware.
+Aug 25 11:19:38 GARDENA-2be614 systemd[1]: Starting Run IPR tool...
+Aug 25 11:19:38 GARDENA-2be614 ipr-setup[344]: adjtime state 0 status 2000 time Fri 2023-08-25 09:19:38.511898 UTC
+Aug 25 11:19:53 GARDENA-2be614 ipr-setup[345]: Warning: Disassembly of the Linux module failed.Traceback (most recent call last):
+Aug 25 11:19:53 GARDENA-2be614 ipr-setup[345]:   File "/usr/bin/ipr-tool", line 252, in <module>
+Aug 25 11:19:53 GARDENA-2be614 ipr-setup[345]:     main()
+Aug 25 11:19:53 GARDENA-2be614 ipr-setup[345]:   File "/usr/bin/ipr-tool", line 244, in main
+Aug 25 11:19:53 GARDENA-2be614 ipr-setup[345]:     initialize_gateway()
+Aug 25 11:19:53 GARDENA-2be614 ipr-setup[345]:   File "/usr/bin/ipr-tool", line 163, in initialize_gateway
+Aug 25 11:19:53 GARDENA-2be614 ipr-setup[345]:     rm_item = cpms.find_item(str(manufacturer_id))
+Aug 25 11:19:53 GARDENA-2be614 ipr-setup[345]:   File "/usr/lib/python3.8/site-packages/cpms_client.py", line 96, in find_item
+Aug 25 11:19:53 GARDENA-2be614 ipr-setup[345]:     result = self.perform_request("GET", '/find/' + identifier,
+Aug 25 11:19:53 GARDENA-2be614 ipr-setup[345]:   File "/usr/lib/python3.8/site-packages/cpms_client.py", line 42, in perform_request
+Aug 25 11:19:53 GARDENA-2be614 ipr-setup[345]:     raise http.client.HTTPException(response.status, response.reason, response.read())
+Aug 25 11:19:53 GARDENA-2be614 ipr-setup[345]: http.client.HTTPException: (404, 'Not Found', b'{"errors":["Configuration 18446744073709551615 not found!"]}')
+Aug 25 11:19:53 GARDENA-2be614 systemd[1]: ipr.service: Main process exited, code=exited, status=1/FAILURE
+Aug 25 11:19:57 GARDENA-2be614 systemd[1]: ipr.service: Failed with result 'exit-code'.
+Aug 25 11:19:57 GARDENA-2be614 systemd[1]: Failed to start Run IPR tool.
+Aug 25 11:19:57 GARDENA-2be614 systemd[1]: Dependency failed for Run EOL test during manufacturing.
+Aug 25 11:19:57 GARDENA-2be614 systemd[1]: eoltest.service: Job eoltest.service/start failed with result 'dependency'.
+Aug 25 11:19:57 GARDENA-2be614 systemd[1]: Dependency failed for Run HomeKit setup during manufacturing.
+Aug 25 11:19:57 GARDENA-2be614 systemd[1]: Dependency failed for Run selftest during manufacturing.
+Aug 25 11:19:57 GARDENA-2be614 systemd[1]: selftest.service: Job selftest.service/start failed with result 'dependency'.
+Aug 25 11:19:57 GARDENA-2be614 systemd[1]: homekit-setup.service: Job homekit-setup.service/start failed with result 'dependency'.
+Aug 25 11:19:57 GARDENA-2be614 systemd[1]: Dependency failed for Check EOL test status and update status file.
+Aug 25 11:19:57 GARDENA-2be614 systemd[1]: eoltest-check.service: Job eoltest-check.service/start failed with result 'dependency'.
+Aug 25 11:19:57 GARDENA-2be614 systemd[1]: ipr.service: Consumed 10.954s CPU time.
+Aug 25 11:19:57 GARDENA-2be614 systemd[1]: Condition check resulted in Extract X.509 client certificate and key from U-Boot being skipped.
+Aug 25 11:19:57 GARDENA-2be614 systemd[1]: Condition check resulted in Accessory server daemon being skipped.
+Aug 25 11:19:57 GARDENA-2be614 systemd[1]: Condition check resulted in Internet LED indication being skipped.
+Aug 25 11:19:57 GARDENA-2be614 systemd[1]: Condition check resulted in OpenVPN to Seluxit Servers being skipped.
+Aug 25 11:19:57 GARDENA-2be614 systemd[1]: Started Serial Getty on ttyS0.
+Aug 25 11:19:57 GARDENA-2be614 systemd[1]: Reached target Login Prompts.
+Aug 25 11:19:57 GARDENA-2be614 systemd[1]: Reached target Multi-User System.
+Aug 25 11:19:57 GARDENA-2be614 systemd[1]: Condition check resulted in Software Update Service being skipped.
+Aug 25 11:19:57 GARDENA-2be614 systemd[1]: Starting Update UTMP about System Runlevel Changes...
+Aug 25 11:19:58 GARDENA-2be614 systemd[1]: systemd-update-utmp-runlevel.service: Succeeded.
+Aug 25 11:19:58 GARDENA-2be614 systemd[1]: Started Update UTMP about System Runlevel Changes.
+Aug 25 11:19:58 GARDENA-2be614 systemd[1]: Startup finished in 16.985s (kernel) + 1min 34.978s (userspace) = 1min 51.964s.
+Aug 25 11:23:12 GARDENA-2be614 systemd[1]: Starting Run IPR tool...
+Aug 25 11:23:13 GARDENA-2be614 ipr-setup[385]: adjtime state 0 status 2001 time Fri 2023-08-25 09:23:13.068899 UTC
+Aug 25 11:23:21 GARDENA-2be614 ipr-setup[386]: Traceback (most recent call last):
+Aug 25 11:23:21 GARDENA-2be614 ipr-setup[386]:   File "/usr/bin/ipr-tool", line 252, in <module>
+Aug 25 11:23:21 GARDENA-2be614 ipr-setup[386]:     main()
+Aug 25 11:23:21 GARDENA-2be614 ipr-setup[386]:   File "/usr/bin/ipr-tool", line 244, in main
+Aug 25 11:23:21 GARDENA-2be614 ipr-setup[386]:     initialize_gateway()
+Aug 25 11:23:21 GARDENA-2be614 ipr-setup[386]:   File "/usr/bin/ipr-tool", line 163, in initialize_gateway
+Aug 25 11:23:21 GARDENA-2be614 ipr-setup[386]:     rm_item = cpms.find_item(str(manufacturer_id))
+Aug 25 11:23:21 GARDENA-2be614 ipr-setup[386]:   File "/usr/lib/python3.8/site-packages/cpms_client.py", line 96, in find_item
+Aug 25 11:23:21 GARDENA-2be614 ipr-setup[386]:     result = self.perform_request("GET", '/find/' + identifier,
+Aug 25 11:23:21 GARDENA-2be614 ipr-setup[386]:   File "/usr/lib/python3.8/site-packages/cpms_client.py", line 42, in perform_request
+Aug 25 11:23:21 GARDENA-2be614 ipr-setup[386]:     raise http.client.HTTPException(response.status, response.reason, response.read())
+Aug 25 11:23:21 GARDENA-2be614 ipr-setup[386]: http.client.HTTPException: (404, 'Not Found', b'{"errors":["Configuration 18446744073709551615 not found!"]}')
+Aug 25 11:23:21 GARDENA-2be614 systemd[1]: ipr.service: Main process exited, code=exited, status=1/FAILURE
+Aug 25 11:23:25 GARDENA-2be614 systemd[1]: ipr.service: Failed with result 'exit-code'.
+Aug 25 11:23:25 GARDENA-2be614 systemd[1]: Failed to start Run IPR tool.
+Aug 25 11:23:25 GARDENA-2be614 systemd[1]: Dependency failed for Run HomeKit setup during manufacturing.
+Aug 25 11:23:25 GARDENA-2be614 systemd[1]: homekit-setup.service: Job homekit-setup.service/start failed with result 'dependency'.
+Aug 25 11:23:25 GARDENA-2be614 systemd[1]: Dependency failed for Check EOL test status and update status file.
+Aug 25 11:23:25 GARDENA-2be614 systemd[1]: eoltest-check.service: Job eoltest-check.service/start failed with result 'dependency'.
+Aug 25 11:23:25 GARDENA-2be614 systemd[1]: ipr.service: Consumed 6.259s CPU time.
+Aug 25 11:23:25 GARDENA-2be614 systemd[1]: Condition check resulted in Software Update Service being skipped.
+Aug 25 11:24:38 GARDENA-2be614 login[365]: ROOT LOGIN  on '/dev/ttyS0'
+root@GARDENA-2be614:~# fw_printenv -n linuxmoduleid
+ee7aa627-cdca-4867-8922-78d93ee95b26
+root@GARDENA-2be614:~# fw_printenv ��
