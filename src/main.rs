@@ -5,7 +5,7 @@ use std::io::Read;
 
 fn open_serial_port(path: &str) -> Result<Box<dyn SerialPort>, Box<dyn std::error::Error>> {
     Ok(serialport::new(path, 115_200)
-        .timeout(Duration::from_millis(1000))
+        .timeout(Duration::from_millis(100))
         .open()?)
 }
 
@@ -13,6 +13,17 @@ fn remove_non_printable(s: &str) -> String {
     s.chars()
         .filter(|&c| c.is_ascii_graphic() || c.is_ascii_whitespace())
         .collect()
+}
+
+fn send(
+    serial_port: Option<&mut Box<dyn SerialPort>>,
+    buf: &[u8],
+) -> Result<(), Box<dyn std::error::Error>> {
+    if let Some(p) = serial_port {
+        p.write(buf)?;
+        p.flush()?;
+    }
+    Ok(())
 }
 
 fn receive(serial_port: Option<&mut Box<dyn SerialPort>>) -> Option<String> {
@@ -40,6 +51,7 @@ fn main() {
         "U-Boot",
         "DRAM:  128 MiB",
         "Net:   eth0: eth@10110000",
+        "=>",
     ];
 
     let args: Vec<String> = env::args().collect();
@@ -85,7 +97,7 @@ fn main() {
             }
         }
 
-        if timeout_counter >= 10 {
+        if timeout_counter >= 100 {
             println!("{} ❌️", patterns[0]);
             patterns.drain(..1);
             if patterns.len() == 0 {
@@ -93,5 +105,7 @@ fn main() {
             }
             continue;
         }
+
+        send(serial_port.as_mut(), b"x").expect("Failed to write to serial port");
     }
 }
