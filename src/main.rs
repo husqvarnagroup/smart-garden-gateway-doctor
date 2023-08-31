@@ -37,42 +37,14 @@ fn receive(serial_port: &mut Box<dyn SerialPort>) -> Option<String> {
     Some(s)
 }
 
-fn main() {
+fn analyze(serial_port: &mut Option<Box<dyn SerialPort>>, initial_console_output: &str) {
     let mut patterns = vec![
         "U-Boot",
         "DRAM:  128 MiB",
         "Net:   eth0: eth@10110000",
         "=>",
     ];
-
-    let mut serial_port: Option<Box<dyn SerialPort>> = None;
-    let mut serial_port_name = String::new();
-
-    if let Ok(ports) = available_ports() {
-        if ports.len() == 1 {
-            serial_port_name = ports[0].port_name.clone();
-        } else {
-            let choices = ports.into_iter().map(|p| p.port_name).collect();
-            serial_port_name = inquire::Select::new("Select serial port", choices)
-                .prompt()
-                .expect("Invalid selection");
-        }
-    }
-
-    let mut console_output = String::new();
-
-    let args: Vec<String> = env::args().collect();
-    if args.len() > 1 {
-        let file_path = &args[1];
-        console_output = std::fs::read_to_string(file_path).unwrap_or_else(|_| {
-            eprintln!("Failed to read file \"{file_path}\"");
-            std::process::exit(1);
-        });
-
-    } else if let Ok(p) = open_serial_port(serial_port_name.as_str()) {
-        serial_port = Some(p);
-    }
-
+    let mut console_output = String::from(initial_console_output);
     let mut timeout_counter = 0;
 
     loop {
@@ -83,6 +55,9 @@ fn main() {
             } else {
                 timeout_counter += 1;
             }
+        } else {
+            // Console output from file
+            timeout_counter += 1;
         }
 
         if console_output.contains(patterns[0]) {
@@ -104,6 +79,46 @@ fn main() {
 
         if let Some(ref mut p) = serial_port {
             send(p, b"x").expect("Failed to write to serial port");
+        }
+    }
+}
+
+fn main() {
+    let mut serial_port: Option<Box<dyn SerialPort>> = None;
+    let mut serial_port_name = String::new();
+
+    if let Ok(ports) = available_ports() {
+        if ports.len() == 1 {
+            serial_port_name = ports[0].port_name.clone();
+        } else {
+            let choices = ports.into_iter().map(|p| p.port_name).collect();
+            serial_port_name = inquire::Select::new("Select serial port", choices)
+                .prompt()
+                .expect("Invalid selection");
+        }
+    }
+
+    let mut initial_console_output = String::new();
+
+    let args: Vec<String> = env::args().collect();
+    if args.len() > 1 {
+        let file_path = &args[1];
+        initial_console_output = std::fs::read_to_string(file_path).unwrap_or_else(|_| {
+            eprintln!("Failed to read file \"{file_path}\"");
+            std::process::exit(1);
+        });
+    } else if let Ok(p) = open_serial_port(serial_port_name.as_str()) {
+        serial_port = Some(p);
+    }
+
+    loop {
+        analyze(&mut serial_port, initial_console_output.as_str());
+
+        if let Ok(false) = inquire::Confirm::new("Continue?")
+            .with_default(true)
+            .prompt()
+        {
+            break;
         }
     }
 }
