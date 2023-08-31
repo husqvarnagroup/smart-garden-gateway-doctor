@@ -16,26 +16,17 @@ fn remove_non_printable(s: &str) -> String {
 }
 
 fn send(
-    serial_port: Option<&mut Box<dyn SerialPort>>,
+    serial_port: &mut Box<dyn SerialPort>,
     buf: &[u8],
 ) -> Result<(), Box<dyn std::error::Error>> {
-    if let Some(p) = serial_port {
-        p.write_all(buf)?;
-        p.flush()?;
-    }
+    serial_port.write_all(buf)?;
+    serial_port.flush()?;
     Ok(())
 }
 
-fn receive(serial_port: Option<&mut Box<dyn SerialPort>>) -> Option<String> {
+fn receive(serial_port: &mut Box<dyn SerialPort>) -> Option<String> {
     let mut buf: Vec<u8> = vec![0; 1000];
-    let bytes_read;
-    if let Some(p) = serial_port {
-        bytes_read = p.read(buf.as_mut_slice()).unwrap_or(0);
-    } else {
-        bytes_read = std::io::stdin()
-            .read_to_end(&mut buf)
-            .expect("Failed to read from stdin");
-    }
+    let bytes_read = serial_port.read(buf.as_mut_slice()).unwrap_or(0);
     if bytes_read == 0 {
         return None;
     }
@@ -68,38 +59,30 @@ fn main() {
         }
     }
 
+    let mut console_output = String::new();
+
     let args: Vec<String> = env::args().collect();
-    let serial_port_name = if args.len() > 1 {
-        &args[1]
-    } else {
-        "/dev/ttyUSB0"
-    };
+    if args.len() > 1 {
+        let file_path = &args[1];
+        console_output = std::fs::read_to_string(file_path).unwrap_or_else(|_| {
+            eprintln!("Failed to read file \"{file_path}\"");
+            std::process::exit(1);
+        });
 
-
-    if let Ok(p) = open_serial_port(serial_port_name.as_str()) {
+    } else if let Ok(p) = open_serial_port(serial_port_name.as_str()) {
         serial_port = Some(p);
-    } else {
-        eprintln!("Could not open serial port {serial_port_name}");
-        eprintln!("You can pass one of the following as argument:");
-        if let Ok(serial_port_list) = available_ports() {
-            for port in serial_port_list {
-                println!("{}", port.port_name);
-            }
-        } else {
-            eprintln!("Failed to get serial port list");
-        }
-        println!("\nReading from stdin...");
     }
 
-    let mut console_output = String::new();
     let mut timeout_counter = 0;
 
     loop {
-        if let Some(s) = receive(serial_port.as_mut()) {
-            console_output += s.as_str();
-            timeout_counter = 0;
-        } else {
-            timeout_counter += 1;
+        if let Some(ref mut p) = serial_port {
+            if let Some(s) = receive(p) {
+                console_output += s.as_str();
+                timeout_counter = 0;
+            } else {
+                timeout_counter += 1;
+            }
         }
 
         if console_output.contains(patterns[0]) {
@@ -119,6 +102,8 @@ fn main() {
             continue;
         }
 
-        send(serial_port.as_mut(), b"x").expect("Failed to write to serial port");
+        if let Some(ref mut p) = serial_port {
+            send(p, b"x").expect("Failed to write to serial port");
+        }
     }
 }

@@ -8,5 +8,5 @@ cargo run
 
 Read from file:
 ```
-cat test_data/Finding\ 004\ -\ U-Boot\ Net\ not\ loading.txt | cargo run
+cargo run test_data/Finding\ 004\ -\ U-Boot\ Net\ not\ loading.txt
 ```
