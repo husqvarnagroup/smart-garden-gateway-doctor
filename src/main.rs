@@ -54,6 +54,20 @@ fn main() {
         "=>",
     ];
 
+    let mut serial_port: Option<Box<dyn SerialPort>> = None;
+    let mut serial_port_name = String::new();
+
+    if let Ok(ports) = available_ports() {
+        if ports.len() == 1 {
+            serial_port_name = ports[0].port_name.clone();
+        } else {
+            let choices = ports.into_iter().map(|p| p.port_name).collect();
+            serial_port_name = inquire::Select::new("Select serial port", choices)
+                .prompt()
+                .expect("Invalid selection");
+        }
+    }
+
     let args: Vec<String> = env::args().collect();
     let serial_port_name = if args.len() > 1 {
         &args[1]
@@ -61,9 +75,8 @@ fn main() {
         "/dev/ttyUSB0"
     };
 
-    let mut serial_port: Option<Box<dyn SerialPort>> = None;
 
-    if let Ok(p) = open_serial_port(serial_port_name) {
+    if let Ok(p) = open_serial_port(serial_port_name.as_str()) {
         serial_port = Some(p);
     } else {
         eprintln!("Could not open serial port {serial_port_name}");

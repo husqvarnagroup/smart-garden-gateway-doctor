@@ -1,9 +1,9 @@
 
 # GARDENA Smart Gateway Boot Analyzer
 
-Read from serial port (default: /dev/ttyUSB0):
+Read from serial port:
 ```
-cargo run /dev/ttyUSB1
+cargo run
 ```
 
 Read from file:
