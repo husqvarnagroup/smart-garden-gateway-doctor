@@ -37,49 +37,55 @@ fn receive(serial_port: &mut Box<dyn SerialPort>) -> Option<String> {
     Some(s)
 }
 
-fn analyze(serial_port: &mut Option<Box<dyn SerialPort>>, initial_console_output: &str) {
-    let mut patterns = vec![
-        "U-Boot",
-        "DRAM:  128 MiB",
-        "Net:   eth0: eth@10110000",
-        "=>",
-    ];
-    let mut console_output = String::from(initial_console_output);
+fn enter_u_boot(serial_port: &mut Box<dyn SerialPort>) -> String {
+    let mut console_output = String::new();
     let mut timeout_counter = 0;
 
     loop {
-        if let Some(ref mut p) = serial_port {
-            if let Some(s) = receive(p) {
-                console_output += s.as_str();
-                timeout_counter = 0;
-            } else {
-                timeout_counter += 1;
-            }
+        send(serial_port, b"x").expect("Failed to write to serial port");
+
+        if let Some(s) = receive(serial_port) {
+            console_output += s.as_str();
+            timeout_counter = 0;
         } else {
-            // Console output from file
             timeout_counter += 1;
         }
 
-        if console_output.contains(patterns[0]) {
-            println!("{} ✔️", patterns[0]);
-            patterns.drain(..1);
-            if patterns.is_empty() {
-                break;
-            }
+        if console_output.contains("=>") || timeout_counter >= 100 {
+            break;
         }
+    }
+    console_output
+}
 
-        if timeout_counter >= 100 {
-            println!("{} ❌️", patterns[0]);
-            patterns.drain(..1);
-            if patterns.is_empty() {
-                break;
-            }
-            continue;
-        }
+fn analyze(serial_port: &mut Option<Box<dyn SerialPort>>, initial_console_output: &str) {
+    let mut issue_found = false;
+    let patterns_and_issues = vec![
+        ("U-Boot SPL", "No U-Boot detected"),
+        ("DRAM:  128 MiB", "Wrong RAM size detected"),
+        (
+            "Net:   eth0: eth@10110000",
+            "Ethernet could not be initialized",
+        ),
+        ("=>", "Could not enter U-Boot shell"),
+    ];
+    let mut console_output = String::from(initial_console_output);
 
-        if let Some(ref mut p) = serial_port {
-            send(p, b"x").expect("Failed to write to serial port");
+    if let Some(p) = serial_port {
+        console_output += enter_u_boot(p).as_str();
+    }
+
+    for (pattern, issue) in patterns_and_issues {
+        if !console_output.contains(pattern) {
+            println!("! {issue}");
+            println!("-> Linux Module (probably) faulty, return to UniElec");
+            issue_found = true;
+            break;
         }
+    }
+
+    if !issue_found {
+        println!("! No issues found");
     }
 }
 
