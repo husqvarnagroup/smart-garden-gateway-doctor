@@ -58,6 +58,32 @@ fn enter_uboot(serial_port: &mut Box<dyn SerialPort>) -> String {
     console_output
 }
 
+fn run_uboot_cmd(serial_port: &mut Box<dyn SerialPort>, cmd: &str) -> String {
+    send(serial_port, format!("{cmd}\n").as_bytes()).expect("Failed to write to serial port");
+
+    let mut console_output = String::new();
+    let mut timeout_counter = 0;
+
+    loop {
+        if let Some(s) = receive(serial_port) {
+            console_output += s.as_str();
+            timeout_counter = 0;
+        } else {
+            timeout_counter += 1;
+        }
+
+        if console_output.contains("=>") || timeout_counter >= 100 {
+            break;
+        }
+    }
+    console_output
+}
+
+fn print_lm_issue(issue: &str) {
+    println!("! {issue}");
+    println!("-> Linux Module (probably) faulty, return to UniElec");
+}
+
 fn analyze(serial_port: &mut Option<Box<dyn SerialPort>>, initial_console_output: &str) {
     let patterns_and_issues = vec![
         ("U-Boot SPL", "No U-Boot detected"),
@@ -76,10 +102,18 @@ fn analyze(serial_port: &mut Option<Box<dyn SerialPort>>, initial_console_output
 
     for (pattern, issue) in patterns_and_issues {
         if !console_output.contains(pattern) {
-            println!("! {issue}");
-            println!("-> Linux Module (probably) faulty, return to UniElec");
+            print_lm_issue(issue);
             return;
         }
+    }
+
+    if let Some(p) = serial_port {
+        console_output = run_uboot_cmd(p, "mtd list");
+    }
+
+    if console_output.contains("Could not find a valid device for spi0.1") {
+        print_lm_issue("NAND flash faulty");
+        return;
     }
 
     println!("! No issues found");
