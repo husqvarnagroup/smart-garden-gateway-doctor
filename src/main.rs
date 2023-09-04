@@ -37,7 +37,7 @@ fn receive(serial_port: &mut Box<dyn SerialPort>) -> Option<String> {
     Some(s)
 }
 
-fn enter_u_boot(serial_port: &mut Box<dyn SerialPort>) -> String {
+fn enter_uboot(serial_port: &mut Box<dyn SerialPort>) -> String {
     let mut console_output = String::new();
     let mut timeout_counter = 0;
 
@@ -59,7 +59,6 @@ fn enter_u_boot(serial_port: &mut Box<dyn SerialPort>) -> String {
 }
 
 fn analyze(serial_port: &mut Option<Box<dyn SerialPort>>, initial_console_output: &str) {
-    let mut issue_found = false;
     let patterns_and_issues = vec![
         ("U-Boot SPL", "No U-Boot detected"),
         ("DRAM:  128 MiB", "Wrong RAM size detected"),
@@ -72,21 +71,18 @@ fn analyze(serial_port: &mut Option<Box<dyn SerialPort>>, initial_console_output
     let mut console_output = String::from(initial_console_output);
 
     if let Some(p) = serial_port {
-        console_output += enter_u_boot(p).as_str();
+        console_output += enter_uboot(p).as_str();
     }
 
     for (pattern, issue) in patterns_and_issues {
         if !console_output.contains(pattern) {
             println!("! {issue}");
             println!("-> Linux Module (probably) faulty, return to UniElec");
-            issue_found = true;
-            break;
+            return;
         }
     }
 
-    if !issue_found {
-        println!("! No issues found");
-    }
+    println!("! No issues found");
 }
 
 fn main() {
