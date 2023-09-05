@@ -84,6 +84,21 @@ fn print_lm_issue(issue: &str) {
     println!("-> Linux Module (probably) faulty, return to UniElec");
 }
 
+fn run_uboot_check(
+    serial_port: &mut Box<dyn SerialPort>,
+    cmd: &str,
+    pattern: &str,
+    issue: &str,
+) -> bool {
+    let console_output = run_uboot_cmd(serial_port, cmd);
+
+    if console_output.contains(pattern) {
+        print_lm_issue(issue);
+        return false;
+    }
+    true
+}
+
 fn analyze(serial_port: &mut Option<Box<dyn SerialPort>>, initial_console_output: &str) {
     let patterns_and_issues = vec![
         ("U-Boot SPL", "No U-Boot detected"),
@@ -107,13 +122,25 @@ fn analyze(serial_port: &mut Option<Box<dyn SerialPort>>, initial_console_output
         }
     }
 
-    if let Some(p) = serial_port {
-        console_output = run_uboot_cmd(p, "mtd list");
-    }
+    let checks_uboot = vec![
+        (
+            "mtd list",
+            "Could not find a valid device for spi0.1",
+            "NAND flash faulty",
+        ),
+        (
+            "gpio input PA11",
+            "gpio: pin PA11 (gpio 11) value is 0",
+            "Button stuck",
+        ),
+    ];
 
-    if console_output.contains("Could not find a valid device for spi0.1") {
-        print_lm_issue("NAND flash faulty");
-        return;
+    for (cmd, pattern, issue) in checks_uboot {
+        if let Some(p) = serial_port {
+            if !run_uboot_check(p, cmd, pattern, issue) {
+                return;
+            }
+        }
     }
 
     println!("! No issues found");
