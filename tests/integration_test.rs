@@ -110,5 +110,8 @@ fn test_analyze(
     let output = String::from_utf8_lossy(buf.get_ref());
     let message = test_data.message.as_str();
 
-    assert!(output.contains(message), "\"{message}\" not found in:\n{output}");
+    assert!(
+        output.contains(message),
+        "\"{message}\" not found in:\n{output}"
+    );
 }

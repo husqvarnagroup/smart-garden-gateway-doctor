@@ -1,0 +1,24 @@
+on: pull_request
+
+name: CI
+
+env:
+  RUSTFLAGS: "-Dwarnings -Dclippy::all -Dclippy::pedantic"
+
+jobs:
+  ci:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Install prerequisites
+        run: sudo apt-get update && sudo apt-get install -y libudev-dev
+
+      - name: Run Clippy
+        run: cargo clippy --all-targets --all-features
+
+      - name: Run Rustfmt
+        run: cargo fmt --check
+
+      - name: Run tests
+        run: cargo test
