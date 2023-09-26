@@ -2,13 +2,19 @@ use smart_garden_gateway_boot_analyzer::{analyze, open_serial_port};
 
 fn main() {
     let serial_port_name = if let Ok(ports) = serialport::available_ports() {
-        if ports.len() == 1 {
-            ports[0].port_name.clone()
-        } else {
-            let choices = ports.into_iter().map(|p| p.port_name).collect();
-            inquire::Select::new("Select serial port", choices)
-                .prompt()
-                .expect("Invalid selection")
+        match ports.len() {
+            0 => {
+                eprintln!("No serial port found");
+                std::process::exit(1);
+            },
+            1 => ports[0].port_name.clone(),
+            _ => {
+                let choices = ports.into_iter().map(|p| p.port_name).collect();
+
+                inquire::Select::new("Select serial port", choices)
+                    .prompt()
+                    .expect("Failed to prompt for serial port")
+            }
         }
     } else {
         eprint!("Failed to get serial port list");
