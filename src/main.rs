@@ -25,7 +25,15 @@ fn main() {
         open_serial_port(serial_port_name.as_str()).expect("Failed to open serial port");
 
     loop {
+        serial_port
+            .write_request_to_send(true)
+            .expect("Failed to set RTS");
+
         analyze(&mut serial_port, std::io::stderr());
+
+        serial_port
+            .write_request_to_send(false)
+            .expect("Failed to clear RTS");
 
         if let Ok(false) = inquire::Confirm::new("Continue?")
             .with_default(true)
