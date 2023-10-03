@@ -19,3 +19,28 @@ jobs:
 
       - name: Run tests
         run: cargo test
+
+      - name: Build for Linux
+        run: |
+          cargo build --release
+          tar -C target/release/ -cf target/release/smart-garden-gateway-boot-analyzer.tar smart-garden-gateway-boot-analyzer
+
+      - name: Archive Linux binary
+        uses: actions/upload-artifact@v3
+        with:
+          name: smart-garden-gateway-boot-analyzer-linux
+          path: target/release/smart-garden-gateway-boot-analyzer.tar
+
+      - name: Install prerequisites for Windows build
+        run: |
+          sudo apt-get install -y g++-mingw-w64-x86-64
+          rustup target add x86_64-pc-windows-gnu
+
+      - name: Build for Windows
+        run: cargo build --target x86_64-pc-windows-gnu --release
+
+      - name: Archive Windows binary
+        uses: actions/upload-artifact@v3
+        with:
+          name: smart-garden-gateway-boot-analyzer-windows
+          path: target/x86_64-pc-windows-gnu/release/smart-garden-gateway-boot-analyzer.exe
