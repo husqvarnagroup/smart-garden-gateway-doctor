@@ -1,0 +1,62 @@
+{
+  "ipr_id": "b7ece5ec-10bf-4b75-9f57-62cd62dfd284",
+  "version": 3,
+  "article_number": "596660601",
+  "serial_number": {
+    "type": "husqvarna-id",
+    "value": "596660601S3T2022415208555"
+  },
+  "template_id": "4f643e80-b54e-4f14-b60f-08310c81e396",
+  "template_version": 8,
+  "created_by": "SS1_UniElec_ShenZen",
+  "created": 1665198652709,
+  "updated_by": "SS2_ELRAD_Radgona",
+  "updated": 1682062626913,
+  "created_by_client": "SS1_UniElec_ShenZen",
+  "updated_by_client": "SS2_ELRAD_Radgona",
+  "parent": "1b54e2fb-a0d1-4200-ac3c-ab604d834875",
+  "position_description": "linux_module",
+  "capabilities": {
+    "embedded_software": {
+      "softwares": [],
+      "embedded_software_id": "d0b67365-5a7c-41b8-8fc2-3aac21d73d79"
+    }
+  },
+  "configuration": {
+    "manufacturerId": "3518123467531395",
+    "UniElec_SN": "3582241016177",
+    "hardwareVersion": "2.3.1",
+    "testsPassed": true
+  },
+  "identifiers": [
+    {
+      "name": "ipr:husqvarna-id",
+      "value": "596660601S3T2022415208555"
+    },
+    {
+      "name": "ipr:mac-address",
+      "value": "94-bb-ae-37-c5-7e"
+    },
+    {
+      "name": "ipr:mac-address",
+      "value": "94-bb-ae-37-c5-e2"
+    }
+  ],
+  "tags": [
+    {
+      "name": "batch-id",
+      "value": "274fe4e7-a441-4b34-bb1a-4bf7942140de"
+    }
+  ],
+  "status": "MANUFACTURED",
+  "maturity_level": "SOP",
+  "qr_code": "HTTPS://HQR.CODES?HID=596660601S3T2022415208555&IPR=B7ECE5EC-10BF-4B75-9F57-62CD62DFD284",
+  "ffl": "S3T",
+  "revision": "??",
+  "components": {},
+  "product_id": "104ca53d-ca9a-4169-9c99-d9fe207f2216",
+  "data_reliability": "TRUSTED",
+  "configuration_metadata": {
+    "version": 1
+  }
+}

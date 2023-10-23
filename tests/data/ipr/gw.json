@@ -1,0 +1,72 @@
+{
+  "ipr_id": "1b54e2fb-a0d1-4200-ac3c-ab604d834875",
+  "version": 1,
+  "article_number": "596505501",
+  "serial_number": {
+    "type": "husqvarna-id",
+    "value": "596505501D7O2023165001824"
+  },
+  "template_id": "8631e830-8738-4041-9d5c-34be2dc29e0c",
+  "template_version": 10,
+  "created_by": "SS2_ELRAD_Radgona",
+  "created": 1682046784050,
+  "updated_by": "SS2_ELRAD_Radgona",
+  "updated": 1682062626897,
+  "created_by_client": "SS2_ELRAD_Radgona",
+  "updated_by_client": "SS2_ELRAD_Radgona",
+  "capabilities": {
+    "embedded_software": {
+      "softwares": [],
+      "embedded_software_id": "77e21bcd-306d-4148-a81e-212e5fa23151"
+    }
+  },
+  "configuration": {
+    "homekit_output_format_version": "1",
+    "fct_passed": true,
+    "eol_test_passed": true,
+    "self_test_passed": true,
+    "homekit_srp_verifier": "75191114151EDB14C869508C51853B7622A33FBEAE1DFB6E76E70B0E07C5424D9AC1C043600BFDA2C0567E5BFE2F1F85FD85ACE56598B61EEE693FF89EA3F0BA18A2A8D039CEECD978B26759B5D55C06C8B26164E8C1109C86338341496E51FFD0BC20E869617B92CE2F7257463EA7D01B2AE2F00B511C9189C3807A30A23BE4E02C318B1D665931012FC9E2639E6CFE815366BB18E17835BB1A3316B4F2BC9281AFAB638637FFF0C286AC640C41E15E6EC017E50E5578E57DA2DB3767C84123C19F32B9567CD9E8204002F6053D941BF1563D246100E7486C166D38F258A6826ED7759544EB2E844791383081C660F618E9D551DB7AF448A1EFC3C673417357213F03CFA42889963740D639CB9102A1C34A98427F6CD10A3A38107231E86E8EF5EC2F099D2F66CC6AFBA1B0438C5F1C02C32545D35799A5297EE5B5D2BFEAC380D47783334C29FF93E4491D0C8A813BCB2014507D8D1DDF469350A7CECB50DEDC56DDFE0800E2268CDEBDE7ED0AAC13CCCCBD6CA72DC8219BA02CA670F23F9E",
+    "homekit_srp_salt": "C9769666D0AD8CEA5F8A72D37396EDF8",
+    "secure_token": "w5fsM0nj2ZA0iL0uzpgKIESrDpwOaytU3dAgC+gd7AmuK5npv3+oikSQ0tRpGkYpbPxjWOehkeIeVWcIaGAvm14qVqLCi8ROrinrcyicI+dWvsJcETEdEPp3exnRFLX0JQ5Dw8tO5ALs+JmY2IOInY655g6gff3ZPEqVMsnLtazOrGfJS7YYql5gFB8HgvVCo2MnnDtEy32zz7u4oFwTmbnyo/K3KD4HSnfe7NpXx7ht2G5L5/t/LR7loAGPTSK2hBG4yx0oe81IsQtgyZzLifexekKDll46DsqJc6IAfia/LFsnkcWas90bjkrPIVIO5YtvJcnKgyU2R0YHcavzrg==",
+    "homekit_setup_payload": "X-HM://002LLTRY6IOI3",
+    "manufacturer_serial_number": "6153811000371050",
+    "homekit_setup_id": "IOI3",
+    "hardwareVersion": "1.2.1",
+    "homekit_setup_code": "228-70-974",
+    "fct_finalized": true
+  },
+  "identifiers": [
+    {
+      "name": "ipr:sgtin-96",
+      "value": "3034f8ee902d4380000a4964"
+    },
+    {
+      "name": "ipr:husqvarna-id",
+      "value": "596505501D7O2023165001824"
+    }
+  ],
+  "tags": [
+    {
+      "name": "batch-id",
+      "value": "757269e5-85ff-4917-acef-9ada3c9eada4"
+    }
+  ],
+  "status": "MANUFACTURED",
+  "maturity_level": "SOP",
+  "qr_code": "HTTPS://HQR.CODES?HID=596505501D7O2023165001824&IPR=1B54E2FB-A0D1-4200-AC3C-AB604D834875",
+  "ffl": "D7O",
+  "revision": "??",
+  "components": {
+    "radio_module": {
+      "ipr_id": "0c423235-7769-4f2d-a336-c3206121a637"
+    },
+    "linux_module": {
+      "ipr_id": "b7ece5ec-10bf-4b75-9f57-62cd62dfd284"
+    }
+  },
+  "product_id": "04b2d96b-a7a9-46b0-ba98-6cb012a62ef2",
+  "data_reliability": "TRUSTED",
+  "configuration_metadata": {
+    "version": 1
+  }
+}
