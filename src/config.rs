@@ -11,6 +11,8 @@ use std::path::PathBuf;
 pub struct Config {
     pub serial_port: String,
     pub invert_rts: bool,
+    pub ipr_url: String,
+    pub ipr_key: String,
 }
 
 impl Default for Config {
@@ -18,6 +20,8 @@ impl Default for Config {
         Config {
             serial_port: String::new(),
             invert_rts: true, // Elrad's jig requires an inverted DTR signal for switching DUT power
+            ipr_url: String::new(),
+            ipr_key: String::new(),
         }
     }
 }
