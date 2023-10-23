@@ -1,0 +1,72 @@
+{
+  "ipr_id": "12345678-9abc-def0-1234-56789abcdef0",
+  "version": 1,
+  "article_number": "596505501",
+  "serial_number": {
+    "type": "husqvarna-id",
+    "value": "596505501D7O2023165001824"
+  },
+  "template_id": "8631e830-8738-4041-9d5c-34be2dc29e0c",
+  "template_version": 10,
+  "created_by": "SS2_ELRAD_Radgona",
+  "created": 1682046784050,
+  "updated_by": "SS2_ELRAD_Radgona",
+  "updated": 1682062626897,
+  "created_by_client": "SS2_ELRAD_Radgona",
+  "updated_by_client": "SS2_ELRAD_Radgona",
+  "capabilities": {
+    "embedded_software": {
+      "softwares": [],
+      "embedded_software_id": "77e21bcd-306d-4148-a81e-212e5fa23151"
+    }
+  },
+  "configuration": {
+    "homekit_output_format_version": "1",
+    "fct_passed": true,
+    "eol_test_passed": true,
+    "self_test_passed": true,
+    "secure_token": "NOTHING_TO_SEE_HERE",
+    "homekit_srp_salt": "NOTHING_TO_SEE_HERE",
+    "homekit_srp_verifier": "NOTHING_TO_SEE_HERE",
+    "homekit_setup_payload": "X-HM://002LLTRY6IOI3",
+    "manufacturer_serial_number": "6153811000371050",
+    "homekit_setup_id": "IOI3",
+    "hardwareVersion": "1.2.1",
+    "homekit_setup_code": "228-70-974",
+    "fct_finalized": true
+  },
+  "identifiers": [
+    {
+      "name": "ipr:sgtin-96",
+      "value": "3034f8ee902d4380000a4964"
+    },
+    {
+      "name": "ipr:husqvarna-id",
+      "value": "596505501D7O2023165001824"
+    }
+  ],
+  "tags": [
+    {
+      "name": "batch-id",
+      "value": "757269e5-85ff-4917-acef-9ada3c9eada4"
+    }
+  ],
+  "status": "MANUFACTURED",
+  "maturity_level": "SOP",
+  "qr_code": "HTTPS://HQR.CODES?HID=596505501D7O2023165001824&IPR=1B54E2FB-A0D1-4200-AC3C-AB604D834875",
+  "ffl": "D7O",
+  "revision": "??",
+  "components": {
+    "radio_module": {
+      "ipr_id": "0c423235-7769-4f2d-a336-c3206121a637"
+    },
+    "linux_module": {
+      "ipr_id": "b7ece5ec-10bf-4b75-9f57-62cd62dfd284"
+    }
+  },
+  "product_id": "04b2d96b-a7a9-46b0-ba98-6cb012a62ef2",
+  "data_reliability": "TRUSTED",
+  "configuration_metadata": {
+    "version": 1
+  }
+}
