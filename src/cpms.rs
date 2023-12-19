@@ -7,7 +7,27 @@ pub enum Error {
 }
 
 #[derive(Deserialize, Serialize)]
+pub struct Configuration {
+    pub eol_test_passed: Option<bool>,
+    pub hardware_version: Option<String>,
+    pub self_test_passed: Option<bool>,
+}
+
+#[derive(Deserialize, Serialize)]
+pub struct Component {
+    ipr_id: String,
+}
+
+#[derive(Deserialize, Serialize)]
+pub struct Components {
+    pub linux_module: Option<Component>,
+    pub radio_module: Option<Component>,
+}
+
+#[derive(Deserialize, Serialize)]
 pub struct Data {
+    pub components: Components,
+    pub configuration: Configuration,
     pub ipr_id: String,
     pub parent: Option<String>,
     pub status: String,
@@ -56,4 +76,34 @@ pub fn get_gw_data(
             "Failed to fetch CPMS data for {lm_id}\nError: {e}"
         )))),
     }
+}
+
+/// # Errors
+///
+/// Will return `Err` if gateway cannot be disassembled.
+pub fn disassemble_gw(
+    cpms_url: &str,
+    cpms_user: &str,
+    cpms_password: &str,
+    gw_id: &str,
+) -> Result<(), Error> {
+    let client = reqwest::blocking::Client::new();
+    match get_cpms_data(cpms_url, cpms_user, cpms_password, gw_id) {
+        Ok(gw_data) => {
+            if let Some(lm) = gw_data.components.linux_module {
+                let lm_id = lm.ipr_id.as_str();
+                client.delete(format!("{cpms_url}/api/iprconfig/{gw_id}/assembly/{lm_id}")).send();
+            } else {
+                return Err(Error::CpmsError(format!(
+                    "Failed to get Linux module for {gw_id}"
+                )));
+            }
+        }
+        Err(e) => {
+            return Err(Error::CpmsError(format!(
+                "Failed to fetch CPMS data for {gw_id}\nError: {e}"
+            )));
+        }
+    }
+    Ok(())
 }
