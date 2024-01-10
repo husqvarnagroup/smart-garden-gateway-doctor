@@ -1,0 +1,52 @@
+{
+  "ipr_id": "37e12251-11cc-487a-a74f-4d50a41f3815",
+  "version": 0,
+  "article_number": "596660601",
+  "product_id": "f8117b66-096b-4f8e-ab86-05d0599b808b",
+  "revision": "??",
+  "template_id": "4f643e80-b54e-4f14-b60f-08310c81e396",
+  "template_version": 6,
+  "status": "MANUFACTURED",
+  "qr_code": "HTTPS://HQR.CODES?HID=596660601S3T2021231000527&IPR=37E12251-11CC-487A-A74F-4D50A41F3815",
+  "created": 1628850110739,
+  "created_by": "TEST_DATA_IMPORT",
+  "updated": 1692120856345,
+  "updated_by": "TEST_DATA_IMPORT",
+  "configuration_metadata": {
+    "version": 1
+  },
+  "parent": "12345678-9abc-def0-1234-56789abcdef0",
+  "configuration": {
+    "hardwareVersion": "1.2"
+  },
+  "serial_number": {
+    "type": "husqvarna-id",
+    "value": "596660601S3T2021231000527"
+  },
+  "tags": [
+    {
+      "name": "batch-id",
+      "value": "a03fe41d-9eab-487c-a202-c734b60235a9"
+    }
+  ],
+  "identifiers": [
+    {
+      "name": "ipr:husqvarna-id",
+      "value": "596660601S3T2021231000527"
+    },
+    {
+      "name": "ipr:mac-address",
+      "value": "xx-xx-xx-xx-xx-xx"
+    },
+    {
+      "name": "ipr:mac-address",
+      "value": "xx-xx-xx-xx-xx-xx"
+    }
+  ],
+  "components": {},
+  "capabilities": {
+    "embedded_software": {
+      "embedded_software_id": "4cabdaee-0800-4316-b618-6d526fe27c74"
+    }
+  }
+}

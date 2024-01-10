@@ -1,3 +1,4 @@
+use crate::dialog::inform;
 use serialport::SerialPort;
 use std::io::{Read, Write};
 
@@ -89,7 +90,7 @@ pub fn analyze(serial_port: &mut Box<dyn SerialPort>, mut out: impl Write) {
         }
     }
 
-    writeln!(out, "\n! No issues found").unwrap();
+    inform("No issues found", out);
 }
 
 fn remove_non_printable(s: &str) -> String {

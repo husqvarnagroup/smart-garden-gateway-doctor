@@ -1,0 +1,63 @@
+{
+  "ipr_id": "12345678-9abc-def0-1234-56789abcdef0",
+  "version": 0,
+  "article_number": "596505501",
+  "product_id": "1a2b2895-582f-4c71-8fd3-18b91c84379d",
+  "revision": "??",
+  "template_id": "1d387e9f-e475-4262-8064-bc738087c91b",
+  "template_version": 9,
+  "status": "NEW",
+  "qr_code": "HTTPS://HQR.CODES?HID=5965055010002023011000344&IPR=EB43B772-55C3-4079-B7E2-D56772AB9885",
+  "created": 1690385371291,
+  "created_by": "GARDENA_R&D",
+  "updated": 1692123180732,
+  "updated_by": "GARDENA_R&D",
+  "configuration_metadata": {
+    "version": 1
+  },
+  "configuration": {
+    "secure_token": "NOTHING_TO_SEE_HERE",
+    "eol_test_passed": true,
+    "hardwareVersion": "1.2.1",
+    "homekit_setup_id": "VR1N",
+    "homekit_srp_salt": "NOTHING_TO_SEE_HERE",
+    "self_test_passed": true,
+    "homekit_setup_code": "485-77-618",
+    "homekit_srp_verifier": "NOTHING_TO_SEE_HERE",
+    "homekit_setup_payload": "X-HM://002M14RBMVR1N",
+    "homekit_output_format_version": "1"
+  },
+  "serial_number": {
+    "type": "husqvarna-id",
+    "value": "5965055010002023011000344"
+  },
+  "tags": [
+    {
+      "name": "batch-id",
+      "value": "8a8843ee-dbce-45b1-bfcc-2158bf9d6ca3"
+    }
+  ],
+  "identifiers": [
+    {
+      "name": "ipr:sgtin-96",
+      "value": "3034f8ee902d4380000009cb"
+    },
+    {
+      "name": "ipr:husqvarna-id",
+      "value": "5965055010002023011000344"
+    }
+  ],
+  "components": {
+    "linux_module": {
+      "ipr_id": "37e12251-11cc-487a-a74f-4d50a41f3815"
+    },
+    "radio_module": {
+      "ipr_id": "e1578271-4866-461d-98e9-56a3eb3f1097"
+    }
+  },
+  "capabilities": {
+    "embedded_software": {
+      "embedded_software_id": "ce154397-c2e0-41eb-8217-9b34a840ca43"
+    }
+  }
+}
