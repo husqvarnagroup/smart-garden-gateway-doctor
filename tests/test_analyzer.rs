@@ -71,6 +71,7 @@ impl TestData {
 }
 
 #[rstest]
+#[test_log::test]
 fn test_analyze(
     #[values(
         "button_stuck",
@@ -101,18 +102,9 @@ fn test_analyze(
         move |buf| t.read_console_output(buf)
     });
 
-    let mut buf = std::io::Cursor::new(vec![0u8; 100_000]);
+    let analysis = analyze(&mut (serial_port as Box<dyn serialport::SerialPort>));
 
-    analyze(
-        &mut (serial_port as Box<dyn serialport::SerialPort>),
-        &mut buf,
-    );
-
-    let output = String::from_utf8_lossy(buf.get_ref());
     let message = test_data.message.as_str();
 
-    assert!(
-        output.contains(message),
-        "\"{message}\" not found in:\n{output}"
-    );
+    assert_eq!(analysis.message, message);
 }
