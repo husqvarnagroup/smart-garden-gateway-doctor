@@ -1,7 +1,11 @@
 
-# GARDENA Smart Gateway Boot Analyzer
+# GARDENA smart Gateway Doctor
 
-Run the tool (for development):
+A tool for diagnosing gateways that have issues during manfacturing.
+
+## Development
+
+You can run the tool with:
 ```
 cargo run
 ```
